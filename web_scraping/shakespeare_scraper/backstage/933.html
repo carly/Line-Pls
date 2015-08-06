@@ -1,0 +1,673 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        
+        <link rel="icon" type="image/x-icon" href="http://cdn-static.backstage.com/static/images/favicon.ico" />
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UA4GUVVaGwECUllRDwc="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t){try{i.console&&console.log(t)}catch(e){}}var n,r=t("ee"),o=t(1),i={};try{n=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(i.console=!0,-1!==n.indexOf("dev")&&(i.dev=!0),-1!==n.indexOf("nr_dev")&&(i.nrDev=!0))}catch(a){}i.nrDev&&r.on("internal-error",function(t){e(t.stack)}),i.dev&&r.on("fn-err",function(t,n,r){e(r.stack)}),i.dev&&(e("NR AGENT IN DEVELOPMENT MODE"),e("flags: "+o(i,function(t){return t}).join(", ")))},{1:23,ee:"QJf3ax"}],4:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,t(5),window.onerror=e;try{throw new Error}catch(f){"stack"in f&&(t(1),t(2),"addEventListener"in window&&t(3),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)&&t(4),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:10,2:9,3:7,4:11,5:3,6:24,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t){t("loader").features.ins=!0},{loader:"G9z0Bl"}],6:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(1),i=t(2);t("loader").features.stn=!0,t(3),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),i.on("fn-start",function(){this.bstStart=Date.now()}),i.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:10,2:9,3:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],7:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:24,2:25,ee:"QJf3ax",gos:"7eSDFh"}],8:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:25,2:24,ee:"QJf3ax"}],9:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:25,2:24,ee:"QJf3ax"}],10:[function(t,e){function n(t,e,n){t[0]=o(t[0],"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:25,2:24,ee:"QJf3ax"}],11:[function(t,e){function n(){f.inPlace(this,p,"fn-")}function r(t,e){f.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}function i(t,e){for(var n in t)e[n]=t[n];return e}var a=t("ee").create(),s=t(1),c=t(2),f=c(a),u=c(s),d=window.XMLHttpRequest,p=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=a,window.XMLHttpRequest=function(t){var e=new d(t);try{a.emit("new-xhr",[],e),u.inPlace(e,["addEventListener","removeEventListener"],"-",o),e.addEventListener("readystatechange",n,!1)}catch(r){try{a.emit("internal-error",[r])}catch(i){}}return e},i(d,XMLHttpRequest),XMLHttpRequest.prototype=d.prototype,f.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),a.on("send-xhr-start",r),a.on("open-xhr-start",r)},{1:7,2:25,ee:"QJf3ax"}],12:[function(t){function e(t){var e=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!e.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=n(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(e.cat=d.split(", ").pop())}}else e.status=0;r.cbTime=this.cbTime,o("xhr",[e,r,this.startTime])}}}function n(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=e,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,e){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=n(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{a.emit("internal-error",[n])}catch(r){}}};for(var u=0;c>u;u++)e.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:13,3:11,4:7,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],13:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],14:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:23,2:24,handle:"D5DuLP"}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info,e=f.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){s(d,function(e,n){e in t||(t[e]=n)});var n="https"===u.split(":")[0]||t.sslForHttp;p.proto=n?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=p.proto+t.agent,e.parentNode.insertBefore(r,e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=(t(2),window),f=c.document,u=(""+location).split("?")[0],d={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-632.min.js"},p=e.exports={offset:i(),origin:u,features:{}};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),c.addEventListener("load",n,!1)):(f.attachEvent("onreadystatechange",r),c.attachEvent("onload",n)),a("mark",["firstbyte",i()])},{1:23,2:14,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],23:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],24:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],25:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:24,ee:"QJf3ax"}]},{},["G9z0Bl",4,12,6,5]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"0d78ad519a","agent":"js-agent.newrelic.com/nr-632.min.js","transactionName":"NgZbN0NRWBECAhVcDQ9MfxZfU0ILDA9OVxEOTVQMX19aDQQUBEZMFwpcFEIKWw0NDg1aBRQGZgdURFcLDw==","applicationID":"2268386","errorBeacon":"bam.nr-data.net","applicationTime":541}</script>
+        <meta name="viewport" content="width=device-width">
+        
+        
+        <meta name="description" content="
+Read the monologue for the role of Helmer from the
+script for A Doll&#39;s House by Henrik Ibsen. 
+Helmer says: &lt;p&gt;Yes, do. Try and calm yourself, and make your mind easy again, my frightened little singing-bird. Be at rest, and feel secure; I have broad wings to shelter you under. How warm and cosy our home is, Nora. Here is shelter for you; here I will protect you like a hunted dove that I have saved from a hawk&#39;s claws; I will bring peace to your poor beating heart. It will come, little by little, Nora, believe me. Tomorrow morning you will look upon it all quite differently; soon everything will be just as it was before. Very soon you won&#39;t need me to assure you that I have forgiven you; you will yourself feel the certainty that I have done so. Can you suppose I should ever think of such a thing as repudiating you, or even reproaching you? You have no idea what a true man&#39;s heart is like, Nora. There is something so indescribably sweet and satisfying, to a man, in the knowledge that he has forgiven his wife--forgiven her freely, and with all his heart. It seems as if that had made her, as it were, doubly his own; he has given her a new life, so to speak; and she has in a way become both wife and child to him. So you shall be for me after this, my little scared, helpless darling. Have no anxiety about anything, Nora; only be frank and open with me, and I will serve as will and conscience both to you--. What is this? Not gone to bed? Have you changed your things?&lt;/p&gt;...
+" />
+        <meta name="keywords" content="Auditions | Casting calls | Open casting calls | Casting call | Open casting call" />
+        <meta property="fb:app_id" content="111374926453">
+        
+<meta property="og:type" content="website">
+<meta property="og:url" content="/monologues/henrik-ibsen/a-dolls-house/933/">
+<meta property="og:image" content="http://cdn-static.backstage.com/static/images/bstar-icon.png">
+<meta property="og:title" content="The Monologuer">
+
+
+        <title>The Monologuer: Henrik Ibsen - A Doll&#39;s House read by Helmer</title>
+        <link href="http://cdn-static.backstage.com/static/css/index.27c26ebbf39d.css" rel="stylesheet" type="text/css" />
+        
+<link type="text/css" rel="stylesheet" href="http://cdn-static.backstage.com/static/css/extra_monologue.css" />
+<link type="text/css" rel="stylesheet" href="http://cdn-static.backstage.com/static/css/typeahead.css" />
+<link type="text/css" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+
+
+
+        
+        <script src="//cdn.optimizely.com/js/571380661.js"></script>
+        
+        
+<script type="text/javascript">
+    var esi_user_authenticated = false;
+    var esi_user_has_castingcalls = false;
+    var esi_nav_thumbnail = null;
+    
+    
+        var esi_profile_view_url = null;
+    
+
+    var esi_targeting_user_state = "anon";
+
+    var esi_messages_unread_count = '';
+
+    var user_email =  null ;
+
+</script>
+
+        <script type="text/javascript">
+/*
+document.addEventListener('DOMContentLoaded', function() {
+    if (newsletter.cookie.get('ws_video') != 1){
+      $.getScript('http://cdn-static.backstage.com/static/js/jquery.fancybox.js', function(data, textStatus, jqxhr){
+        $.fancybox({
+            href: 'http://issues.backstage.com/slp_video.html',
+            type: 'iframe',
+            margin: 0,
+            padding: 0,
+            width: 600,
+            height: 400,
+            scrolling: 'no'
+        });
+      });
+     newsletter.cookie.set('ws_video', 1, 1);
+    }
+});
+var newsletter = newsletter | {};
+newsletter.enabled = false;
+*/
+
+var newsletter = newsletter || {};
+newsletter.interval = 7;
+newsletter.delay = 6;
+newsletter.pages = 2;
+newsletter.url = 'http://offers.backstage.com/newsletter-signup-2013-08-14';
+newsletter.fancybox_url = 'http://cdn-static.backstage.com/static/js/jquery.fancybox.js';
+newsletter.width = 600;
+newsletter.height = 606;
+newsletter.enabled = false;
+//newsletter.enabled = true;
+
+</script>
+        
+        <script type="text/javascript">
+            var dfp_ads = [];
+        </script>
+
+        <script>
+            (function() {
+                var _fbq = window._fbq || (window._fbq = []);
+                if (!_fbq.loaded) {
+                    var fbds = document.createElement('script');
+                    fbds.async = true;
+                    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(fbds, s);
+                    _fbq.loaded = true;
+                }
+                _fbq.push(['addPixelId', "252463768261371"]);
+            })();
+            window._fbq = window._fbq || [];
+            window._fbq.push(["track", "PixelInitialized", {}]);
+        </script>
+        <script>
+            (function(d) {
+               var e = d.createElement('script');
+               e.src = d.location.protocol + '//bounceexchange.com/tag/1079/i.js';
+               e.async = true;
+               d.getElementsByTagName("head")[0].appendChild(e);
+            }(document));
+        </script>
+        
+
+        
+            <!--*******************************************-->
+<!--********** START ANALYTICS BLOCK **********-->
+<!--*******************************************-->
+
+ <!-- Start Segment block -->
+<script type="text/javascript">
+!function(){var analytics=window.analytics=window.analytics||[];if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.0.1";
+  analytics.load('qnwu3ox0id');
+  analytics.page()
+  }}();
+
+    function trackOutboundLink(link, category, action) {
+        try {
+            analytics.track(action, {category: category}, {integrations: {'All': false, 'Google Analytics': true}});
+        }
+        catch(err){
+            alert(err)
+        }
+
+        setTimeout(function() {
+            document.location.href = link.href;
+        }, 100);
+    }
+</script>
+<!-- End Segment block -->
+
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WBMS2S"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WBMS2S');</script>
+<!-- End Google Tag Manager -->
+
+<!-- START Parse.ly Include: Standard -->
+<div id="parsely-root" style="display: none">
+    <div id="parsely-cfg" data-parsely-site="backstage.com"></div>
+</div>
+<script>
+    (function(s, p, d) {
+        var h=d.location.protocol, i=p+"-"+s,
+                e=d.getElementById(i), r=d.getElementById(p+"-root"),
+                u=h==="https:"?"d1z2jf7jlzjs58.cloudfront.net":"static."+p+".com";
+        if (e) return;
+        e = d.createElement(s); e.id = i; e.async = true;
+        e.src = h+"//"+u+"/p.js"; r.appendChild(e);
+    })("script", "parsely", document);
+</script>
+<!-- END Parse.ly Include -->
+
+<!-- Start of Async HubSpot Analytics Code -->
+<script type="text/javascript">
+    (function(d,s,i,r) {
+    if (d.getElementById(i)){return;}
+    var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+    n.id=i;n.src='//js.hubspot.com/analytics/'+(Math.ceil(new
+    Date()/r)*r)+'/200838.js'; e.parentNode.insertBefore(n, e);
+    })(document,"script","hs-analytics",300000);
+</script>
+<!-- End of Async HubSpot Analytics Code -->
+
+
+<script type="text/javascript">
+    if(!window.esi_user_authenticated) {
+        // Really
+        adroll_adv_id = "7QSX3T465ZDFFPQNHVQRFU";
+        adroll_pix_id = "IRZEF4TOYRCYRNXG5KCLKU";
+        (function () {
+            var oldonload = window.onload;
+            window.onload = function(){
+              __adroll_loaded=true;
+              var scr = document.createElement("script");
+              var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+              scr.setAttribute('async', 'true');
+              scr.type = "text/javascript";
+              scr.src = host + "/j/roundtrip.js";
+              ((document.getElementsByTagName('head') || [null])[0] ||
+                document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+              if(oldonload){oldonload()}};
+        }());
+    }
+</script>
+
+
+<!--*******************************************-->
+<!--************ END ANALYTICS BLOCK **********-->
+<!--*******************************************-->
+
+        
+
+    </head>
+    <body class="casting-pages">
+        
+        
+        
+    <div class="homepage_ad header_ad">
+        
+    </div>
+
+
+        
+        <!-- Header -->
+        
+        <div id="header" >
+            
+    
+
+<div id="utility-bar">
+    <div class="content">
+        <div class="bs-links">
+            <ul>
+                <li class="facebook">
+                    <a href="https://www.facebook.com/backstage" target="_blank">Like us on Facebook</a>
+                </li>
+                <li class="twitter">
+                    <a href="https://twitter.com/Backstage" target="_blank">Follow us on Twitter</a>
+                </li>
+            </ul>
+        </div>
+        <div class="utilities">
+            <ul>
+                <li class="findtalent"><a href="/casting/">Find Jobs</a></li>
+                <li class="findtalent"><a href="/talent/">Find Talent</a></li>
+                <li class="messages">
+                    <a href="/messaging/"></a><span class="nav_messages_unread_count badge"></span>
+                </li>
+                <li class="user esi_authenticated_show" id="user_menu">
+                    <a href="/accounts/manage/" class="menuDownArrow">My Account</a>
+                    <div class="utility-dropdown" style="display: none">
+                        <ul>
+                            <li style="padding: 0;"><a href="/casting/profile/details/" style="padding: 10px;">Edit Profile</a></li>
+                            
+                            <li style="padding: 0;">
+                                <a href="/messaging/"  style="padding: 10px;">Messages<span class="nav_messages_unread_count"></span></a>
+                            </li>
+                            
+                            
+                            <li style="padding: 0;"><a href="/casting_director/" style="padding: 10px;">My Dashboard</a></li>
+                            <li style="padding: 0;"><a href="/casting/apply/history/" style="padding: 10px;">Job History</a></li>
+                            <li style="padding: 0;"><a href="/accounts/manage/" style="padding: 10px;">Account Settings</a></li>
+                            <li style="padding: 0;"><a href="http://www.backstage.com/help" style="padding: 10px;">Help</a></li>
+                            <li style="padding: 0;"><a href="/accounts/logout/" style="padding: 10px;">Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="jobhistory esi_authenticated_show" id="nav_jobhistory"><a href="/casting/apply/history/">Job History</a></li>
+                <li class="user esi_authenticated_hide">
+                    <a href="/accounts/subscribe/" style="font-weight:bold;color:#DB2327;">JOIN</a>
+                </li>
+                <li class="user esi_authenticated_hide"><a href="/accounts/">Login</a></li>
+                <li class="help"><a href="http://www.backstage.com/help">Help</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="breaker"></div>
+</div>
+
+
+
+
+            <div id="nav-bar">
+                <ul>
+                    <li class="home"><h3><a href="/"><img alt="Backstage" src="http://cdn-static.backstage.com/static/images/logo.png" width="271" height="56" /></a></h3></li>
+                    <li class="casting active"><a href="/casting/">Casting</a></li>
+                    <li class="news "><a href="/news-and-reviews/">News <span>&amp; Reviews</span></a></li>
+                    <li class="resources "><a href="/resources/">Resources</a></li>
+                    <li class="actor101 "><a href="/actor101/">Actor 101</a></li>
+                    <li class="forums"><a href="http://bbs.backstage.com">Forums</a></li>
+                    <li class="postcall"><a href="/casting/production_details/">Post a Job</a><span></span></li>
+                </ul>
+            </div>
+            
+        </div>
+        
+
+        <!-- Main Content area and sidebar -->
+        
+
+
+
+
+
+<div id="page">
+
+    <div id="page-title">
+        <h1><a href="/monologues">The Monologuer</a></h1>
+    </div>
+
+    <!-------------------- Monologues Details -------------------->
+
+    <div id="main">
+
+        <div class="monologue-title"><h3>A Doll&#39;s House</h3></div>
+
+        <div class="monologue-author"><h4>by Henrik Ibsen</h4></div>
+
+        <div class="monologue-details">
+
+            <div class="panel panel-default" id="accordion">
+                <div class="panel-heading">
+                    <a class="mono-item-title" data-toggle="collapse" data-parent="#accordion" href="#scene-synopsis">
+                        Scene Synopsis ›
+                    </a>
+                </div>
+                <div id="scene-synopsis" class="panel-collapse collapse">
+                    <div class="panel-body">
+                    Helmer has just received word from Krogstad who has had a change of heart regarding the blackmail. The forged documents have been returned. Helmer breathes a sigh of relief that his world is not going to collapse, unaware that it has already been shattered.
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id="accordion">
+                <div class="panel-heading">
+                    <a class="mono-item-title" data-toggle="collapse" data-parent="#accordion" href="#play-synopsis">
+                        Play Synopsis ›
+                    </a>
+                </div>
+                <div id="play-synopsis" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        Nora has a perfect life on the outside. Doting husband, loving children and a nice home. But when decisions she made are revealed, her world comes crashing down. Nora's lies helped save her husband's life but his only concern is what scandal will be brought upon their household. As her relationships fall victim, Nora realizes she has been a puppet for too long. 
+                    </div>
+                </div>
+            </div>
+
+            <div class="monologue-text">
+                <strong>
+                    Helmer says:
+                </strong>
+                <p>Yes, do. Try and calm yourself, and make your mind easy again, my frightened little singing-bird. Be at rest, and feel secure; I have broad wings to shelter you under. How warm and cosy our home is, Nora. Here is shelter for you; here I will protect you like a hunted dove that I have saved from a hawk's claws; I will bring peace to your poor beating heart. It will come, little by little, Nora, believe me. Tomorrow morning you will look upon it all quite differently; soon everything will be just as it was before. Very soon you won't need me to assure you that I have forgiven you; you will yourself feel the certainty that I have done so. Can you suppose I should ever think of such a thing as repudiating you, or even reproaching you? You have no idea what a true man's heart is like, Nora. There is something so indescribably sweet and satisfying, to a man, in the knowledge that he has forgiven his wife--forgiven her freely, and with all his heart. It seems as if that had made her, as it were, doubly his own; he has given her a new life, so to speak; and she has in a way become both wife and child to him. So you shall be for me after this, my little scared, helpless darling. Have no anxiety about anything, Nora; only be frank and open with me, and I will serve as will and conscience both to you--. What is this? Not gone to bed? Have you changed your things?</p>
+            </div>
+
+        </div>
+
+    
+    </div>
+
+<!------------------------------ Sidebar ------------------------------>
+
+
+    <div id="sidebar">
+        <div class="sidebar-details">
+            <h4>Details</h4>
+            <ul>
+                <li>
+                    <div class="mono-item-title">Genre:</div>
+                    Drama
+                </li>
+                <li>
+                    <div class="mono-item-title">Gender:</div>
+                    Male
+                </li>
+                <li>
+                    <div class="mono-item-title">Age:</div>
+                    30s-40s
+                </li>
+                <li>
+                    <div class="mono-item-title">Themes:</div>
+                    Acceptance, Life Changes, Power
+                </li>
+            </ul>
+
+        </div>
+
+        
+        <div class="sidebar-widget">
+            <h4>Similar Monologues</h4>
+            <ul>
+                
+                    <li><a class="mlt-atag" title="Score: 2.71" href="/monologues/oscar-wilde/an-ideal-husband/975/">An Ideal Husband (Lord Goring)</a></li>
+                
+                    <li><a class="mlt-atag" title="Score: 2.45" href="/monologues/sophocles/oedipus-at-colonus/1174/">Oedipus at Colonus (Theseus)</a></li>
+                
+                    <li><a class="mlt-atag" title="Score: 1.92" href="/monologues/william-shakespeare/troilus-and-cressida/816/">Troilus and Cressida (Troilus)</a></li>
+                
+                    <li><a class="mlt-atag" title="Score: 1.9" href="/monologues/hortense-flexner/voices/1085/">Voices (Voice)</a></li>
+                
+                    <li><a class="mlt-atag" title="Score: 1.9" href="/monologues/sophocles/oedipus-at-colonus/1179/">Oedipus at Colonus (Theseus)</a></li>
+                
+            </ul>
+        </div>
+        
+
+        
+        <div class="sidebar-widget-title"><img class="sidebar-widget-title-icon" src="http://cdn-static.backstage.com/static/images/slate.png">Now Casting on Backstage</div>
+        <div class="sidebar-widget roles">
+            <h4>Roles like this Monologue</h4>
+            <ul>
+                
+                <li>
+                    <a href="/casting/life-in-slow-motion-79741/jesse-307124/">
+                        Jesse (&#39;Life in Slow Motion&#39;)
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/casting/thriller-live-79453/man-3-305717/">
+                        Man 3 (&#39;Thriller-Live&#39;)
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/casting/murder-ballad-oliver-80042/bill-sikes-tom-308047/">
+                        Bill Sikes/ Tom (&#39;Murder Ballad&#39; &amp; &#39;Oliver&#39;)
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/casting/seduction-79622/detective-michael-denison-306717/">
+                        Detective Michael Denison (&#39;Seduction&#39;)
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/casting/every-praise-77915/pastor-josiah-cannon-300360/">
+                        Pastor Josiah Cannon (&#39;Every Praise&#39;)
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+        
+
+    </div>
+
+</div>
+
+
+
+        <!-- Footer -->
+        
+        <div id="footer">
+            <div id="inside-backstage">
+    <ul>
+        <li class="inside"><img src="http://cdn-static.backstage.com/static/images/header-inside.gif" alt="Inside Backstage"  width="143" height="16" /></li>
+        <li class="sag"><a href="/auditions/">Auditions Calendar</a></li>
+        <li class="agent"><a href="/advice-for-actors/monologues/">The Monologuer</a></li>
+        <li class="spotlight"><a href="/advice-for-actors/backstage-experts/">Backstage Experts</a></li>
+        <li class="who"><a href="/advice-for-actors/secret-agent-man/">Secret Agent Man</a></li>
+    </ul>
+    <div class="breaker"></div>
+</div>
+
+<div id="drip-pan">
+  <ul>
+    <li><span class="tag"><a href="/news/">News</a><span></span></span><a href="/auditions-redirect/upcoming-auditions/" class="image"><img alt="" src="http://cdn-media.backstage.com/files/media/uploads/zinnia/regional_auditions_at_a_glance_6.jpg.300x207_q100.jpg.207x139_q90_crop-0%2C0_upscale.jpg" /></a><a href="/auditions-redirect/upcoming-auditions/" class="text">Upcoming Auditions at a Glance</a></li>
+    <li><span class="tag"><a href="/advice-for-actors/">Advice</a><span></span></span><a href="/advice-for-actors/secret-agent-man/evolution-headshot/" class="image"><img alt="" src="http://cdn-media.backstage.com/files/media/uploads/zinnia/0723_SAM_SpencerAlexander.jpeg.207x139_q90_crop-0%2C0_upscale.jpg" /></a><a href="/advice-for-actors/secret-agent-man/evolution-headshot/" class="text">The Evolution of the Headshot</a></li>
+    <li><span class="tag"><a href="/news/">News</a><span></span></span><a href="/news/8-young-and-mighty-new-york-theater-companies/" class="image"><img alt="" src="http://cdn-media.backstage.com/files/media/uploads/zinnia/10393969_10152312269823214_3033189698637237885_n.jpg.207x139_q90_crop-0%2C0_upscale.jpg" /></a><a href="/news/8-young-and-mighty-new-york-theater-companies/" class="text">8 Young (and Mighty) New York Theater Companies</a></li>
+    <li class="last"><span class="tag"><a href="/advice-for-actors/">Advice</a><span></span></span><a href="/advice-for-actors/the-working-actor/keeping-method-becoming-madness/" class="image"><img alt="" src="http://cdn-media.backstage.com/files/media/uploads/zinnia/JUL23_ClayRodery_WorkingActor.jpeg.207x139_q90_crop-0%2C0_upscale.jpg" /></a><a href="/advice-for-actors/the-working-actor/keeping-method-becoming-madness/" class="text">Keeping the Method From Becoming Madness</a></li>
+  </ul>
+  <div class="breaker"></div>
+</div>
+
+            
+    <div class="homepage_ad">
+        
+    </div>
+
+
+            
+            
+                <div class="content" style="margin-bottom:60px;">
+                <p>© 2015 Backstage. All rights reserved.
+                    <a href="/terms-of-service/">Terms of Use</a> |
+                    <a href="/privacy-policy/">Privacy Policy</a> |
+                    <a href="/about-us/">About Us</a> |
+                    <a href="/team/">The Team</a> |
+                    <a href="/partners/">Partners</a> |
+                    <a href="http://www.backstage.com/rss-feeds/">RSS</a> |
+                    <a href="http://help.backstage.com/">Contact Us</a> |
+                    <a href="http://offers.backstage.com/daily-newsletter-signup/">Newsletter</a> |
+                    <a href="http://offers.backstage.com/affiliate-signup/">Affiliate Program</a> |
+                    <a href="http://www.backstage.com/careers/">Careers</a> |
+                    <a href="http://help.backstage.com/">Help</a> |
+                    <a href="http://www.backstage.com/advertising-information/">Advertising Information</a> |
+                    <a href="/sitemap/">Sitemap</a>
+                </p>
+            </div><!--Start of Zopim Live Chat Script with mobile hidden--> 
+<script type="text/javascript">
+var ua = navigator.userAgent.toLowerCase(),
+platform = navigator.platform.toLowerCase();
+platformName = ua.match(/ip(?:ad|od|hone)/) ? 'ios' : (ua.match(/(?:webos|android)/) || platform.match(/mac|win|linux/) || ['other'])[0],
+isMobile = /ios|android|webos/.test(platformName);
+if (!isMobile) {
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s= 
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set. 
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8'); 
+$.src='//v2.zopim.com/?2QrRstMI49PEBrwzXqdEv88XxfJaezIa';z.t=+new Date;$. 
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script'); 
+}
+</script>
+<!--End of Zopim Live Chat Script with mobile hidden--> 
+            
+        </div>
+        
+
+        <script type="text/javascript" src="http://cdn-static.backstage.com/static/js/casting_index.63d029d6d789.js" charset="utf-8"></script>
+
+        
+        
+    <script type="text/javascript">
+        if(esi_profile_view_url) {
+            $('#nav_jobhistory').after('<li class="myprofile"><a href="'+esi_profile_view_url+'">My Profile</a></li>');
+        }
+
+        if(esi_messages_unread_count){
+            esi_messages_unread_count = esi_messages_unread_count.replace("(","").replace(")","");
+            $('.nav_messages_unread_count').html(esi_messages_unread_count);
+            $(".messages a").addClass("messages_new");
+        } else {
+            $(".nav_messages_unread_count").addClass("nav_messages_unread_count_empty");
+        }
+    </script>
+
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="http://cdn-static.backstage.com/static/js/shorten.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.post('/monologues/count/933/');
+        $(".mlt-atag").tooltip();
+    });
+</script>
+
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // Handle general ESI changes
+                if (esi_user_authenticated) {
+                    $('#user_menu').mouseover(function() {
+                        $('.utility-dropdown').show();
+                    });
+                    $('#user_menu').mouseout(function() {
+                        $('.utility-dropdown').hide();
+                    });
+                    $('.esi_authenticated_show').removeClass('esi_authenticated_show');
+                    $('.esi_authenticated_hide').hide();
+
+                    if(esi_nav_thumbnail) {
+                        $('#user_menu a.menuDownArrow').prepend("<img src='"+esi_nav_thumbnail+"' id='nav_thumbnail'>");
+                    }
+
+                    if(esi_messages_unread_count){
+                      esi_messages_unread_count = esi_messages_unread_count.replace("(","").replace(")","");
+                        $('.nav_messages_unread_count').html(esi_messages_unread_count);
+                        $(".messages a").addClass("messages_new");
+                    } else {
+                      $(".nav_messages_unread_count").addClass("nav_messages_unread_count_empty");
+                    }
+
+                } else {
+                    $('.esi_authenticated_show').hide();
+                    $('.esi_authenticated_hide').removeClass('esi_authenticated_hide');
+                    $(".nav_messages_unread_count").addClass("nav_messages_unread_count_empty");
+                }
+            });
+        </script>
+        
+        
+            
+                <script type="text/javascript">var switchTo5x = true;</script>
+                <script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
+                <script type="text/javascript">
+                    stLight.options({
+                        publisher:"4d2ca103-3b10-40c2-8083-b850d05fbbd0",
+                        doNotHash:true,
+                        onhover: false
+                    });
+                </script>
+            
+        
+        
+    <script type="text/javascript">
+        window.fbAsyncInit = function() {
+            FB.init({
+            appId : '111374926453', // App ID
+            status : true, // check login status
+            cookie : true, // enable cookies to allow the server to access the session
+            xfbml : true // parse XFBML
+            });
+        };
+
+        (function(d){
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement('script'); js.id = id; js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document));
+    </script>
+
+
+        
+        <script type='text/javascript'>
+            var googletag = googletag || {};
+            googletag.cmd = googletag.cmd || [];
+            (function () {
+                var gads = document.createElement('script');
+                gads.async = true;
+                gads.type = 'text/javascript';
+                var useSSL = 'https:' == document.location.protocol;
+                gads.src = (useSSL ? 'https:' : 'http:') +
+                    '//www.googletagservices.com/tag/js/gpt.js';
+                var node = document.getElementsByTagName('script')[0];
+                node.parentNode.insertBefore(gads, node);
+            })();
+            googletag.cmd.push(function () {
+                googletag.pubads().setTargeting("user_state", esi_targeting_user_state);
+            });
+            googletag.cmd.push(function () {
+                googletag.pubads().enableSingleRequest();
+                googletag.pubads().collapseEmptyDivs();
+            });
+            googletag.cmd.push(function () {
+                for(var i = 0; i < dfp_ads.length; i++)
+                {
+                    googletag.pubads().display('/' + dfp_ads[i][0] + '/' + dfp_ads[i][1], dfp_ads[i][2], dfp_ads[i][3]);
+                }
+            });
+            googletag.cmd.push(function () {
+                
+
+                googletag.enableServices();
+            });
+        </script>
+    <script>
+    analytics.ready(function(){
+        
+        
+        var user = analytics.user();
+        var id = user.id();
+        if (user && id){
+            analytics.reset();
+        }
+        
+
+        analytics.identify('', {
+            
+            'User Type': 'unregistered',
+            
+            
+            
+            
+            
+            });
+
+    })
+    </script>
+    </body>
+</html>
