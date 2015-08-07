@@ -9,14 +9,32 @@ db = SQLAlchemy()
 ###########################################################
 # Model definitions: Scenes Character, Genre, Monologue, Play, User, Annotations, Youtube]
 
+## Instead of doing this.... write a function that switches out the genre id with the genre type when you load the plays
+#class Genre(db.Model):
+#	"""Genres of Shakespeare plays"""
+#	__tablename__="genres"
+#
+#	genre_id = db.Column(db.String(255), primary_key=True) 
+#	genre_name = db.Column(db.String(255), default=" ", nullable=False)
+	
+	
+class Play(db.Model):
+	"""All the Shakespeare plays"""
+
+	__tablename__="plays"
+    
+	play_id = db.Column(db.String(50), primary_key=True) 
+	title = db.Column(db.String(255), default=" ", nullable=False) 
+	long_title = db.Column(db.String(255), default=" ", nullable=False) 
+	date = db.Column(db.Integer, default=0, nullable=False)
+	genre_id = db.Column(db.String(255), db.ForeignKey('genres.genre_id'), default=" ", nullable=False)
+	
+	genre = db.relationship("Genre",
+						   backref = db.backref("plays", order_by=play_id))
+
 
 class Scene(db.Model):
 	"""Shakespeare plays divided into Scenes"""
-	#Scene_ID (primary key)
-	#Play_ID (foreign key - references Plays)
-	#Act
-	#Scene
-	#Description
 
 	__tablename__ = "scenes"
 
@@ -24,7 +42,7 @@ class Scene(db.Model):
 	play_id = db.Column(db.String(50), db.ForeignKey('plays.play_id'), default=" ", nullable=False)
 	act = db.Column(db.Integer, default=0,  nullable=False)
 	scene = db.Column(db.Integer,default=0, nullable=False)
-	description = db.Column(db.String(255), default=" ", nullable=False)
+	s_description = db.Column(db.String(255), default=" ", nullable=False)
 	
 	#Defines relationship between Play class and Scene class
 	play = db.relationship("Play",
@@ -33,44 +51,22 @@ class Scene(db.Model):
 
 class Character(db.Model):
 	"""Shakespeare characters"""
-	#char_ID (primary key) varchar(50) NOT NULL DEFAULT '',
-	#Char_name varchar(255) NOT NULL DEFAULT '',
-	#play_ID(foreign key - references Plays) varchar(255) NOT NULL DEFAULT '',
-	#description varchar(255) NOT NULL DEFAULT ''
-	#monologue_count mediumint(9) DEFAULT NULL
 
 	__tablename__ = "characters"
 
 	char_id = db.Column(db.String(50), primary_key=True) 
 	char_name = db.Column(db.String(255),default=" ", nullable=False) 
 	play_id = db.Column(db.String(255), db.ForeignKey('plays.play_id'), default=" ", nullable=False) 
-	description = db.Column(db.String(255),default=" ", nullable=False) 
+	c_description = db.Column(db.String(255),default=" ", nullable=False) 
 	mono_count = db.Column(db.Integer, default=0, nullable=True) 
 
 	#Defines relationship between Play class and Character Class
 	play = db.relationship("Play",
 						   backref = db.backref("characters", order_by=char_id))
 
-class Genre(db.Model):
-	"""Genres of Shakespeare plays"""
-	#genre_ID (primary key) varchar(255) NOT NULL DEFAULT '',
-	#genre_name varchar(255) NOT NULL DEFAULT '',
-
-	__tablename__="genres"
-
-	genre_id = db.Column(db.String(255), primary_key=True) 
-	genre_name = db.Column(db.String(255), default=" ", nullable=False)
-
 
 class Monologue(db.Model):
 	"""Shakespeare monologues"""
-	#mono_id (primary key) int(255) NOT NULL DEFAULT '0',
-	#play_id (foreign key - references Plays) varchar(255) NOT NULL DEFAULT '',
-	#char_id (foreign key - references Characters) varchar(255) NOT NULL DEFAULT '',
-	#text  text NOT NULL,
-	#scene_id (foreign key - references Scenes)
-	#character_count int(11) NOT NULL DEFAULT '0',
-	#word_cout int(11) NOT NULL DEFAULT '0',
 
 	__tablename__="monologues"
 
@@ -78,6 +74,7 @@ class Monologue(db.Model):
 	play_id = db.Column(db.String(255), db.ForeignKey('plays.play_id'), default=" ", nullable=False) 
 	char_id = db.Column(db.String(255), db.ForeignKey('characters.char_id'), default=" ", nullable=False) 
 	text = db.Column(db.Text, nullable=False)
+	act_id = db.Column(db.Integer, db.ForeignKey('scenes.scene_id'), default=0,  nullable=False)
 	scene_id = db.Column(db.Integer, db.ForeignKey('scenes.scene_id'), default=" ", nullable=False)
 	char_count = db.Column(db.Integer, default=" ", nullable=False)
 	word_count = db.Column(db.Integer, default=" ", nullable=False)
@@ -95,25 +92,6 @@ class Monologue(db.Model):
 						   backref = db.backref("monologues", order_by=mono_id))
 	
 	
-
-class Play(db.Model):
-	"""All the Shakespeare plays"""
-	#play_id (primary key) varchar(50) NOT NULL DEFAULT '',
-	#title varchar(255) NOT NULL DEFAULT '',
-	#long_tile varchar(255) NOT NULL DEFAULT '',
-	#date  int(11) NOT NULL DEFAULT '0',
-	#genre_type (foreign key - references Genre) varchar(255) NOT NULL DEFAULT ''
-
-	__tablename__="plays"
-
-	play_id = db.Column(db.String(50), primary_key=True) 
-	title = db.Column(db.String(255), default=" ", nullable=False) 
-	long_title = db.Column(db.String(255), default=" ", nullable=False) 
-	date = db.Column(db.Integer, default=0, nullable=False)
-	genre_type = db.Column(db.String(255), db.ForeignKey('genres.genre_id'), default=" ", nullable=False)
-	
-	genre = db.relationship("Genre",
-						   backref = db.backref("plays", order_by=play_id))
 
 ##########################################################################
 # Hold off on this until we figure out Google Login

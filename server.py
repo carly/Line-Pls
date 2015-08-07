@@ -19,9 +19,27 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/')
 def index():
 	"""Homepage."""
-	
+	#Line Pls
+	#Login => Hopefully doesn't take you away from screen
+	#Male or Female
+	#Playwright
+	#Monologue
 	pass
 
+@app.route('/plays')
+def show_plays():
+	"""List of Shakespeare Plays"""
+	#Lists all Shakespeare Plays
+	#When you click a Play, Characters Appear
+	#When you click Characters, Monologues Appear
+	pass
+
+@app.route('monologue')
+def show_monologue():
+	"""Shows the chosen monologue + ability to make annotations view"""
+	#Takes you to a view of the currently selected monologue
+	#Upload yourself doing the monologue 
+	
 
 
 #Connecting server to db
