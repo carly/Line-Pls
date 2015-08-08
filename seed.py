@@ -6,20 +6,15 @@ from model import Scene, Character, Monologue, Play, connect_to_db, db
 #Annotations also needs to be created by hand since there is no data yet
 from server import app
 
-
-#Time to cook a database...
 #______________________________________________________
+# Defines functions that parse data from Open Source Shakespeare db text files
+
 
 def load_plays(file_name):
 	"""Loads plays from Works.txt into database"""
-	#play_id (primary key) [0]
-	#title [1]
-	#long_tile [2]
-	#date  [3]
-	#genre_type [4]
 	
 	#Uses python csv.reader function to parse data from txt file
-	with open("file_name") as csvfile:
+	with open(file_name) as csvfile:
 		playreader = csv.reader(csvfile, delimiter=',', quotechar='~')
 		for row in playreader: 
 			play_id = row[0]
@@ -35,17 +30,12 @@ def load_plays(file_name):
 			db.session.add(play)
 		db.session.commit()
 	
-
+	
 def load_scenes(file_name):
 	"""Loads scenes from Chapters.txt into database"""
-	#Scene_ID (primary key) 
-	#Play_ID (foreign key - references Plays) [0]
-	#Act [2]
-	#Scene [3]
-	#Description [4]
 	
 	#Uses python csv.reader function to parse data from txt file
-	with open("file_name") as csvfile:
+	with open(file_name) as csvfile:
 		scenereader = csv.reader(csvfile, delimiter=',', quotechar='~')
 		for row in scenereader:
 			play_id = row[0]
@@ -60,16 +50,12 @@ def load_scenes(file_name):
 			db.session.add(scene)
 		db.session.commit()
 	
+	
 def load_characters(file_name):
 	"""Loads characters from Characters.txt into database"""
-	#char_ID (primary key) [0]
-	#Char_name [1]
-	#play_ID (foreign key - references Plays) [3]
-	#description [4]
-	#monologue_count [5]
 	
 	#Uses python csv.reader function to parse data from txt file
-	with open("file_name") as csvfile:
+	with open(file_name) as csvfile:
 		charreader = csv.reader(csvfile, delimiter=',', quotechar='~')
 		for row in charreader:
 			char_id = row[0]
@@ -78,18 +64,53 @@ def load_characters(file_name):
 			c_description = row[4]
 			mono_count = row[5]
 			
-			#Connects data from Chapters.txt to variables in the scenes table 
+			#Connects data from Characters.txt to variables in the characters table 
+			character = Character(char_id=char_id, char_name=char_name, play_id=play_id, c_description=c_description, mono_count=mono_count)
+			
+			#Adds the character to the characters table in the database. 
+			db.session.add(character)
+		db.session.commit()
+			
 
 def load_monologues(file_name):
-	##HOLDING OFF ON THIS ONE UNTIL SOMEONE ANSWERS MY QUESTION
 	"""Loads monologues from Paragraphs.txt into database"""
-	#mono_id (primary key) 
-	#play_id (foreign key - references Plays) [0]
-	#char_id (foreign key - references Characters)[3]
-	#text [4]
-	#act_id (foreign key - references Scenes) [8]
-	#scene_id (foreign key - references Scenes) [9]
-	#character_count [10]
-	#word_count [11]
-	pass
+	
+	#Uses python csv.reader function to parse data from txt file
+	with open(file_name) as csvfile:
+		monoreader = csv.reader(csvfile, delimiter=',', quotechar='~')
+		for row in monoreader:
+			play_id = row[0]
+			char_id = row[3]
+			text = row[4]
+			act_id = row[8]
+			scene_id = row[9]
+			char_count = row[10]
+			word_count = row[11]
+			
+			#Connects data from Paragraphs.txt to variables in the monologues table 
+			monologue = Monologue(play_id=play_id, char_id=char_id, text=text, act_id=act_id, scene_id=scene_id, char_count=char_count, word_count=word_count)
+			
+			#Adds the monologue to the monologues table in the database. 
+			db.session.add(monologue)
+		db.session.commit()
+			
+			
+#_____________________________________________________
+#Time to cook a database...
+
+if __name__=="__main__":
+	connect_to_db(app)
+	
+	load_plays("oss-textdb/Works.txt")
+	load_scenes("oss-textdb/Chapters.txt")
+	load_characters("oss-textdb/Characters.txt")
+	load_monologues("oss-textdb/Paragraphs.txt")
+
+
+			
+			
+			
+			
+			
+			
 	

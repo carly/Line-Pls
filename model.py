@@ -10,13 +10,6 @@ db = SQLAlchemy()
 # Model definitions: Scenes Character, Genre, Monologue, Play, User, Annotations, Youtube]
 
 ## Instead of doing this.... write a function that switches out the genre id with the genre type when you load the plays
-#class Genre(db.Model):
-#	"""Genres of Shakespeare plays"""
-#	__tablename__="genres"
-#
-#	genre_id = db.Column(db.String(255), primary_key=True) 
-#	genre_name = db.Column(db.String(255), default=" ", nullable=False)
-	
 	
 class Play(db.Model):
 	"""All the Shakespeare plays"""
@@ -27,10 +20,19 @@ class Play(db.Model):
 	title = db.Column(db.String(255), default=" ", nullable=False) 
 	long_title = db.Column(db.String(255), default=" ", nullable=False) 
 	date = db.Column(db.Integer, default=0, nullable=False)
-	genre_id = db.Column(db.String(255), db.ForeignKey('genres.genre_id'), default=" ", nullable=False)
+	genre_id = db.Column(db.String(255), default=" ", nullable=False)
 	
-	genre = db.relationship("Genre",
-						   backref = db.backref("plays", order_by=play_id))
+	
+#class Genre(db.Model):
+#	"""Genres of Shakespeare plays"""
+#	__tablename__="genres"
+#
+#	genre_id = db.Column(db.String(255), primary_key=True) 
+#	genre_name = db.Column(db.String(255), db.ForeignKey('plays.play_id'), default=" ", nullable=False)
+#	
+#	#Connects a genre to a play
+#	play = db.relationship("Play",
+#						   backref = db.backref("genres", order_by=genre_id))
 
 
 class Scene(db.Model):
@@ -74,7 +76,7 @@ class Monologue(db.Model):
 	play_id = db.Column(db.String(255), db.ForeignKey('plays.play_id'), default=" ", nullable=False) 
 	char_id = db.Column(db.String(255), db.ForeignKey('characters.char_id'), default=" ", nullable=False) 
 	text = db.Column(db.Text, nullable=False)
-	act_id = db.Column(db.Integer, db.ForeignKey('scenes.scene_id'), default=0,  nullable=False)
+	act_id = db.Column(db.Integer, default=0,  nullable=False)
 	scene_id = db.Column(db.Integer, db.ForeignKey('scenes.scene_id'), default=" ", nullable=False)
 	char_count = db.Column(db.Integer, default=" ", nullable=False)
 	word_count = db.Column(db.Integer, default=" ", nullable=False)
@@ -90,8 +92,6 @@ class Monologue(db.Model):
 	#Defines relationship between Scene Class & Monologue Class
 	scene = db.relationship("Scene",
 						   backref = db.backref("monologues", order_by=mono_id))
-	
-	
 
 ##########################################################################
 # Hold off on this until we figure out Google Login
