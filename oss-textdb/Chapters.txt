@@ -1,4 +1,3 @@
-~WorkID~,~ChapterID~,~Section~,~Chapter~,~Description~
 ~12night~,18704,1,1,~DUKE ORSINO&#8217;s palace.~
 ~12night~,18705,1,2,~The sea-coast.~
 ~12night~,18706,1,3,~OLIVIA&#8217;S house.~

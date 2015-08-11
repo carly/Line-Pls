@@ -1,4 +1,3 @@
-~CharID~,~CharName~,~Abbrev~,~Works~,~Description~,~SpeechCount~
 ~1apparition-mac~,~First Apparition~,~First Apparition~,~macbeth~,,1
 ~1citizen~,~First Citizen~,~First Citizen~,~romeojuliet~,,3
 ~1conspirator~,~First Conspirator~,~First Conspirator~,~coriolanus~,,3
@@ -118,7 +117,8 @@
 ~Antonio-mv~,~Antonio~,~ANTONIO~,~merchantvenice~,~a merchant of Venice~,47
 ~Antonio-tem~,~Antonio~,~ANTONIO~,~tempest~,~the King's brother, the usurping Duke of Milan~,57
 ~Antonio-tg~,~Antonio~,~ANTONIO~,~twogents~,~father to Proteus~,11
-~antony~,~Antony~,~ANTONY~,~juliuscaesar,antonycleo~,~(Marcus Antonius)~,253
+~antony_jc~,~Antony~,~ANTONY~,~juliuscaesar~,~(Marcus Antonius)~,253
+~antony_ac~,~Antony~,~ANTONY~,~antonycleo~,~(Marcus Antonius)~,253
 ~Apemantus~,~Apemantus~,~APEMANTUS~,~timonathens~,~a churlish philosopher~,100
 ~apothecary~,~Apothecary~,~Apothecary~,~romeojuliet~,,4
 ~Archidamus~,~Archidamus~,~ARCHIDAMUS~,~winterstale~,~a lord of Bohemia~,7
@@ -141,8 +141,10 @@
 ~Banditti~,~Banditti~,~Banditti~,~timonathens~,,4
 ~banquo~,~Banquo~,~BANQUO~,~macbeth~,~General of the King's army~,33
 ~baptista~,~Baptista Minola~,~BAPTISTA~,~tamingshrew~,~a gentleman of Padua~,68
-~bardolph~,~Lord Bardolph~,~LORD BARDOLPH~,~henry4p1,henry4p2~,,35
-~bardolphlesser~,~Bardolph~,~BARDOLPH~,~henry4p2,henry5~,,46
+~bardolph_h4p1~,~Lord Bardolph~,~LORD BARDOLPH~,~henry4p1~,,35
+~bardolph_h4p2~,~Lord Bardolph~,~LORD BARDOLPH~,~henry4p2~,,35
+~bardolphlesser_h4p2~,~Bardolph~,~BARDOLPH~,~henry4p2~,,46
+~bardolphlesser_h5~,~Bardolph~,~BARDOLPH~,~henry5~,,46
 ~bardolph-mww~,~Bardolph~,~BARDOLPH~,~merrywives~,~sharper attending on Falstaff~,14
 ~Barnardine~,~Barnardine~,~BARNARDINE~,~measure~,~a dissolute prisoner~,7
 ~Bassanio~,~Bassanio~,~BASSANIO~,~merchantvenice~,~Antonio's friend, suitor likewise to Portia~,73
@@ -155,7 +157,8 @@
 ~beadle1~,~First Beadle~,~FIRST BEADLE~,~henry4p2~,,4
 ~beadle2~,~Second Beadle~,~SECOND BEADLE~,~henry4p2~,,0
 ~beatrice~,~Beatrice~,~BEATRICE~,~muchado~,~Niece to Leonato~,106
-~bedford~,~Duke of Bedford~,~BEDFORD~,~henry5,henry6p1~,~brother to Henry IV, uncle to Henry V~,24
+~bedford_h5~,~Duke of Bedford~,~BEDFORD~,~henry5~,~brother to Henry IV, uncle to Henry V~,24
+~bedford_h6p1~,~Duke of Bedford~,~BEDFORD~,~henry6p1~,~brother to Henry IV, uncle to Henry V~,24
 ~Belarius~,~Belarius~,~BELARIUS~,~cymbeline~,~a banished lord, disguised under the name of Morgan~,58
 ~belch~,~Sir Toby Belch~,~SIR TOBY BELCH~,~12night~,~uncle to Olivia~,152
 ~benedick~,~Benedick~,~BENEDICK~,~muchado~,~A young lord of Padua~,134
@@ -172,7 +175,8 @@
 ~BishopCarlisle~,~Bishop of Carlisle~,~BISHOP OF CARLISLE~,~richard2~,,6
 ~BishopLincoln~,~Bishop Lincoln~,~LINCOLN~,~henry8~,,2
 ~Blanch~,~Blanch~,~BLANCH~,~kingjohn~,~of Spain, niece to King John~,9
-~blunt~,~Blunt~,~BLUNT~,~henry4p1,henry4p2~,,11
+~blunt_h4p1~,~Blunt~,~BLUNT~,~henry4p1~,,11
+~blunt_h4p2~,~Blunt~,~BLUNT~,~henry4p2~,,11
 ~Blunt-r3~,~Blunt~,~Blunt~,~richard3~,,3
 ~Boatswain~,~Boatswain~,~Boatswain~,~tempest~,,12
 ~Bolingbroke-h62~,~Bolingbroke~,~BOLINGBROKE~,~henry6p2~,~a conjurer~,7
@@ -341,14 +345,17 @@
 ~DukeAlencon~,~Duke of Alencon~,~ALENCON~,~henry6p1~,,18
 ~duke-ayli~,~Duke~,~DUKE SENIOR~,~asyoulikeit~,~living in exile~,32
 ~DukeBuckingham~,~Duke of Buckingham~,~BUCKINGHAM~,~henry8~,,26
-~DukeBuckingham-h6~,~Duke of Buckingham~,~BUCKINGHAM~,~henry6p2,richard3~,,115
+~DukeBuckingham-h6~,~Duke of Buckingham~,~BUCKINGHAM~,~henry6p2~,,115
+~DukeBuckingham-r3~,~Duke of Buckingham~,~BUCKINGHAM~,~richard3~,,115
 ~dukeburgundy~,~Duke of Burgundy~,~Bur~,~kinglear~,,5
-~dukeburgundy-h5~,~Duke of Burgundy~,~BURGUNDY~,~henry5,henry6p1~,,25
+~dukeburgundy-h5~,~Duke of Burgundy~,~BURGUNDY~,~henry5~,,25
+~dukeburgundy-h6p1~,~Duke of Burgundy~,~BURGUNDY~,~henry6p1~,,25
 ~dukecornwall~,~Duke of Cornwall~,~Corn~,~kinglear~,,53
 ~dukeflorence~,~Duke of Florence~,~DUKE~,~allswell~,,6
 ~dukemilan~,~Duke of Milan~,~DUKE~,~twogents~,~father to Silvia~,48
 ~DukeNorfolk~,~Duke of Norfolk~,~NORFOLK~,~henry8~,,48
-~DukeNorfolk-h63~,~Duke of Norfolk~,~NORFOLK~,~henry6p3,richard3~,,11
+~DukeNorfolk-h6p3~,~Duke of Norfolk~,~NORFOLK~,~henry6p3~,,11
+~DukeNorfolk-r3~,~Duke of Norfolk~,~NORFOLK~,~richard3~,,11
 ~DukeSuffolk~,~Duke of Suffolk~,~SUFFOLK~,~henry8~,,30
 ~DukeSurrey~,~Duke of Surrey~,~DUKE OF SURREY~,~richard2~,,3
 ~dukevenice~,~Duke of Venice~,~DUKE OF VENICE~,~othello~,,25
@@ -357,11 +364,15 @@
 ~duncan~,~Duncan~,~DUNCAN~,~macbeth~,~King of Scotland~,18
 ~EarlDouglas~,~Earl of Douglas~,~Earl of Douglas~,~henry4p1~,,19
 ~earlkent~,~Earl of Kent~,~Kent~,~kinglear~,,127
-~earlnorth~,~Earl of Northumberland~,~NORTHUMBERLAND~,~richard2,henry4p1,henry4p2~,,66
+~earlnorth_r2~,~Earl of Northumberland~,~NORTHUMBERLAND~,~richard2~,,66
+~earlnorth_h4p1~,~Earl of Northumberland~,~NORTHUMBERLAND~,~henry4p1~,,66
+~earlnorth_h4p2~,~Earl of Northumberland~,~NORTHUMBERLAND~,~henry4p2~,,66
 ~EarlNorthumberland~,~Earl of Northumberland~,~NORTHUMBERLAND~,~henry6p3~,,15
-~EarlOxford~,~Earl Oxford~,~OXFORD~,~henry6p3,richard3~,,14
+~EarlOxford_h6p3~,~Earl Oxford~,~OXFORD~,~henry6p3~,,14
+~EarlOxford_r3~,~Earl Oxford~,~OXFORD~,~richard3~,,14
 ~EarlRichmond~,~Henry, Earl of Richmond~,~HENRY OF RICHMOND~,~henry6p3~,~a youth~,0
-~EarlSuffolk~,~Earl of Suffolk~,~SUFFOLK~,~henry6p1,henry6p2~,,108
+~EarlSuffolk_h6p1~,~Earl of Suffolk~,~SUFFOLK~,~henry6p1~,,108
+~EarlSuffolk_h6p2~,~Earl of Suffolk~,~SUFFOLK~,~henry6p2~,,108
 ~EarlSurrey~,~Earl of Surrey~,~SURREY~,~henry8~,,24
 ~EarlSurrey-r3~,~Earl of Surrey~,~SURREY~,~richard3~,~son of the Duke of Norfolk~,1
 ~EarlWestmoreland-h63~,~Earl of Westmoreland~,~WESTMORELAND~,~henry6p3~,,6
@@ -369,8 +380,11 @@
 ~EdmondRutland~,~Edmond, Earl of Rutland~,~RUTLAND~,~henry6p3~,,7
 ~edmund~,~Edmund~,~Edm~,~kinglear~,~bastard son to Glouchester~,79
 ~EdmundLangley~,~Edmund of Langley~,~DUKE OF YORK~,~richard2~,~duke of York, uncle to the king~,54
-~EdmundMortimer~,~Edmund Mortimer~,~MORTIMER~,~henry6p1,henry6p3~,~Earl of March~,9
-~EdwardPlantagenet~,~King Edward IV (Plantagenet)~,~EDWARD~,~henry6p2,henry6p3,richard3~,,144
+~EdmundMortimer_h6p1~,~Edmund Mortimer~,~MORTIMER~,~henry6p1~,~Earl of March~,9
+~EdmundMortimer_h6p3~,~Edmund Mortimer~,~MORTIMER~,~henry6p3~,~Earl of March~,9
+~EdwardPlantagenet_h6p2~,~King Edward IV (Plantagenet)~,~EDWARD~,~henry6p2~,,144
+~EdwardPlantagenet_h6p3~,~King Edward IV (Plantagenet)~,~EDWARD~,~henry6p3~,,144
+~EdwardPlantagenet_r3~,~King Edward IV (Plantagenet)~,~EDWARD~,~richard3~,,144
 ~Egeus~,~Egeus~,~EGEUS~,~midsummer~,~father to Hermia~,7
 ~Eglamour~,~Eglamour~,~EGLAMOUR~,~twogents~,~agent for Silvia in her escape~,8
 ~Egyptian~,~Egyptian~,~Egyptian~,~antonycleo~,,2
@@ -387,11 +401,16 @@
 ~Escanes~,~Escanes~,~ESCANES~,~pericles~,~a lord of Tyre~,2
 ~Essex~,~Essex~,~ESSEX~,~kingjohn~,~earl of Essex~,1
 ~Euphronius~,~Euphronius~,~EUPHRONIUS~,~antonycleo~,~an ambassador from Antony to Caesar~,5
-~exeter~,~Duke of Exeter~,~EXETER~,~henry5,henry6p1,henry6p3~,~uncle to Henry IV, great-uncle to Henry V~,46
+~exeter_h5~,~Duke of Exeter~,~EXETER~,~henry5~,~uncle to Henry IV, great-uncle to Henry V~,46
+~exeter_h6p1~,~Duke of Exeter~,~EXETER~,~henry6p1~,~uncle to Henry IV, great-uncle to Henry V~,46
+~exeter_h6p3~,~Duke of Exeter~,~EXETER~,~henry6p3~,~uncle to Henry IV, great-uncle to Henry V~,46
 ~Exton~,~Sir Pierce of Exton~,~EXTON~,~richard2~,,6
 ~FABIAN-12~,~Fabian~,~FABIAN~,~12night~,~servant to Olivia~,51
 ~Fairy~,~Fairy~,~Fairy~,~midsummer~,,4
-~falstaff~,~Falstaff~,~FALSTAFF~,~henry4p1,henry4p2,henry5,merrywives~,~Sir John Falstaff~,471
+~falstaff_h4p1~,~Falstaff~,~FALSTAFF~,~henry4p1~,~Sir John Falstaff~,471
+~falstaff_h4p2~,~Falstaff~,~FALSTAFF~,~henry4p2~,~Sir John Falstaff~,471
+~falstaff_h5~,~Falstaff~,~FALSTAFF~,~henry5~,~Sir John Falstaff~,471
+~falstaff-mw~,~Falstaff~,~FALSTAFF~,~merrywives~,~Sir John Falstaff~,471
 ~fang~,~Fang~,~FANG~,~henry4p2~,~a Sheriff's officer~,7
 ~Father~,~Father~,~Father~,~henry6p3~,~who has killed his son~,4
 ~Faulconbridge~,~Faulconbridge~,~ROBERT~,~kingjohn~,~son of Sir Robert Faulconbridge~,4
@@ -494,7 +513,8 @@
 ~Francisca~,~Francisca~,~FRANCISCA~,~measure~,~a nun~,2
 ~francisco~,~Francisco~,~Fran~,~hamlet~,~a soldier~,8
 ~Francisco-tem~,~Francisco~,~FRANCISCO~,~tempest~,~a lord~,2
-~francis-h4p2~,~Francis~,~FRANCIS~,~henry4p1,henry4p2~,~a drawer~,18
+~francis-h4p1~,~Francis~,~FRANCIS~,~henry4p1~,~a drawer~,18
+~francis-h4p2~,~Francis~,~FRANCIS~,~henry4p2~,~a drawer~,18
 ~frederick~,~Frederick~,~FREDERICK~,~asyoulikeit~,~the Duke's brother, and usurper of his dominions~,20
 ~FrenchHerald~,~French Herald~,~French Herald~,~kingjohn~,,1
 ~frenchking~,~King of France~,~FRENCH KING~,~henry5~,~Charles VI~,19
@@ -525,16 +545,21 @@
 ~gentlewoman-cor~,~Gentlewoman~,~Gentlewoman~,~coriolanus~,~attending on Virgilia~,1
 ~gentlewoman-mac~,~Gentlewoman~,~Gentlewoman~,~macbeth~,,11
 ~gents-ham~,~Gentlemen~,~Gentlemen~,~hamlet~,,1
-~GeorgePlantagenet~,~George Plantagenet (Duke of Clarence)~,~GEORGE~,~henry6p3,richard3~,,72
+~GeorgePlantagenet_h6p3~,~George Plantagenet (Duke of Clarence)~,~GEORGE~,~henry6p3~,,72
+~GeorgePlantagenet_r3~,~George Plantagenet (Duke of Clarence)~,~GEORGE~,~richard3~,,72
 ~gertrude~,~Gertrude~,~Queen~,~hamlet~,~Queen of Denmark and mother to Hamlet~,72
 ~Girl-r3~,~Girl~,~Girl~,~richard3~,,3
 ~glendower~,~Glendower~,~GLENDOWER~,~henry4p1~,,23
-~Gloucester~,~Duke of Gloucester~,~GLOUCESTER~,~henry5,henry6p1,henry6p2,richard3~,~brother to the King~,285
+~Gloucester_h5~,~Duke of Gloucester~,~GLOUCESTER~,~henry5~,~brother to the King~,285
+~Gloucester_h6p1~,~Duke of Gloucester~,~GLOUCESTER~,~henry6p1~,~brother to the King~,285
+~Gloucester_h6p2~,~Duke of Gloucester~,~GLOUCESTER~,~henry6p2~,~brother to the King~,285
+~Gloucester_r3~,~Duke of Gloucester~,~GLOUCESTER~,~richard3~,~brother to the King~,285
 ~glouchester~,~Earl of Glouchester~,~Glou~,~kinglear~,,118
 ~goneril~,~Goneril~,~Gon~,~kinglear~,~daughter to Lear~,53
 ~Gonzalo~,~Gonzalo~,~GONZALO~,~tempest~,~an honest old counsellor~,52
 ~GovHarfleur~,~Governor of Harfleur~,~GOVERNOR~,~henry5~,,1
-~gower~,~Gower~,~GOWER~,~henry4p2,henry5~,,31
+~gower_h4p2~,~Gower~,~GOWER~,~henry4p2~,,31
+~gower_h5~,~Gower~,~GOWER~,~henry5~,,31
 ~Gower-per~,~Gower~,~GOWER~,~pericles~,~as chorus~,8
 ~Grandpre~,~Grandpre~,~GRANDPRE~,~henry5~,~French lord~,1
 ~gratiano~,~Gratiano~,~GRATIANO~,~othello~,~Brother to Brabantio~,20
@@ -570,12 +595,21 @@
 ~Helen-cym~,~Helen~,~HELEN~,~cymbeline~,~a lady attending on Cymbeline~,0
 ~Helenus~,~Helenus~,~HELENUS~,~troilus~,~son of Priam, king of Troy~,1
 ~Helicanus~,~Helicanus~,~HELICANUS~,~pericles~,~a lord of Tyre~,37
-~henry4~,~Henry IV~,~KING HENRY IV~,~richard2,henry4p1,henry4p2~,~King of England~,154
-~henry5~,~Henry V~,~HENRY5~,~henry4p1,henry4p2,henry5~,~Prince, King of England~,377
-~Henry6~,~Henry VI~,~KING HENRY VI~,~henry6p1,henry6p2,henry6p3,richard3~,,183
+~richard2_1~,~Henry IV~,~KING HENRY IV~,~richard2~,~King of England~,154
+~henry4~,~Henry IV~,~KING HENRY IV~,~richard2~,~King of England~,154
+~henry4_h4p1~,~Henry IV~,~KING HENRY IV~,~henry4p1~,~King of England~,154
+~henry4_h4p2~,~Henry IV~,~KING HENRY IV~,~henry4p2~,~King of England~,154
+~henry5_h4p1~,~Henry V~,~HENRY5~,~henry4p1~,~Prince, King of England~,377
+~henry5_h4p2~,~Henry V~,~HENRY5~,~henry5~,~Prince, King of England~,377
+~henry5~,~Henry V~,~HENRY5~,~henry5~,~Prince, King of England~,377
+~Henry6_h6p1~,~Henry VI~,~KING HENRY VI~,~henry6p1~,,183
+~Henry6_h6p2~,~Henry VI~,~KING HENRY VI~,~henry6p2~,,183
+~Henry6_h6p3~,~Henry VI~,~KING HENRY VI~,~henry6p3~,,183
+~Henry6_r3~,~Henry VI~,~KING HENRY VI~,~richard3~,,183
 ~Henry7~,~Richmond (Henry VII)~,~King Henry VII~,~richard3~,~Earl of Richmond, later Henry VII~,14
 ~Henry8~,~Henry VIII~,~KING HENRY VIII~,~henry8~,,81
-~HenryBeaufort~,~Winchester~,~BISHOP OF WINCHESTER~,~henry6p1,henry6p2~,~Henry Beaufort, great-uncle to Henry V, bishop of Winchster, and later cardinal~,58
+~HenryBeaufort_h6p1~,~Winchester~,~BISHOP OF WINCHESTER~,~henry6p1~,~Henry Beaufort, great-uncle to Henry V, bishop of Winchster, and later cardinal~,58
+~HenryBeaufort_h6p2~,~Winchester~,~BISHOP OF WINCHESTER~,~henry6p2~,~Henry Beaufort, great-uncle to Henry V, bishop of Winchster, and later cardinal~,58
 ~herald-cor~,~Herald~,~Herald~,~coriolanus~,,2
 ~herald-h5~,~Herald~,~Herald~,~henry5~,,1
 ~Herald-h62~,~Herald~,~Herald~,~henry6p2~,,1
@@ -591,7 +625,8 @@
 ~Hortensius~,~Hortensius~,~HORTENSIUS~,~timonathens~,,6
 ~Host~,~Host~,~Host~,~twogents~,~where Julia lodges~,16
 ~hostess-ts~,~Hostess~,~HOSTESS~,~tamingshrew~,,3
-~hotspur~,~Hotspur (Henry Percy)~,~HOTSPUR~,~richard2,henry4p1~,,114
+~hotspur_h2~,~Hotspur (Henry Percy)~,~HOTSPUR~,~richard2~,,114
+~hotspur_h4p1~,~Hotspur (Henry Percy)~,~HOTSPUR~,~henry4p1~,,114
 ~Hubert~,~Hubert de Burgh~,~HUBERT~,~kingjohn~,,52
 ~Huntsman~,~Huntsman~,~Huntsman~,~henry6p3~,,2
 ~huntsman1~,~First Huntsman~,~FIRST HUNTSMAN~,~tamingshrew~,,4
@@ -648,7 +683,8 @@
 ~ladymacduff~,~Lady Macduff~,~LADY MACDUFF~,~macbeth~,,19
 ~ladymontague~,~Lady Montague~,~LADY MONTAGUE~,~romeojuliet~,~Wife to Montague~,2
 ~ladynorth~,~Lady Northumberland~,~LADY NORTHUMBERLAND~,~henry4p2~,,2
-~ladypercy~,~Lady Percy~,~LADY PERCY~,~henry4p1,henry4p2~,,18
+~ladypercy_h4p1~,~Lady Percy~,~LADY PERCY~,~henry4p1~,,18
+~ladypercy_h4p2~,~Lady Percy~,~LADY PERCY~,~henry4p2~,,18
 ~laertes~,~Laertes~,~Laer~,~hamlet~,~son to Polonius~,62
 ~LAFEU~,~Lafeu~,~LAFEU~,~allswell~,~an old lord~,97
 ~lancaster~,~John of Lancaster~,,~henry4p1~,~son of King Henry IV~,0
@@ -666,7 +702,8 @@
 ~Leonatus~,~Sicilius Leonatus~,~Sicilius Leonatus~,~cymbeline~,~an apparition~,7
 ~Leonine~,~Leonine~,~LEONINE~,~pericles~,~servant to Dionyza~,12
 ~Leontes~,~Leontes~,~LEONTES~,~winterstale~,~king of Sicilia~,125
-~lepidus~,~Lepidus~,~LEPIDUS~,~juliuscaesar,antonycleo~,~(Marcus Antonius Lepidus)~,33
+~lepidus_jc~,~Lepidus~,~LEPIDUS~,~juliuscaesar~,~(Marcus Antonius Lepidus)~,33
+~lepidus_ac~,~Lepidus~,~LEPIDUS~,~antonycleo~,~(Marcus Antonius Lepidus)~,33
 ~Lewis~,~Lewis~,~LEWIS~,~kingjohn~,~the Dauphin~,29
 ~Lewis11~,~King Lewis XI~,~KING LEWIS XI~,~henry6p3~,~king of France~,21
 ~lieutenant~,~Lieutenant~,~LIEUTENANT~,~coriolanus~,~to Aufidius~,4
@@ -678,19 +715,22 @@
 ~LordBerkeley~,~Lord Berkeley~,~LORD BERKELEY~,~richard2~,,2
 ~LordChamberlain~,~Lord Chamberlain~,~Chamberlain~,~henry8~,,38
 ~LordChancellor~,~Lord Chancellor~,~Chancellor~,~henry8~,,7
-~LordClifford~,~Lord Clifford~,~CLIFFORD~,~henry6p2,henry6p3~,,52
+~LordClifford_h6p2~,~Lord Clifford~,~CLIFFORD~,~henry6p2~,,52
+~LordClifford_h6p3~,~Lord Clifford~,~CLIFFORD~,~henry6p3~,,52
 ~Lord-cym~,~Lord~,~Lord~,~cymbeline~,,6
 ~LordFitzwater~,~Lord Fitzwater~,~LORD FITZWATER~,~richard2~,,6
 ~LordGrey~,~Lord Grey~,~GREY~,~richard3~,~son of Queen Elizabeth~,6
 ~lord-ham~,~Lord~,~Lord~,~hamlet~,,3
-~LordHastings-63~,~Lord Hastings~,~HASTINGS~,~henry6p3,richard3~,,56
+~LordHastings-63_h6p3~,~Lord Hastings~,~HASTINGS~,~henry6p3~,,56
+~LordHastings-63_r3~,~Lord Hastings~,~HASTINGS~,~richard3~,,56
 ~Lord-kr2~,~Lord~,~Lord~,~richard2~,,1
 ~LordLovel~,~Lord Lovel~,~LOVEL~,~richard3~,,2
 ~lord-ma~,~Lord~,~Lord~,~muchado~,,1
 ~lord-mac~,~Lord~,~Lord~,~macbeth~,,3
 ~LordMarshal~,~Lord Marshal~,~LORD MARSHAL~,~richard2~,,10
 ~Lord-per~,~Lord~,~Lord~,~pericles~,,4
-~LordRivers~,~Lord (Earl) Rivers~,~RIVERS~,~henry6p3,richard3~,~brother to Lady Gray (Queen Elizabeth)~,29
+~LordRivers_h6p3~,~Lord (Earl) Rivers~,~RIVERS~,~henry6p3~,~brother to Lady Gray (Queen Elizabeth)~,29
+~LordRivers_r3~,~Lord (Earl) Rivers~,~RIVERS~,~richard3~,~brother to Lady Gray (Queen Elizabeth)~,29
 ~LordSands~,~Lord Sands~,~SANDS~,~henry8~,,17
 ~LordSay~,~Lord Say~,~SAY~,~henry6p2~,,13
 ~LordScales~,~Lord Scales~,~SCALES~,~henry6p2~,,2
@@ -734,7 +774,10 @@
 ~Mardian~,~Mardian~,~MARDIAN~,~antonycleo~,~a eunuch, attendant on Cleopatra~,7
 ~Margarelon~,~Margarelon~,~MARGARELON~,~troilus~,~a bastard son of Priam~,3
 ~margaret~,~Margaret~,~MARGARET~,~muchado~,~Gentlewoman attending on Hero~,26
-~Margaret-h61~,~Queen Margaret~,~Margaret~,~henry6p1,henry6p2,henry6p3,richard3~,~daughter to Reignier, afterwards married to King Henry VI~,169
+~Margaret-h61_h6p1~,~Queen Margaret~,~Margaret~,~henry6p1~,~daughter to Reignier, afterwards married to King Henry VI~,169
+~Margaret-h61_h6p2~,~Queen Margaret~,~Margaret~,~henry6p2~,~daughter to Reignier, afterwards married to King Henry VI~,169
+~Margaret-h61_h6p3~,~Queen Margaret~,~Margaret~,~henry6p3~,~daughter to Reignier, afterwards married to King Henry VI~,169
+~Margaret-h61_r3~,~Queen Margaret~,~Margaret~,~richard3~,~daughter to Reignier, afterwards married to King Henry VI~,169
 ~MargaretPlantagenet~,~Margaret Plantagenet~,~MARGARET PLANTAGENET~,~richard3~,~a young daughter of Clarence~,0
 ~MARIA~,~Maria~,~MARIA~,~12night~,~Olivia's woman~,59
 ~Maria-lll~,~Maria~,~MARIA~,~loveslabours~,~lady attending on the princess~,22
@@ -754,7 +797,8 @@
 ~MasterShip~,~Master~,~Master~,~tempest~,~master of a ship~,2
 ~MatthewGoffe~,~Matthew Goffe~,~MATTHEW GOFFE~,~henry6p2~,,0
 ~MayorAlbans~,~Mayor of Saint Alban's~,~Mayor~,~henry6p2~,,2
-~MayorLondon~,~Lord Mayor of London~,~Mayor~,~henry6p1,richard3~,,14
+~MayorLondon_h6p1~,~Lord Mayor of London~,~Mayor~,~henry6p1~,,14
+~MayorLondon_r3~,~Lord Mayor of London~,~Mayor~,~richard3~,,14
 ~MayorYork~,~Mayor of York~,~Mayor~,~henry6p3~,,3
 ~Mecaenas~,~Mecaenas~,~MECAENAS~,~antonycleo~,~friend to Caesar~,16
 ~Melun~,~Melun~,~MELUN~,~kingjohn~,~a French Lord~,3
@@ -818,11 +862,13 @@
 ~norcapt~,~Norwegian Captain~,~Capt~,~hamlet~,,7
 ~nurse-rj~,~Nurse~,~Nurse~,~romeojuliet~,~Nurse to Juliet~,90
 ~Nurse-ta~,~Nurse~,~Nurse~,~titus~,,10
-~nym~,~Nym~,~NYM~,~henry5,merrywives~,~sharper attending on Falstaff~,33
+~nym_h5~,~Nym~,~NYM~,~henry5~,~sharper attending on Falstaff~,33
+~nym_mw~,~Nym~,~NYM~,~merrywives~,~sharper attending on Falstaff~,33
 ~Nymphs~,~Nymphs~,~Nymphs~,~tempest~,~presented by spirits~,0
 ~Oberon~,~Oberon~,~OBERON~,~midsummer~,~king of the fairies~,29
 ~Octavia~,~Octavia~,~OCTAVIA~,~antonycleo~,~sister to Caesar and wife to Antony~,13
-~octavius~,~Octavius~,~OCTAVIUS~,~juliuscaesar,antonycleo~,~(Octavius Caesar)~,117
+~octavius_jc~,~Octavius~,~OCTAVIUS~,~juliuscaesar~,~(Octavius Caesar)~,117
+~octavius_ac~,~Octavius~,~OCTAVIUS~,~antonycleo~,~(Octavius Caesar)~,117
 ~Officer-ce~,~Officer~,~Officer~,~comedyerrors~,,11
 ~Officer-cor~,~Officer~,~Officer~,~coriolanus~,,1
 ~Officer-h61~,~Officer~,~Officer~,~henry6p1~,,1
@@ -875,7 +921,8 @@
 ~PeterPomfret~,~Peter of Pomfret~,~PETER~,~kingjohn~,~a prophet~,1
 ~peter-rj~,~Peter~,~PETER~,~romeojuliet~,~Servant to Julet's nurse~,13
 ~peter-ts~,~Peter~,~PETER~,~tamingshrew~,~a servingman~,2
-~peto~,~Peto~,~PETO~,~henry4p1,henry4p2~,,8
+~peto_h4p1~,~Peto~,~PETO~,~henry4p1~,,8
+~peto_h4p2~,~Peto~,~PETO~,~henry4p2~,,8
 ~petruchio~,~Petruchio~,~PETRUCHIO~,~tamingshrew~,~a gentleman of Verona, a suitor to Katherina~,158
 ~phebe~,~Phebe~,~PHEBE~,~asyoulikeit~,~a shepherdess~,23
 ~Philario~,~Philario~,~PHILARIO~,~cymbeline~,~friend to Posthumus, an Italian.~,14
@@ -889,13 +936,15 @@
 ~PINCH~,~Pinch~,~PINCH~,~comedyerrors~,~a schoolmaster~,6
 ~Pindarus~,~Pindarus~,~PINDARUS~,~juliuscaesar~,~servant to Cassius~,5
 ~Pisanio~,~Pisanio~,~PISANIO~,~cymbeline~,~servant to Posthumus~,58
-~pistol~,~Pistol~,~PISTOL~,~henry4p2,henry5,merrywives~,,122
+~pistol_h4p2~,~Pistol~,~PISTOL~,~henry4p2~,,122
+~pistol_h5~,~Pistol~,~PISTOL~,~henry5~,,122
+~pistol_mw~,~Pistol~,~PISTOL~,~merrywives~,,122
 ~players-ts~,~Players~,~PLAYERS~,~tamingshrew~,,1
 ~player-ts~,~Player~,~PLAYER~,~tamingshrew~,,3
-~Poet~,~Poet~,~Poet~,~phoenixturtle,loverscomplaint,sonnets,rapelucrece,passionatepilgrim,venusadonis~,~the voice of Shakespeare's poetry~,733
 ~Poet-jc~,~Poet~,~Poet~,~juliuscaesar~,,3
 ~Poet-tim~,~Poet~,~Poet~,~timonathens~,,30
-~poins~,~Edward Poins~,~POINS~,~henry4p1,henry4p2~,,64
+~poins_h4p1~,~Edward Poins~,~POINS~,~henry4p1~,,64
+~poins_h4p2~,~Edward Poins~,~POINS~,~henry4p2~,,64
 ~Polixenes~,~Polixenes~,~POLIXENES~,~winterstale~,~king of Bohemia~,57
 ~polonius~,~Polonius~,~Pol~,~hamlet~,~Lord Chamberlain~,86
 ~Pompey~,~Pompey~,~POMPEY~,~antonycleo~,~(Sextus Pompeius)~,41
@@ -914,10 +963,12 @@
 ~Priest-12~,~Priest~,~Priest~,~12night~,,1
 ~Priest-r3~,~Priest~,~Priest~,~richard3~,,1
 ~PrinceArragon~,~Prince of Arragon~,~ARRAGON~,~merchantvenice~,~suitor to Portia~,4
-~PrinceEdward~,~Prince Edward~,~PRINCE EDWARD~,~henry6p3,richard3~,,35
+~PrinceEdward_h6p3~,~Prince Edward~,~PRINCE EDWARD~,~henry6p3~,,35
+~PrinceEdward_r3~,~Prince Edward~,~PRINCE EDWARD~,~richard3~,,35
 ~PrinceHenry~,~Prince Henry~,~PRINCE HENRY~,~kingjohn~,~son to King John~,8
 ~princehumphrey~,~Prince Humphrey~,~PRINCE HUMPHREY~,~henry4p2~,~of Goucester~,11
-~princejohn~,~Prince John~,~LANCASTER~,~henry4p1,henry4p2~,~of Lancaster~,31
+~princejohn_h4p1~,~Prince John~,~LANCASTER~,~henry4p1~,~of Lancaster~,31
+~princejohn_h4p2~,~Prince John~,~LANCASTER~,~henry4p2~,~of Lancaster~,31
 ~PrinceMorocco~,~Prince of Morocco~,~MOROCCO~,~merchantvenice~,~suitor to Portia~,7
 ~Princes-r3~,~Princes~,~Princes~,~richard3~,,1
 ~PrincessFrance~,~Princess of France~,~PRINCESS~,~loveslabours~,,102
@@ -931,10 +982,14 @@
 ~Pursuivant~,~Pursuivant~,~Pursuivant~,~richard3~,,3
 ~Queen-cym~,~Queen~,~QUEEN~,~cymbeline~,~wife to Cymbeline~,27
 ~QueenElinor~,~Queen Elinor~,~QUEEN ELINOR~,~kingjohn~,~mother to King John~,22
-~QueenElizabeth~,~Queen Elizabeth~,~QUEEN ELIZABETH~,~henry6p3,richard3~,~starts as Lady Grey, marries Edward IV~,129
+~QueenElizabeth_h6p3~,~Queen Elizabeth~,~QUEEN ELIZABETH~,~henry6p3~,~starts as Lady Grey, marries Edward IV~,129
+~QueenElizabeth_r3~,~Queen Elizabeth~,~QUEEN ELIZABETH~,~richard3~,~starts as Lady Grey, marries Edward IV~,129
 ~QueenKatharine~,~Queen Katharine~,~QUEEN KATHARINE~,~henry8~,~wife to King Henry, afterwards divorced~,50
 ~Queen-kr2~,~Queen~,~QUEEN~,~richard2~,,25
-~quickly~,~Hostess Quickly~,~HOSTESS~,~henry4p1,henry4p2,henry5,merrywives~,~hostess of a tavern in Eastcheap~,158
+~quickly_h4p1~,~Hostess Quickly~,~HOSTESS~,~henry4p1~,~hostess of a tavern in Eastcheap~,158
+~quickly_h4p2~,~Hostess Quickly~,~HOSTESS~,~henry4p2~,~hostess of a tavern in Eastcheap~,158
+~quickly_h5~,~Hostess Quickly~,~HOSTESS~,~henry5~,~hostess of a tavern in Eastcheap~,158
+~quickly_mw~,~Hostess Quickly~,~HOSTESS~,~merrywives~,~hostess of a tavern in Eastcheap~,158
 ~Quince~,~Quince~,~QUINCE~,~midsummer~,~a carpenter~,40
 ~Quintus~,~Quintus~,~QUINTUS~,~titus~,~son to Titus Andronicus~,11
 ~Rambures~,~Rambures~,~RAMBURES~,~henry5~,~French lord~,5
@@ -943,8 +998,12 @@
 ~Reignier~,~Reignier~,~REIGNIER~,~henry6p1~,~duke of Anjou, and titular king of Naples~,24
 ~reynaldo~,~Reynaldo~,~Rey~,~hamlet~,~servant to Polonius~,13
 ~Richard2~,~King Richard II~,~KING RICHARD II~,~richard2~,~king of England~,98
-~Richard3~,~Richard III~,~RICHARD3~,~henry6p3,richard3~,~son of Richard Plantagenet, duke of York; was duke of Gloucester before enthronement~,246
-~RichardPlantagenet~,~Richard Plantagenet (Duke of Gloucester)~,~PLANTAGENET~,~henry6p1,henry6p2,henry6p3,richard3~,~becomes duke of York in Henry VI, Part~,172
+~Richard3_h6p3~,~Richard III~,~RICHARD3~,~henry6p3~,~son of Richard Plantagenet, duke of York; was duke of Gloucester before enthronement~,246
+~Richard3~,~Richard III~,~RICHARD3~,~richard3~,~son of Richard Plantagenet, duke of York; was duke of Gloucester before enthronement~,246
+~RichardPlantagenet_h6p1~,~Richard Plantagenet (Duke of Gloucester)~,~PLANTAGENET~,~henry6p1~,~becomes duke of York in Henry VI, Part~,172
+~RichardPlantagenet_h6p2~,~Richard Plantagenet (Duke of Gloucester)~,~PLANTAGENET~,~henry6p2~,~becomes duke of York in Henry VI, Part~,172
+~RichardPlantagenet_h6p3~,~Richard Plantagenet (Duke of Gloucester)~,~PLANTAGENET~,~henry6p3~,~becomes duke of York in Henry VI, Part~,172
+~RichardPlantagenet_r3~,~Richard Plantagenet (Duke of Gloucester)~,~PLANTAGENET~,~richard3~,~becomes duke of York in Henry VI, Part~,172
 ~RichardPlantagenet2~,~Richard Plantagenet the Younger~,~RICHARD~,~henry6p2~,,6
 ~robin~,~Robin~,~ROBIN~,~merrywives~,~page to Falstaff~,6
 ~roderigo~,~Roderigo~,~RODERIGO~,~othello~,~A Venetian gentleman~,59
@@ -963,17 +1022,19 @@
 ~Salanio~,~Salanio~,~SALANIO~,~merchantvenice~,~friend to Antonio and Bassiano~,18
 ~Salarino~,~Salarino~,~SALARINO~,~merchantvenice~,~friend to Antonio and Bassiano~,27
 ~Salerio~,~Salerio~,~SALERIO~,~merchantvenice~,~friend to Antonio and Bassiano~,6
-~salisbury~,~Earl of Salisbury~,~SALISBURY~,~henry5,henry6p1,henry6p2~,,23
+~salisbury_h5~,~Earl of Salisbury~,~SALISBURY~,~henry5~,,23
+~salisbury_h6p1~,~Earl of Salisbury~,~SALISBURY~,~henry6p1~,,23
+~salisbury_h6p2~,~Earl of Salisbury~,~SALISBURY~,~henry6p2~,,23
 ~Salisbury-kj~,~Salisbury~,~SALISBURY~,~kingjohn~,~earl of Salisbury~,36
 ~Salisbury-kr2~,~Earl of Salisbury~,~EARL OF SALISBURY~,~richard2~,,3
 ~sampson~,~Sampson~,~SAMPSON~,~romeojuliet~,~Servant to Capulet~,20
-~Saturninus~,~Saturninus~,~SATURNINUS~,~titus~,~son to the late Emperor of Rome, and afterwards
-	declared Emperor~,49
+~Saturninus~,~Saturninus~,~SATURNINUS~,~titus~,~son to the late Emperor of Rome, and afterwards declared Emperor~,49
 ~Scarus~,~Scarus~,~SCARUS~,~antonycleo~,~friend to Antony~,12
 ~Scout-h61~,~Scout~,~Scout~,~henry6p1~,,2
 ~Scribe-h8~,~Scribe~,~Scribe~,~henry8~,,2
 ~Scrivener~,~Scrivener~,~Scrivener~,~richard3~,,1
-~scroop~,~Archbishop Scroop~,~ARCHBISHOP~,~henry4p1,henry4p2~,~Archbishop of York~,30
+~scroop_h4p1~,~Archbishop Scroop~,~ARCHBISHOP~,~henry4p1~,~Archbishop of York~,30
+~scroop_h4p2~,~Archbishop Scroop~,~ARCHBISHOP~,~henry4p2~,~Archbishop of York~,30
 ~SeaCaptain~,~Captain~,~Captain~,~12night~,~friend to Viola~,10
 ~SEBASTIAN~,~Sebastian~,~SEBASTIAN~,~12night~,~brother to Viola~,31
 ~Sebastian-tem~,~Sebastian~,~SEBASTIAN~,~tempest~,~the King's brother~,67
@@ -1084,7 +1145,8 @@
 ~sexton-ma~,~Sexton~,~Sexton~,~muchado~,,7
 ~seyton~,~Seyton~,~SEYTON~,~macbeth~,~An officer attending on Macduff~,5
 ~shadow~,~Simon Shadow~,~SHADOW~,~henry4p2~,~country soldier~,2
-~shallow~,~Robert Shallow~,~SHALLOW~,~henry4p2,merrywives~,~country Justice~,136
+~shallow_h4p2~,~Robert Shallow~,~SHALLOW~,~henry4p2~,~country Justice~,136
+~shallow_mw~,~Robert Shallow~,~SHALLOW~,~merrywives~,~country Justice~,136
 ~Shepherd-h61~,~Shepherd~,~Shepherd~,~henry6p1~,~father to Joan of Arc~,4
 ~sheriff-h41~,~Sheriff~,~Sheriff~,~henry4p1~,,5
 ~Sheriff-h62~,~Sheriff~,~Sheriff~,~henry6p2~,,2
@@ -1119,7 +1181,8 @@
 ~SirWilliamCatesby~,~Sir William Catesby~,~CATESBY~,~richard3~,,31
 ~SirWilliamGlansdale~,~Sir  William Glansdale~,~GLANSDALE~,~henry6p1~,,1
 ~SirWilliamLucy~,~Sir William Lucy~,~LUCY~,~henry6p1~,,14
-~SirWilliamStanley~,~Sir William Stanley~,~STANLEY~,~henry6p3,richard3~,~called also Earl of Derby~,32
+~SirWilliamStanley_h6p3~,~Sir William Stanley~,~STANLEY~,~henry6p3~,~called also Earl of Derby~,32
+~SirWilliamStanley_r3~,~Sir William Stanley~,~STANLEY~,~richard3~,~called also Earl of Derby~,32
 ~siward~,~Siward~,~SIWARD~,~macbeth~,~Earl of Northumberland, general of English forces~,11
 ~SixthCitizen~,~Sixth Citizen~,~Sixth Citizen~,~coriolanus~,,1
 ~slender~,~Slender~,~SLENDER~,~merrywives~,~cousin to Shallow~,56
@@ -1136,7 +1199,9 @@
 ~Soldier-tim~,~Soldier~,~Soldier~,~timonathens~,,2
 ~SOLINUS~,~Solinus~,~DUKE SOLINUS~,~comedyerrors~,~Duke of Ephesus~,22
 ~SomeOthers~,~Some Others~,~Some Others~,~timonathens~,,1
-~Somerset~,~Duke/Earl of Somerset~,~SOMERSET~,~henry6p1,henry6p2,henry6p3~,~John Beaufort~,52
+~Somerset_h6p1~,~Duke/Earl of Somerset~,~SOMERSET~,~henry6p1~,~John Beaufort~,52
+~Somerset_h6p2~,~Duke/Earl of Somerset~,~SOMERSET~,~henry6p2~,~John Beaufort~,52
+~Somerset_h6p3~,~Duke/Earl of Somerset~,~SOMERSET~,~henry6p3~,~John Beaufort~,52
 ~SomeSpeak~,~Some Speak~,~Some Speak~,~timonathens~,,1
 ~Son-h63~,~Son~,~Son~,~henry6p3~,~who has killed his father~,4
 ~son-mac~,~Son~,~Son~,~macbeth~,~Macduff's son~,14
@@ -1233,7 +1298,8 @@
 ~Ventidius~,~Ventidius~,~VENTIDIUS~,~timonathens~,~one of Timon's false friends~,2
 ~Ventidius-ac~,~Ventidius~,~VENTIDIUS~,~antonycleo~,~friend to Antony~,4
 ~verges~,~Verges~,~VERGES~,~muchado~,~A headborough~,18
-~Vernon~,~Vernon~,~VERNON~,~henry4p1,henry6p1~,~of the White Rose, or York, faction~,26
+~Vernon_h4p1~,~Vernon~,~VERNON~,~henry4p1~,~of the White Rose, or York, faction~,26
+~Vernon_h6p1~,~Vernon~,~VERNON~,~henry6p1~,~of the White Rose, or York, faction~,26
 ~vincentio~,~Vincentio~,~VINCENTIO~,~tamingshrew~,~a merchant of Pisa~,23
 ~Vincentio-m4m~,~Vincentio~,~DUKE VINCENTIO~,~measure~,~the Duke~,194
 ~Vintner~,~Vintner~,~Vintner~,~henry4p1~,,1
@@ -1246,10 +1312,17 @@
 ~Volumnius~,~Volumnius~,~VOLUMNIUS~,~juliuscaesar~,~friend to Brutus~,3
 ~WalterWhitmore~,~Walter Whitmore~,~WHITMORE~,~henry6p2~,,8
 ~wart~,~Thomas Wart~,~WART~,~henry4p2~,~country soldier~,2
-~warwick~,~Earl of Warwick~,~WARWICK~,~henry4p2,henry5,henry6p1,henry6p2,henry6p3~,,182
+~warwick_h4p2~,~Earl of Warwick~,~WARWICK~,~henry4p2~,,182
+~warwick_h5~,~Earl of Warwick~,~WARWICK~,~henry5~,,182
+~warwick_h6p1~,~Earl of Warwick~,~WARWICK~,~henry6p1~,,182
+~warwick_h6p2~,~Earl of Warwick~,~WARWICK~,~henry6p2~,,182
+~warwick_h6p3~,~Earl of Warwick~,~WARWICK~,~henry6p3~,,182
 ~Watch-h61~,~Watch~,~Watch~,~henry6p1~,,2
 ~watchman-ma~,~Watchman~,~Watchman~,~muchado~,,10
-~westmoreland~,~Earl of Westmoreland~,~WESTMORELAND~,~henry4p1,henry4p2,henry5,henry6p3~,,39
+~westmoreland_h4p1~,~Earl of Westmoreland~,~WESTMORELAND~,~henry4p1~,,39
+~westmoreland_h4p2~,~Earl of Westmoreland~,~WESTMORELAND~,~henry4p2~,,39
+~westmoreland_h5~,~Earl of Westmoreland~,~WESTMORELAND~,~henry5~,,39
+~westmoreland_h6p3~,~Earl of Westmoreland~,~WESTMORELAND~,~henry6p3~,,39
 ~widow~,~Widow~,~WIDOW~,~tamingshrew~,,8
 ~WidowFlorence~,~Widow~,~Widow~,~allswell~,~an old widow of Florence~,21
 ~WifeSimpcox~,~Simpcox's Wife~,~Wife~,~henry6p2~,,7

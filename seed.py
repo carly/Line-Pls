@@ -79,20 +79,26 @@ def load_monologues(file_name):
 	with open(file_name) as csvfile:
 		monoreader = csv.reader(csvfile, delimiter=',', quotechar='~')
 		for row in monoreader:
-			play_id = row[0]
-			char_id = row[3]
-			text = row[4]
-			act_id = row[8]
-			scene_id = row[9]
-			char_count = row[10]
-			word_count = row[11]
+			word_count = int(row[11])
+			if word_count >= 100:
+				print "greater than 100!"
+				print type(row[11])
+				print row[11]
+				play_id = row[0]
+				char_id = row[3]
+				text = row[4]
+				print text
+				act_id = row[8]
+				scene_id = row[9]
+				char_count = row[10]
+				word_count = row[11]
 			
 			#Connects data from Paragraphs.txt to variables in the monologues table 
-			monologue = Monologue(play_id=play_id, char_id=char_id, text=text, act_id=act_id, scene_id=scene_id, char_count=char_count, word_count=word_count)
+				monologue = Monologue(play_id=play_id, char_id=char_id, text=text, act_id=act_id, scene_id=scene_id, char_count=char_count, word_count=word_count)
 			
 			#Adds the monologue to the monologues table in the database. 
-			db.session.add(monologue)
-		db.session.commit()
+				db.session.add(monologue)
+			db.session.commit()
 			
 			
 #_____________________________________________________

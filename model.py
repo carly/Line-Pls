@@ -77,9 +77,9 @@ class Monologue(db.Model):
 	char_id = db.Column(db.String(255), db.ForeignKey('characters.char_id'), default=" ", nullable=False) 
 	text = db.Column(db.Text, nullable=False)
 	act_id = db.Column(db.Integer, default=0,  nullable=False)
-	scene_id = db.Column(db.Integer, db.ForeignKey('scenes.scene_id'), default=" ", nullable=False)
-	char_count = db.Column(db.Integer, default=" ", nullable=False)
-	word_count = db.Column(db.Integer, default=" ", nullable=False)
+	scene_id = db.Column(db.Integer, default=" ", nullable=False)
+	char_count = db.Column(db.Integer, default=0, nullable=False)
+	word_count = db.Column(db.Integer, default=0, nullable=False)
 	
 	#Defines relationship between Play Class & Monologue Class
 	play = db.relationship("Play",
@@ -89,9 +89,6 @@ class Monologue(db.Model):
 	character = db.relationship("Character",
 							   backref = db.backref("monologues", order_by=mono_id))
 	
-	#Defines relationship between Scene Class & Monologue Class
-	scene = db.relationship("Scene",
-						   backref = db.backref("monologues", order_by=mono_id))
 
 ##########################################################################
 # Hold off on this until we figure out Google Login
