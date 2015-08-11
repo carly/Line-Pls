@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1><b>{{ name }}</b></h1>
+<ul>   
+<!--  Fix me -->
+    <li>Play: {{ play }}</li>  
+    <li>Bio: {{ c_description }}</li>    
+</ul>
+
+<h3>Monologues</h3>
+{% for monologue in monologues %}
+<ul>
+          <li> Act: {{ monologue.act_id }} , Scene:  {{ monologue.scene_id }} </li>
+								<!--  Fix me -->
+          <li><a href="#">{{ monologue.mono_id }}</a></li>
+</ul>
+ 
+{% endfor %}
+
+
+{% endblock %}

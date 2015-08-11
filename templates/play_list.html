@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h2>Plays</h2>
+    <ul>
+      {% for play in plays %}
+          <li>
+              <a href="/plays/{{ play.play_id }}">
+                {{ play.title }} 
+              </a>
+          </li>
+      {% endfor %}
+    </ul>
+
+{% endblock %}
