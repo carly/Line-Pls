@@ -23,17 +23,21 @@ def index():
 	"""Homepage."""
 	return render_template("homepage.html") 
 
+
 @app.route('/plays')
 def play_list():
 	"""Show list of all the Shakespeare Plays in the database"""
 	
+	#Lists all the plays as links right now
 	plays = Play.query.order_by(Play.title).all()
 	return render_template("play_list.html", plays=plays)
 
+
 @app.route('/plays/<string:play_id>')
 def play_details(play_id):
-	"""Displays information about the play"""
+	"""Shows play details, including a list of characters with links to all their monologues"""
 	
+	# Gets all the info from the db for the play requested by user
 	play_object = Play.query.filter(Play.play_id==play_id).first()
 	
 	title = play_object.title
@@ -41,6 +45,7 @@ def play_details(play_id):
 	date = play_object.date
 	genre = play_object.genre_id
 	
+	# Gets all the info we need from the Characters table to be able to display all their monologues 
 	characters = Character.query.filter(Character.play_id==play_id).all()
 	
 	return render_template("play_details.html", title=title, long_title=long_title, date=date, genre=genre, characters=characters)
@@ -50,32 +55,50 @@ def play_details(play_id):
 def show_character(char_id):	
 	"""Lists the Character description and links to Monologues"""
 	
+	#Gets all the info we need from the Characters table
+	#Fix me
 	char_object = Character.query.filter(Character.char_id==char_id).first()
 	
+	#Fix me
+	#Add act, scene, and scene descriptions for each monologue
 	name = char_object.char_name
 	play = char_object.play_id
 	c_description = char_object.c_description
 	
+	#Fix me 
+	#For some reason the for loop isn't displaying all the monologues..
 	monologues = Monologue.query.filter(Monologue.char_id==char_id).all()
 
-	
 	return render_template("character.html", name=name, play=play, c_description=c_description, monologues=monologues)
 	
 
 @app.route('/monologue/<int:mono_id>')
-def monologue_notes():
+def show_monologue(mono_id):
 	"""Shows the chosen monologue + ability to make annotations view"""
 	
-	pass
-#	mono_object = Monologue.query.filter(Monologue.mono_id == mono_id).first()
-#	
-#	mono_id = mono_object.mono_id
-#	play_id = mono_object.play_id
-#	char_id = mono_object.char_id
-#	text = 
-#	#Connects data from Paragraphs.txt to variables in the monologues table 
-#				monologue = Monologue(play_id=play_id, char_id=char_id, text=text, act_id=act_id, scene_id=scene_id, char_count=char_count, word_count=word_count)
-#	
+	# Gets all the info we need from the Monologues Table
+	mono_object = Monologue.query.filter(Monologue.mono_id==mono_id).first()
+	#character, play, text, act, scene, scene description
+	#these are only here to access the things we need from the Play/Characters tables
+	char_id = mono_object.char_id
+	play_id = mono_object.play_id
+	scene = mono_object.scene_id
+	
+	# Gets all the info we need from the Play, Scene, and Character tables using values pulled from the Monologue table
+	play_object = Play.query.filter(Play.play_id==play_id).first()
+	scene_object = Scene.query.filter(Scene.scene_id==scene).first()
+	char_object = Character.query.filter(Character.char_id==char_id).first()
+	
+	#Everything going into the view.. + scene, which we use up there to get the description
+	mono_id = mono_object.mono_id
+	text = mono_object.text
+	act = mono_object.act_id
+	description = scene_object.s_description
+	play_title = play_object.title
+	name = char_object.char_name
+	
+	return render_template("monologue.html", mono_id=mono_id, name=name, play_title=play_title, act=act, scene=scene, description=description, text=text)
+
 
 
 #Connecting server to db

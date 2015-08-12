@@ -4,16 +4,20 @@
 <h1><b>{{ name }}</b></h1>
 <ul>   
 <!--  Fix me -->
+<!--  Needs to be actual play title not just play ID-->
     <li>Play: {{ play }}</li>  
     <li>Bio: {{ c_description }}</li>    
 </ul>
 
 <h3>Monologues</h3>
+
+<!--Fix Me-->
+<!--Need to only show characters with monologue word counts greater > 100-->
 {% for monologue in monologues %}
 <ul>
-          <li> Act: {{ monologue.act_id }} , Scene:  {{ monologue.scene_id }} </li>
+     <li> Act: {{ monologue.act_id }} , Scene:  {{ monologue.scene_id }} </li>
 								<!--  Fix me -->
-          <li><a href="#">{{ monologue.mono_id }}</a></li>
+     <li><a href="/monologue/{{ monologue.mono_id }}">{{ monologue.mono_id }}</a></li>
 </ul>
  
 {% endfor %}
