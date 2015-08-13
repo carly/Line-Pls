@@ -8,6 +8,9 @@ dryscrape==1.0
 enum34==1.0.4
 Flask==0.10.1
 Flask-DebugToolbar==0.10.0
+Flask-GoogleLogin==0.3.1
+Flask-Login==0.2.11
+Flask-OAuth2-Login==0.0.9
 Flask-SQLAlchemy==2.0
 google-api-python-client==1.4.1
 httplib2==0.9.1
@@ -18,11 +21,15 @@ Jinja2==2.8
 lxml==3.4.4
 MarkupSafe==0.23
 oauth2client==1.4.12
+oauthlib==1.0.1
+psycopg2==2.6.1
 pyasn1==0.1.8
 pyasn1-modules==0.0.7
 pycparser==2.14
 pyOpenSSL==0.15.1
 queuelib==1.2.2
+requests==2.7.0
+requests-oauthlib==0.5.0
 rsa==3.2
 Scrapy==1.0.1
 service-identity==14.0.0

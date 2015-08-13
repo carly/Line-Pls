@@ -2,7 +2,7 @@
 
 from flask_sqlalchemy import SQLAlchemy
 
-#This is the connection to the SQlite database that we get through thte Flask-SQLAlchemy helper library. On this, we can find the 'session' object where we do most of the interactions (committing etc.)
+#This is the connection to the SQlite database that we get through the Flask-SQLAlchemy helper library. On this, we can find the 'session' object where we do most of the interactions (committing etc.)
 
 db = SQLAlchemy()
 
