@@ -5,17 +5,44 @@
 
 <h1>Monologue: {{ mono_id }} </h1>
 <ul>
-    <li>Play: <b>{{ play_title }}</b></li>    
-    <li>Act: {{ act }}</li> 
-    <li>Scene: {{ scene }}</li>     
+    <li>Play: <b>{{ play_title }}</b></li>
+    <li>Act: {{ act }}</li>
+    <li>Scene: {{ scene }}</li>
     <li>Description: {{ description }} </li>
 </ul>
 
 <h3> {{ name }}: </h3>
 
-<!--Fix me-->
-<!--Need to figure out a way to get the [p] to be a line break-->
-<p> {{ text|safe }} </p>
+{% for line in text %}
+<!-- How do I pass/identify the index of the line? -->
+<!--when you hover over div class, img icon appears-->
+<!--when you click on img icon, text box appears -->
+  <div class="line">{{ line|safe }}</div>
+  {{loop.index0}}
+  <div class="add-comment" style="{display:none}">
+  <a href="#">
+    <img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/128/chat-icon.png" alt="comment-icon" width="20" height="20">
+  </a>
+  <!-- create a hidden attribute that you can pass over with the form info. word. -->
+    <form action="">
+      <label for="comment">How would you say this in 2015?:</label>
+      <textarea id="comment"></textarea>
+      <input type="submit" value="translate"/>
+  </form>
+</div>
+
+  <script>
+      $(".line").click(function() {
+        $(".add-comment").toggle(display);
+      });
+  </script>
+
+{% endfor %}
+
+
+
+<!-- for line in text
+print div (has an attribute with val in curly braces w mono id + list index) item  -->
 
 
 {% endblock %}

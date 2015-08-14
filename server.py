@@ -39,6 +39,9 @@ def index():
     """Sets up Google Login"""
     return render_template("homepage.html").format(google_login.authorization_url())
 
+# Fix Me!
+# Need a way to logout
+# On success it needs to redirect + store user info in a sesion
 @google_login.login_success
 def login_success(token, profile):
     return jsonify(token=token, profile=profile)
@@ -121,18 +124,13 @@ def show_monologue(mono_id):
 	description = scene_object.s_description
 	play_title = play_object.title
 	name = char_object.char_name
-	text_split = text.split("[p]")
-
-#	#
-#	new_string = ""
-#	span_title = "<span title='Hi Carly'>"
-#	span_title_end = "</span>"
-#	for something in text_split:
-#		new_string += span_title + something + span_title_end + "<br>"
-	text = text.replace('[p]', '<br>')
+	text = text.replace('[p]', '<br>').split('<br>')
 
 	return render_template("monologue.html", mono_id=mono_id, name=name, play_title=play_title, act=act, scene=scene, description=description, text=text)
 
+
+    # @app.route('comments/mono_id/<int:text[x]>')
+    # def
 
 
 #Connecting server to db
