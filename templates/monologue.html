@@ -24,9 +24,11 @@
     <img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/128/chat-icon.png" alt="comment-icon" width="20" height="20">
   </a>
   <!-- create a hidden attribute that you can pass over with the form info. word. -->
-    <form action="">
+    <form action="/comments" method="POST">
       <label for="comment">How would you say this in 2015?:</label>
-      <textarea id="comment"></textarea>
+      <textarea name="comment-text"></textarea>
+      <input type="hidden" name="mono_id" value="{{ mono_id }}">
+      <input type="hidden" name="line_id" value="{{ loop.index0 }}">
       <input type="submit" value="translate"/>
   </form>
 </div>

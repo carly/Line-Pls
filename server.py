@@ -1,5 +1,6 @@
 """Line Pls! Shakespeare Squad's up."""
 import os
+import json
 
 from flask_oauth2_login import GoogleLogin
 from jinja2 import StrictUndefined
@@ -44,7 +45,23 @@ def index():
 # On success it needs to redirect + store user info in a sesion
 @google_login.login_success
 def login_success(token, profile):
+
     return jsonify(token=token, profile=profile)
+    # user_gmail = profile["email"]
+    # user_firstname = profile["given_name"]
+    # user_google_id = profile["id"]
+    # user_pic = profile["picture"]
+    #
+    # this_user = User.query.filter
+    # if user_gmail
+    #
+    # session["email"] =
+    # session["name"] = profile["given_name"]
+    # session["id"] = profile["id"]
+    # session["picture"] = profile["picture"]
+
+
+
 
 @google_login.login_failure
 def login_failure(e):
@@ -129,8 +146,15 @@ def show_monologue(mono_id):
 	return render_template("monologue.html", mono_id=mono_id, name=name, play_title=play_title, act=act, scene=scene, description=description, text=text)
 
 
-    # @app.route('comments/mono_id/<int:text[x]>')
-    # def
+
+## Can't finish this until the db sessions are set up
+# @app.route('/comments', methods=["POST"])
+# def store_comments():
+#
+#     comment_text = request.form.get("comment-text")
+#     mono_id = request.form.get("mono_id")
+#     line_id = request.form.get("line_id")
+#     user =
 
 
 #Connecting server to db

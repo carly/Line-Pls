@@ -11,6 +11,18 @@ db = SQLAlchemy()
 
 ## Instead of doing this.... write a function that switches out the genre id with the genre type when you load the plays
 
+
+# Fix me
+class Genre(db.Model):
+	"""Genres of Shakespeare plays"""
+	__tablename__="genres"
+
+	genre_id = db.Column(db.String(255), primary_key=True)
+	genre_name = db.Column(db.String(255), default=" ", nullable=False)
+	# #Connects a genre to a play
+	# play = db.relationship("Play",
+	# 					   backref = db.backref("genres", order_by=genre_id))
+
 class Play(db.Model):
 	"""All the Shakespeare plays"""
 
@@ -21,19 +33,6 @@ class Play(db.Model):
 	long_title = db.Column(db.String(255), default=" ", nullable=False)
 	date = db.Column(db.Integer, default=0, nullable=False)
 	genre_id = db.Column(db.String(255), default=" ", nullable=False)
-
-
-## Fix me
-#class Genre(db.Model):
-#	"""Genres of Shakespeare plays"""
-#	__tablename__="genres"
-#
-#	genre_id = db.Column(db.String(255), primary_key=True)
-#	genre_name = db.Column(db.String(255), db.ForeignKey('plays.play_id'), default=" ", nullable=False)
-#
-#	#Connects a genre to a play
-#	play = db.relationship("Play",
-#						   backref = db.backref("genres", order_by=genre_id))
 
 
 class Scene(db.Model):
@@ -90,40 +89,34 @@ class Monologue(db.Model):
 	character = db.relationship("Character",
 							   backref = db.backref("monologues", order_by=mono_id))
 
+class User(db.Model):
+	"""Stores users in the database"""
+	__tablename__="users"
+
+	user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	email = db.Column(db.String(255), default=" ", nullable=False)
+	given_name = db.Column(db.String(255), default=" ", nullable=False)
+	picture = db.Column(db.String(500), default=" ", nullable=True)
 
 
-##########################################################################
-# Hold off on this until we figure out Google Login
-#class User(db.Model):
-#	"""Users"""
-#	#user_id
-#	#youtube_google_login
-#	__tablename__="users"
-#
-#	## Until I figure out the api I can't really do this
-#	#user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-#	#username = db.Column(db.)
-###########################################################################
+class Comment(db.Model):
+	"""Stores lines with user commentary/annotations in database."""
 
-## Fix me
-class Annotation(db.Model):
-	"""Annotations on individual monologues by user"""
-	#note_id (primary key)
-	#mono_id(foreign key - referenes Monologues)
-	#note_text
-	#user_id (foreign key- references Users)
-	#vote (1-like, 0-dislike)
-	__tablename__="annotations"
+	__tablename__="comments"
 
-	note_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-	mono_id = db.Column(db.Integer, db.ForeignKey('monologues.mono_id'), default=" ", nullable=False)
-	note_text = db.Column(db.String(500), default=" ", nullable=False)
-#	user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False) #default?
-	vote = db.Column(db.Integer, default=0, nullable=True)
+	comment_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	line_id = db.Column(db.Integer, nullable="false")
+	mono_id = db.Column(db.Integer, db.ForeignKey('monologues.mono_id'), nullable=False)
+	comment_text = db.Column(db.Text, default=" ", nullable=False)
+	user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), default=0, nullable=True)
 
-	#Define relationship between Annotation Class & Monologues Class
+	#Defines relationship between Comments made on Monologues
 	monologue = db.relationship("Monologue",
-							   backref = db.backref("monologues", order_by=mono_id))
+							backref= db.backref("comments", order_by=comment_id))
+	#Defines relationship between Comments and Users
+	user = db.Relationship("User",
+							backref= db.backref("comments", order_by=comment_id))
+
 
 
 ###########################################################################
