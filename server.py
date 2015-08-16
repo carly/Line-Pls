@@ -4,7 +4,7 @@ import json
 
 from flask_oauth2_login import GoogleLogin
 from jinja2 import StrictUndefined
-from flask import Flask, render_template, redirect, request, flash, session, jsonify
+from flask import Flask, render_template, redirect, request, flash, session, jsonify, logout_user
 from flask_debugtoolbar import DebugToolbarExtension
 from model import Play, Scene, Character, Monologue, connect_to_db, db
 
@@ -45,48 +45,53 @@ def index():
 # On success it needs to redirect + store user info in a sesion
 @google_login.login_success
 def login_success(token, profile):
-
-    return jsonify(token=token, profile=profile)
     #Everything we want from the gmail JSON thats returned from the server
-    # user_gmail = profile["email"]
-    # user_firstname = profile["given_name"]
-    # user_pic = profile["picture"]
-    #
-    # users_in_db = User.query.filter_by(user_id).all()
-    # user_email =
-    #
-    # # If the user has used the app already and is in the database, assign the
-    # # following values associated with them in the database to the current
-    # # session.
-    # if user in users_list:
-    #
-    #  not in users_list:
-    #     new_user = User(email=user_gmail, name=first_name, picture=user_pic)
-    #     db.session.add(new_user)
-    #     db.session.commit()
-    # else:
-    #     session["email"] = user.email
-    #     session["user_id"] = user.user_id
-    #     session["name"] = user.given_name
-    #     flash("Thanks %s. You are now logged in!" % (session["name"]))
-    #     else:
-    #         #Take the objs returned from the JSON and save into the db
-    #
-    #
-    #         #make that
-    #         session["email"] = email
-    #         flash("Thanks %s. Welcome to Movie Ratings! You're logged in. Have fun." % (session['email']))
-    #         user_id = new_user.user_id
-    #         return redirect('/users/' + str(user_id)) #redirect takes a string as an input!
-    #
-    #
-    #
-    #
-    #
-    #
-    #         session["name"] = user_firstname
-    #         session["id"] = user_google_id
-    #         session["picture"] = user_pic
+    user_gmail = profile["email"]
+    user_firstname = profile["given_name"]
+    user_pic = profile["picture"]
+
+    users_db = User.query.filter_by(user_id).all()
+
+    for user in users_db:
+        if user_gmail == user.email:
+            #Assigns the variables from the db to the session if the gmail address is in the db
+            session["email"] = user.email
+            session["user_id"] = user.user_id
+            session["name"] = user.given_name
+            flash("Thanks %s. You are now logged in!" % (session["name"]))
+
+    # If the user has used the app already and is in the database, assign the
+    # following values associated with them in the database to the current
+    # session.
+    if user in users_list:
+
+     not in users_list:
+        new_user = User(email=user_gmail, name=first_name, picture=user_pic)
+        db.session.add(new_user)
+        db.session.commit()
+    else:
+        session["email"] = user.email
+        session["user_id"] = user.user_id
+        session["name"] = user.given_name
+        flash("Thanks %s. You are now logged in!" % (session["name"]))
+        else:
+            #Take the objs returned from the JSON and save into the db
+
+
+            #make that
+            session["email"] = email
+            flash("Thanks %s. Welcome to Movie Ratings! You're logged in. Have fun." % (session['email']))
+            user_id = new_user.user_id
+            return redirect('/users/' + str(user_id)) #redirect takes a string as an input!
+
+
+
+
+
+
+            session["name"] = user_firstname
+            session["id"] = user_google_id
+            session["picture"] = user_pic
 
 
 
