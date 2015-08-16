@@ -47,18 +47,46 @@ def index():
 def login_success(token, profile):
 
     return jsonify(token=token, profile=profile)
+    #Everything we want from the gmail JSON thats returned from the server
     # user_gmail = profile["email"]
     # user_firstname = profile["given_name"]
-    # user_google_id = profile["id"]
     # user_pic = profile["picture"]
     #
-    # this_user = User.query.filter
-    # if user_gmail
+    # users_in_db = User.query.filter_by(user_id).all()
+    # user_email =
     #
-    # session["email"] =
-    # session["name"] = profile["given_name"]
-    # session["id"] = profile["id"]
-    # session["picture"] = profile["picture"]
+    # # If the user has used the app already and is in the database, assign the
+    # # following values associated with them in the database to the current
+    # # session.
+    # if user in users_list:
+    #
+    #  not in users_list:
+    #     new_user = User(email=user_gmail, name=first_name, picture=user_pic)
+    #     db.session.add(new_user)
+    #     db.session.commit()
+    # else:
+    #     session["email"] = user.email
+    #     session["user_id"] = user.user_id
+    #     session["name"] = user.given_name
+    #     flash("Thanks %s. You are now logged in!" % (session["name"]))
+    #     else:
+    #         #Take the objs returned from the JSON and save into the db
+    #
+    #
+    #         #make that
+    #         session["email"] = email
+    #         flash("Thanks %s. Welcome to Movie Ratings! You're logged in. Have fun." % (session['email']))
+    #         user_id = new_user.user_id
+    #         return redirect('/users/' + str(user_id)) #redirect takes a string as an input!
+    #
+    #
+    #
+    #
+    #
+    #
+    #         session["name"] = user_firstname
+    #         session["id"] = user_google_id
+    #         session["picture"] = user_pic
 
 
 

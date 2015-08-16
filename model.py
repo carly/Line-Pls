@@ -15,13 +15,11 @@ db = SQLAlchemy()
 # Fix me
 class Genre(db.Model):
 	"""Genres of Shakespeare plays"""
+
 	__tablename__="genres"
 
 	genre_id = db.Column(db.String(255), primary_key=True)
 	genre_name = db.Column(db.String(255), default=" ", nullable=False)
-	# #Connects a genre to a play
-	# play = db.relationship("Play",
-	# 					   backref = db.backref("genres", order_by=genre_id))
 
 class Play(db.Model):
 	"""All the Shakespeare plays"""
@@ -32,7 +30,11 @@ class Play(db.Model):
 	title = db.Column(db.String(255), default=" ", nullable=False)
 	long_title = db.Column(db.String(255), default=" ", nullable=False)
 	date = db.Column(db.Integer, default=0, nullable=False)
-	genre_id = db.Column(db.String(255), default=" ", nullable=False)
+	genre_id = db.Column(db.String(255), db.ForeignKey('genres.genre_id'), default=" ", nullable=False)
+
+	#Defines relationship between Play class and Genre class
+	genre = db.relationship("Genre",
+							backref = db.backref("plays", order_by=play_id))
 
 
 class Scene(db.Model):
@@ -95,7 +97,7 @@ class User(db.Model):
 
 	user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
 	email = db.Column(db.String(255), default=" ", nullable=False)
-	given_name = db.Column(db.String(255), default=" ", nullable=False)
+	name = db.Column(db.String(255), default=" ", nullable=False)
 	picture = db.Column(db.String(500), default=" ", nullable=True)
 
 
@@ -114,7 +116,7 @@ class Comment(db.Model):
 	monologue = db.relationship("Monologue",
 							backref= db.backref("comments", order_by=comment_id))
 	#Defines relationship between Comments and Users
-	user = db.Relationship("User",
+	user = db.relationship("User",
 							backref= db.backref("comments", order_by=comment_id))
 
 

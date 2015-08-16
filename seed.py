@@ -1,14 +1,28 @@
 """Utility file to seed monologues database from Open Source Shakespeare data text files."""
 
 import csv
-from model import Scene, Character, Monologue, Play, connect_to_db, db
+from model import Scene, Character, Monologue, Play, Genre, connect_to_db, db
 #Genre is so small I'm just going to insert it manually
 #Annotations also needs to be created by hand since there is no data yet
 from server import app
 
 #______________________________________________________
 # Defines functions that parse data from Open Source Shakespeare db text files
+def load_genres(file_name):
+	"""Loads genres into db."""
 
+	file_obj = open(file_name)
+	for line in file_obj:
+		row = line.split(" ")
+		genre_id = row[0]
+		genre_name = row[1]
+
+		#Connects data from Genres.txt to variables in the genre table
+		genre = Genre(genre_id=genre_id, genre_name=genre_name)
+
+		#Adds the Genre to the genres table in the database.
+		db.session.add(genre)
+	db.session.commit()
 
 def load_plays(file_name):
 	"""Loads plays from Works.txt into database"""
@@ -108,6 +122,7 @@ def load_monologues(file_name):
 if __name__=="__main__":
 	connect_to_db(app)
 
+	load_genres("oss-textdb/Genres.txt")
 	load_plays("oss-textdb/Works.txt")
 	load_scenes("oss-textdb/Chapters.txt")
 	load_characters("oss-textdb/Characters.txt")
