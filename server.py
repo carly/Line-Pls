@@ -3,13 +3,16 @@ import os
 import json
 
 from flask_oauth2_login import GoogleLogin
+from flask_login import LoginManager
 from jinja2 import StrictUndefined
-from flask import Flask, render_template, redirect, request, flash, session, jsonify, logout_user
+from flask import Flask, render_template, redirect, request, flash, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
-from model import Play, Scene, Character, Monologue, connect_to_db, db
+from model import Play, Scene, Genre, Character, Monologue, User, Comment, connect_to_db, db
 
 
 app = Flask(__name__)
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 #Setup for Google Login using flask_oauth2_login
 app.config.update(
@@ -23,7 +26,6 @@ for config in (
   app.config[config] = os.environ[config]
 google_login = GoogleLogin(app)
 
-
 #Also not sure if this is necessary.
 app.secret_key = """Need to figure out"""
 
@@ -32,17 +34,14 @@ app.secret_key = """Need to figure out"""
 
 app.jinja_env.undefined = StrictUndefined
 
-
 # Routes/Views
 
 @app.route('/')
 def index():
-    """Sets up Google Login"""
+    """Renders homepage"""
     return render_template("homepage.html").format(google_login.authorization_url())
 
-# Fix Me!
-# Need a way to logout
-# On success it needs to redirect + store user info in a sesion
+#Login w/ Google API
 @google_login.login_success
 def login_success(token, profile):
     #Everything we want from the gmail JSON thats returned from the server
@@ -50,57 +49,36 @@ def login_success(token, profile):
     user_firstname = profile["given_name"]
     user_pic = profile["picture"]
 
-    # Queries all the User database so we can look to see if current session email is in the db
-    users_db = User.query.filter_by(user_id).all()
+    # Looks for the the users in the db to see if email is registered in the db
+    registered_user = User.query.filter(User.email==user_gmail).first()
 
-    # Looks for the the users in the db to see if email is in the db
-    for user in users_db:
-        # If it is in the db, save the info from the db into the session
-        if user_gmail == user.email:
-            session["email"] = user.email
-            session["user_id"] = user.user_id
-            session["name"] = user.given_name
-            # I think i also need the session token
-            flash("Thanks %s. You are now logged in!" % (session["name"]))
-            return redirect('/homepage)
-        else:
-            new_user = User(email=user_gmail, name=first_name, picture=user_pic)
-            db.session.add(new_user)
-            db.session.commit()
-            flash("Thanks %s. You are now logged in!" % (session["name"]))
+    if registered_user:
+        flash("Thanks %s. Welcome back. You are now logged in!" % (user_firstname))
     else:
-        session["email"] = user.email
-        session["user_id"] = user.user_id
-        session["name"] = user.given_name
-        flash("Thanks %s. You are now logged in!" % (session["name"]))
-        return redirect('/users/' + str(user_id))
-        else:
-            #Take the objs returned from the JSON and save into the db
+        #if not in db, create a new user in the user db
+        new_user = User(email=user_gmail, name=user_firstname, picture=user_pic)
+        db.session.add(new_user)
+        db.session.commit()
+        flash("Thanks %s. You are now logged in!" % (user_firstname))
+
+    session["email"] = user_gmail
+    session["name"] = user_firstname
+    session["pic"] = user_pic
 
 
-            #make that
-            session["email"] = email
-            flash("Thanks %s. Welcome to Movie Ratings! You're logged in. Have fun." % (session['email']))
-            user_id = new_user.user_id
-            return redirect('/users/' + str(user_id)) #redirect takes a string as an input!
+    return redirect('/')
 
-
-
-
-
-
-            session["name"] = user_firstname
-            session["id"] = user_google_id
-            session["picture"] = user_pic
-
-
-
-
+# if it doesn't work..
 @google_login.login_failure
 def login_failure(e):
-    return jsonify(error=str(e))
+    jsonify(error=str(e))
+    return redirect('/')
 
-
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    """Logs the current user out. Clears the session, redirects to homepage."""
+    session.clear()
+    return redirect('/')
 
 @app.route('/plays')
 def play_list():
@@ -180,14 +158,26 @@ def show_monologue(mono_id):
 
 
 
-## Can't finish this until the db sessions are set up
-# @app.route('/comments', methods=["POST"])
-# def store_comments():
-#
-#     comment_text = request.form.get("comment-text")
-#     mono_id = request.form.get("mono_id")
-#     line_id = request.form.get("line_id")
-#     user =
+# Can't finish this until the db sessions are set up
+@app.route('/comments', methods=["POST"])
+def store_comments():
+    # comment_id, line_id, mono_id, comment_text, user_id
+
+    current_user_email = session["email"]
+
+    current_user = User.query.filter(User.email==current_user_email).first()
+    current_user_id = current_user.user_id
+
+    comment_text = request.form.get("comment-text")
+    mono_id = request.form.get("mono_id")
+    line_id = request.form.get("line_id")
+    user_id = current_user_id
+
+    new_comment = Comment(line_id=line_id, mono_id=mono_id, comment_text=comment_text, user_id=user_id)
+    db.session.add(new_comment)
+    db.session.commit()
+
+    return redirect('/monologue/' + str(mono_id))
 
 
 #Connecting server to db

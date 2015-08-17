@@ -3,18 +3,35 @@
 <head>
   <title>Line, Pls!</title>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <meta name="google-signin-client_id" content="YOUTUBE_CLIENT_ID.apps.googleusercontent.com">
+  <meta name="google-signin-client_id" content="GOOGLE_LOGIN_CLIENT_ID">
   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 
 <body>
+  <!--Shows the flashed messages when logged in/out-->
+   <ul>
+  {% for message in get_flashed_messages()%}
+      <li>{{message}}</li>
+  {% endfor %}
+  </ul>
+
+  {% if "email" in session %}
+      <p>{{ session["name"] }}</p> <!-- if user is in the session(logged in): -->
+      <button type="button"><a href='/logout'>Log Out</a></button>
+  {% else %} <!-- if no user in the session -->
+      <h1>Log in with your Google Account</h1>
+      <a href="{}">Login with Google</a>
+  {% endif %}
+
+<hr>
 
  <h1>Line, Pls!</h1>
  <h3>Your own personal Shakespeare Squad</h3>
  <h5>An online community for breaking down William's words for humans in 2015.</h5>
 
-  {% block content %} put your content here {% endblock %}
+ <hr>
 
+  {% block content %} put your content here {% endblock %}
 
 <footer>Copyright 2015 Line,Pls!</footer>
 </body>
