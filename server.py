@@ -50,30 +50,30 @@ def login_success(token, profile):
     user_firstname = profile["given_name"]
     user_pic = profile["picture"]
 
+    # Queries all the User database so we can look to see if current session email is in the db
     users_db = User.query.filter_by(user_id).all()
 
+    # Looks for the the users in the db to see if email is in the db
     for user in users_db:
+        # If it is in the db, save the info from the db into the session
         if user_gmail == user.email:
-            #Assigns the variables from the db to the session if the gmail address is in the db
             session["email"] = user.email
             session["user_id"] = user.user_id
             session["name"] = user.given_name
+            # I think i also need the session token
             flash("Thanks %s. You are now logged in!" % (session["name"]))
-
-    # If the user has used the app already and is in the database, assign the
-    # following values associated with them in the database to the current
-    # session.
-    if user in users_list:
-
-     not in users_list:
-        new_user = User(email=user_gmail, name=first_name, picture=user_pic)
-        db.session.add(new_user)
-        db.session.commit()
+            return redirect('/homepage)
+        else:
+            new_user = User(email=user_gmail, name=first_name, picture=user_pic)
+            db.session.add(new_user)
+            db.session.commit()
+            flash("Thanks %s. You are now logged in!" % (session["name"]))
     else:
         session["email"] = user.email
         session["user_id"] = user.user_id
         session["name"] = user.given_name
         flash("Thanks %s. You are now logged in!" % (session["name"]))
+        return redirect('/users/' + str(user_id))
         else:
             #Take the objs returned from the JSON and save into the db
 
