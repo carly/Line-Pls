@@ -2,8 +2,13 @@
 <html>
 <head>
   <title>Line, Pls!</title>
+  <!--D3-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+  <!--Youtube API link-->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <!--Google-Signin-->
   <meta name="google-signin-client_id" content="GOOGLE_LOGIN_CLIENT_ID">
+  <!--jQuery-->
   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 
@@ -15,6 +20,7 @@
   {% endfor %}
   </ul>
 
+<!--If user in session show login, if not show logout-->
   {% if "email" in session %}
       <p>{{ session["name"] }}</p> <!-- if user is in the session(logged in): -->
       <button type="button"><a href='/logout'>Log Out</a></button>
@@ -25,14 +31,17 @@
 
 <hr>
 
+<!--Filler content that appears on every page-->
  <h1>Line, Pls!</h1>
  <h3>Your own personal Shakespeare Squad</h3>
  <h5>An online community for breaking down William's words for humans in 2015.</h5>
 
  <hr>
 
+<!--Customized content by page-->
   {% block content %} put your content here {% endblock %}
 
+<!--Footer for every page-->
 <footer>Copyright 2015 Line,Pls!</footer>
 </body>
 </html>
