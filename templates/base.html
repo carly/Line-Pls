@@ -2,6 +2,15 @@
 <html>
 <head>
   <title>Line, Pls!</title>
+
+  <!--CSS-->
+  <link rel="stylesheet" href="/static/styles.css">
+  <!--Google Fonts-->
+  <link href='http://fonts.googleapis.com/css?family=IM+Fell+Great+Primer+SC|Fredericka+the+Great|Kranky|Rye|Jacques+Francois+Shadow|IM+Fell+Double+Pica+SC|Didact+Gothic|Dosis' rel='stylesheet' type='text/css'>
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <!--D3-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
   <!--Youtube API link-->
@@ -14,32 +23,28 @@
 
 <body>
   <!--Shows the flashed messages when logged in/out-->
-   <ul>
-  {% for message in get_flashed_messages()%}
-      <li>{{message}}</li>
-  {% endfor %}
-  </ul>
 
-<!--If user in session show login, if not show logout-->
-  {% if "email" in session %}
-      <p>{{ session["name"] }}</p> <!-- if user is in the session(logged in): -->
-      <button type="button"><a href='/logout'>Log Out</a></button>
-  {% else %} <!-- if no user in the session -->
-      <h1>Log in with your Google Account</h1>
-      <a href="{}">Login with Google</a>
-  {% endif %}
+<div class="navbar-text navbar-left">
+     <ul>
+    {% for message in get_flashed_messages()%}
+        <li>{{message}}</li>
+    {% endfor %}
+    </ul>
+    <!--If user in session show login, if not show logout-->
+    {% if "email" in session %}
+        <p>{{ session["name"] }}</p> <!-- if user is in the session(logged in): -->
+        <button type="button"><a href='/logout'>Log Out</a></button>
+    {% else %} <!-- if no user in the session -->
+        <h3>Log in with your Google Account</h3>
+        <a href="{}">Login with Google</a>
+    {% endif %}
+</div>
 
-<hr>
 
-<!--Filler content that appears on every page-->
- <h1>Line, Pls!</h1>
- <h3>Your own personal Shakespeare Squad</h3>
- <h5>An online community for breaking down William's words for humans in 2015.</h5>
-
- <hr>
+ {% block jumbotron %} {% endblock %}
 
 <!--Customized content by page-->
-  {% block content %} put your content here {% endblock %}
+{% block content %} put your content here {% endblock %}
 
 <!--Footer for every page-->
 <footer>Copyright 2015 Line,Pls!</footer>

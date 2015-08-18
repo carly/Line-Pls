@@ -1,0 +1,28 @@
+/* Base.html */
+
+/*Login Link text*/
+.navbar-left a {
+
+}
+/*Login Flash Messages*/
+.navbar-text li {}
+
+/*Login-Logout Button*/
+.navbar-text a {}
+
+/*Nav Name*/
+.navbar-text p {}
+
+/*Footer*/
+footer {
+
+}
+
+/*.........................................*/
+/* Homepage.html */
+
+.jumbotron {
+  font-family: 'Rye', cursive;
+  margin-top: 200px;
+
+}

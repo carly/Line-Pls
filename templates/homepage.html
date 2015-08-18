@@ -1,12 +1,20 @@
-{% extends 'base.html' %}
+{% extends 'bootstrap/base.html' %}
+
+
+{% block jumbotron %}
+<div class="jumbotron">
+  <div class="container">
+   <h1>Line Pls</h1>
+   <h3>Crowdsourced Annotations on Shakespeare</h3>
+   <h5>Or an online community for actors and hipsters with pretentious squad goals.</h5>
+ </div>
+</div>
+{% endblock %}
+
+
+
 {% block content %}
-
-
 <h1>Shakespeare</h1>
-
 <h2>Plays</h2>
 <p><a href="/plays">View all plays</a></p>
-
-
-
 {% endblock %}
