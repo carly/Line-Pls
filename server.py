@@ -5,14 +5,19 @@ import json
 from flask_oauth2_login import GoogleLogin
 from flask_login import LoginManager
 from jinja2 import StrictUndefined
-from flask import Flask, render_template, redirect, request, flash, session, jsonify
+from flask import Flask, render_template, redirect, request, flash, session, jsonify, url_for
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
+from flask.ext.scss import Scss
+from json_for_d3 import db_to_json
 from model import Play, Scene, Genre, Character, Monologue, User, Comment, connect_to_db, db
 
 
 app = Flask(__name__)
+app.secret_key = """Need to figure out"""
+app.jinja_env.undefined = StrictUndefined
 Bootstrap(app)
+Scss(app,static_dir='static', asset_dir='assets')
 login_manager = LoginManager()
 login_manager.init_app(app)
 
@@ -27,14 +32,6 @@ for config in (
 ):
   app.config[config] = os.environ[config]
 google_login = GoogleLogin(app)
-
-#Also not sure if this is necessary.
-app.secret_key = """Need to figure out"""
-
-#Prevents undefined variables in Jinja2 from failing silently.
-# The line below makes jinja raise an error if undefined.
-
-app.jinja_env.undefined = StrictUndefined
 
 # Routes/Views
 
@@ -66,8 +63,6 @@ def login_success(token, profile):
     session["email"] = user_gmail
     session["name"] = user_firstname
     session["pic"] = user_pic
-
-
     return redirect('/')
 
 # if it doesn't work..
@@ -82,6 +77,8 @@ def logout():
     session.clear()
     return redirect('/')
 
+
+# Non login related routes
 @app.route('/plays')
 def play_list():
 	"""Show list of all the Shakespeare Plays in the database"""
@@ -89,7 +86,6 @@ def play_list():
 	#Lists all the plays as links right now
 	plays = Play.query.order_by(Play.title).all()
 	return render_template("play_list.html", plays=plays)
-
 
 @app.route('/plays/<string:play_id>')
 def play_details(play_id):
@@ -107,7 +103,6 @@ def play_details(play_id):
 	characters = Character.query.filter(Character.play_id==play_id).all()
 
 	return render_template("play_details.html", title=title, long_title=long_title, date=date, genre=genre, characters=characters)
-
 
 @app.route('/characters/<string:char_id>')
 def show_character(char_id):
@@ -128,7 +123,6 @@ def show_character(char_id):
 	monologues = Monologue.query.filter(Monologue.char_id==char_id).all()
 
 	return render_template("character.html", name=name, play=play, c_description=c_description, monologues=monologues)
-
 
 @app.route('/monologue/<int:mono_id>')
 def show_monologue(mono_id):
@@ -158,12 +152,9 @@ def show_monologue(mono_id):
 
 	return render_template("monologue.html", mono_id=mono_id, name=name, play_title=play_title, act=act, scene=scene, description=description, text=text)
 
-
-
-# Can't finish this until the db sessions are set up
 @app.route('/comments', methods=["POST"])
 def store_comments():
-    # comment_id, line_id, mono_id, comment_text, user_id
+    """Stores comments on monologues by line into db"""
 
     current_user_email = session["email"]
 
@@ -180,6 +171,12 @@ def store_comments():
     db.session.commit()
 
     return redirect('/monologue/' + str(mono_id))
+
+@app.route('/json')
+def create_d3_json():
+    """Inserts d3 json into HTML so that force graph can access"""
+    d3_json = db_to_json()
+    
 
 
 #Connecting server to db

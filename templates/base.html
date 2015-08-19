@@ -24,7 +24,7 @@
 <body>
   <!--Shows the flashed messages when logged in/out-->
 
-<div class="navbar-text navbar-left">
+
      <ul>
     {% for message in get_flashed_messages()%}
         <li>{{message}}</li>
@@ -38,7 +38,6 @@
         <h3>Log in with your Google Account</h3>
         <a href="{}">Login with Google</a>
     {% endif %}
-</div>
 
 
  {% block jumbotron %} {% endblock %}

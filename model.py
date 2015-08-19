@@ -1,6 +1,7 @@
 """Models and database functions for Rap Genius for Shakespeare"""
 
 from flask_sqlalchemy import SQLAlchemy
+from flask import jsonify
 
 #This is the connection to the SQlite database that we get through the Flask-SQLAlchemy helper library. On this, we can find the 'session' object where we do most of the interactions (committing etc.)
 
