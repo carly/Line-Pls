@@ -1,0 +1,1611 @@
+{
+ "name": "Shakespeare",
+ "children": [
+  {
+  "name":"genre",
+  "children": [
+    {
+    "name":"c",
+    "children":[
+        {"name": "Twelfth Night",
+        "children":[
+            {
+              "name": "Sir Andrew Aguecheek",
+              "children":[]
+            },
+            {
+              "name": "Antonio",
+              "children":[]
+            },
+            {
+              "name": "Sir Toby Belch",
+              "children":[]
+            },
+            {
+              "name": "Curio",
+              "children":[]
+            },
+            {
+              "name": "Fabian",
+              "children":[]
+            },
+            {
+              "name": "Feste",
+              "children":[]
+            },
+            {
+              "name": "First Officer",
+              "children":[]
+            },
+            {
+              "name": "Malvolio",
+              "children":[]
+            },
+            {
+              "name": "Maria",
+              "children":[]
+            },
+            {
+              "name": "Olivia",
+              "children":[]
+            },
+            {
+              "name": "Orsino",
+              "children":[]
+            },
+            {
+              "name": "Priest",
+              "children":[]
+            },
+            {
+              "name": "Captain",
+              "children":[]
+            },
+            {
+              "name": "Sebastian",
+              "children":[]
+            },
+            {
+              "name": "Second Officer",
+              "children":[]
+            },
+            {
+              "name": "Servant",
+              "children":[]
+            },
+            {
+              "name": "Valentine",
+              "children":[]
+            },
+            {
+              "name": "Viola",
+              "children":[]
+            }
+          ]
+
+
+      },
+        {"name": "All's Well That Ends Well",
+          "children": [
+              {
+                "name": "Bertram",
+                "children":[]
+              },
+              {
+                "name": "Both",
+                "children":[]
+              },
+              {
+                "name": "Clown",
+                "children":[]
+              },
+              {
+                "name": "Countess",
+                "children":[]
+              },
+              {
+                "name": "Diana",
+                "children":[]
+              },
+              {
+                "name": "Duke of Florence",
+                "children":[]
+              },
+              {
+                "name": "First Gentleman",
+                "children":[]
+              },
+              {
+                "name": "First Lord",
+                "children":[]
+              },
+              {
+                "name": "First Soldier",
+                "children":[]
+              },
+              {
+                "name": "Fourth Lord",
+                "children":[]
+              },
+              {
+                "name": "Gentleman",
+                "children":[]
+              },
+              {
+                "name": "Helena",
+                "children":[]
+              },
+              {
+                "name": "King of France",
+                "children":[]
+              },
+              {
+                "name": "Lafeu",
+                "children":[]
+              },
+              {
+                "name": "Mariana",
+                "children":[]
+              },
+              {
+                "name": "Page",
+                "children":[]
+              },
+              {
+                "name": "Parolles",
+                "children":[]
+              },
+              {
+                "name": "Second Gentleman",
+                "children":[]
+              },
+              {
+                "name": "Second Lord",
+                "children":[]
+              },
+              {
+                "name": "Second Soldier",
+                "children":[]
+              },
+              {
+                "name": "Servant",
+                "children":[]
+              },
+              {
+                "name": "Steward",
+                "children":[]
+              },
+              {
+                "name": "Third Lord",
+                "children":[]
+              },
+              {
+                "name": "Violenta",
+                "children":[]
+              },
+              {
+                "name": "Widow",
+                "children":[]
+              }
+            ]
+        },
+        {"name": "As You Like It",
+          "children": [
+              {
+                "name": "Adam",
+                "children":[]
+              },
+              {
+                "name": "Amiens",
+                "children":[]
+              },
+              {
+                "name": "Audrey",
+                "children":[]
+              },
+              {
+                "name": "Celia",
+                "children":[]
+              },
+              {
+                "name": "Charles",
+                "children":[]
+              },
+              {
+                "name": "Corin",
+                "children":[]
+              },
+              {
+                "name": "Dennis",
+                "children":[]
+              },
+              {
+                "name": "Duke",
+                "children":[]
+              },
+              {
+                "name": "First Lord",
+                "children":[]
+              },
+              {
+                "name": "Frederick",
+                "children":[]
+              },
+              {
+                "name": "Hymen",
+                "children":[]
+              },
+              {
+                "name": "Jaques (lord)",
+                "children":[]
+              },
+              {
+                "name": "Jaques (son)",
+                "children":[]
+              },
+              {
+                "name": "Le Beau",
+                "children":[]
+              },
+              {
+                "name": "Lord",
+                "children":[]
+              },
+              {
+                "name": "Sir Oliver Martext",
+                "children":[]
+              },
+              {
+                "name": "Oliver",
+                "children":[]
+              },
+              {
+                "name": "Orlando",
+                "children":[]
+              },
+              {
+                "name": "First Page",
+                "children":[]
+              },
+              {
+                "name": "Second Page",
+                "children":[]
+              },
+              {
+                "name": "Phebe",
+                "children":[]
+              },
+              {
+                "name": "Rosalind",
+                "children":[]
+              },
+              {
+                "name": "Second Lord",
+                "children":[]
+              },
+              {
+                "name": "Silvius",
+                "children":[]
+              },
+              {
+                "name": "Touchstone",
+                "children":[]
+              },
+              {
+                "name": "William",
+                "children":[]
+              }
+            ]
+        },
+        {"name": "Comedy of Errors",
+          "children": [
+              {
+                "name": "Adriana",
+                "children":[]
+              },
+              {
+                "name": "Aegeon",
+                "children":[]
+              },
+              {
+                "name": "Aemilia",
+                "children":[]
+              },
+              {
+                "name": "Angelo",
+                "children":[]
+              },
+              {
+                "name": "Antipholus of Ephesus",
+                "children":[]
+              },
+              {
+                "name": "Antipholus of Syracuse",
+                "children":[]
+              },
+              {
+                "name": "Balthazar",
+                "children":[]
+              },
+              {
+                "name": "Courtezan",
+                "children":[]
+              },
+              {
+                "name": "Dromio of Ephesus",
+                "children":[]
+              },
+              {
+                "name": "Dromio of Syracuse",
+                "children":[]
+              },
+              {
+                "name": "First Merchant",
+                "children":[]
+              },
+              {
+                "name": "Gaoler",
+                "children":[]
+              },
+              {
+                "name": "Luce",
+                "children":[]
+              },
+              {
+                "name": "Luciana",
+                "children":[]
+              },
+              {
+                "name": "Officer",
+                "children":[]
+              },
+              {
+                "name": "Pinch",
+                "children":[]
+              },
+              {
+                "name": "Second Merchant",
+                "children":[]
+              },
+              {
+                "name": "Servant",
+                "children":[]
+              },
+              {
+                "name": "Solinus",
+                "children":[]
+              }
+            ]
+        },
+        {"name": "Love's Labour's Lost",
+          "children":[
+              {
+                "name": "Biron",
+                "children":[]
+              },
+              {
+                "name": "Boyet",
+                "children":[]
+              },
+              {
+                "name": "Costard",
+                "children":[]
+              },
+              {
+                "name": "Don Adriano de Armado",
+                "children":[]
+              },
+              {
+                "name": "Dull",
+                "children":[]
+              },
+              {
+                "name": "Dumain",
+                "children":[]
+              },
+              {
+                "name": "Ferdinand",
+                "children":[]
+              },
+              {
+                "name": "First Lord",
+                "children":[]
+              },
+              {
+                "name": "Forester",
+                "children":[]
+              },
+              {
+                "name": "Holofernes",
+                "children":[]
+              },
+              {
+                "name": "Jaquenetta",
+                "children":[]
+              },
+              {
+                "name": "Katharine",
+                "children":[]
+              },
+              {
+                "name": "Longaville",
+                "children":[]
+              },
+              {
+                "name": "Maria",
+                "children":[]
+              },
+              {
+                "name": "Mercade",
+                "children":[]
+              },
+              {
+                "name": "Moth",
+                "children":[]
+              },
+              {
+                "name": "Princess of France",
+                "children":[]
+              },
+              {
+                "name": "Rosaline",
+                "children":[]
+              },
+              {
+                "name": "Sir Nathaniel",
+                "children":[]
+              }
+            ]
+        },
+        {"name": "Measure for Measure",
+          "children":[
+              {
+                "name": "Abhorson",
+                "children":[]
+              },
+              {
+                "name": "Angelo",
+                "children":[]
+              },
+              {
+                "name": "Barnardine",
+                "children":[]
+              },
+              {
+                "name": "Claudio",
+                "children":[]
+              },
+              {
+                "name": "Elbow",
+                "children":[]
+              },
+              {
+                "name": "Escalus",
+                "children":[]
+              },
+              {
+                "name": "First Gentleman",
+                "children":[]
+              },
+              {
+                "name": "Francisca",
+                "children":[]
+              },
+              {
+                "name": "Friar Peter",
+                "children":[]
+              },
+              {
+                "name": "Friar Thomas",
+                "children":[]
+              },
+              {
+                "name": "Froth",
+                "children":[]
+              },
+              {
+                "name": "Isabella",
+                "children":[]
+              },
+              {
+                "name": "Juliet",
+                "children":[]
+              },
+              {
+                "name": "Justice",
+                "children":[]
+              },
+              {
+                "name": "Lucio",
+                "children":[]
+              },
+              {
+                "name": "Mariana",
+                "children":[]
+              },
+              {
+                "name": "Messenger",
+                "children":[]
+              },
+              {
+                "name": "Mistress Overdone",
+                "children":[]
+              },
+              {
+                "name": "Pompey",
+                "children":[]
+              },
+              {
+                "name": "Provost",
+                "children":[]
+              },
+              {
+                "name": "Second Gentleman",
+                "children":[]
+              },
+              {
+                "name": "Servant",
+                "children":[]
+              },
+              {
+                "name": "Varrius",
+                "children":[]
+              },
+              {
+                "name": "Vincentio",
+                "children":[]
+              }
+            ]
+        },
+        {"name": "Merchant of Venice",
+          "children":[
+              {
+                "name": "Antonio",
+                "children":[]
+              },
+              {
+                "name": "Balthasar",
+                "children":[]
+              },
+              {
+                "name": "Bassanio",
+                "children":[]
+              },
+              {
+                "name": "Clerk",
+                "children":[]
+              },
+              {
+                "name": "Duke",
+                "children":[]
+              },
+              {
+                "name": "Gratiano",
+                "children":[]
+              },
+              {
+                "name": "Jessica",
+                "children":[]
+              },
+              {
+                "name": "Launcelot Gobbo",
+                "children":[]
+              },
+              {
+                "name": "Leonardo",
+                "children":[]
+              },
+              {
+                "name": "Lorenzo",
+                "children":[]
+              },
+              {
+                "name": "Nerissa",
+                "children":[]
+              },
+              {
+                "name": "Old Gobbo",
+                "children":[]
+              },
+              {
+                "name": "Portia",
+                "children":[]
+              },
+              {
+                "name": "Prince of Arragon",
+                "children":[]
+              },
+              {
+                "name": "Prince of Morocco",
+                "children":[]
+              },
+              {
+                "name": "Salanio",
+                "children":[]
+              },
+              {
+                "name": "Salarino",
+                "children":[]
+              },
+              {
+                "name": "Salerio",
+                "children":[]
+              },
+              {
+                "name": "Servant",
+                "children":[]
+              },
+              {
+                "name": "Shylock",
+                "children":[]
+              },
+              {
+                "name": "Stephano",
+                "children":[]
+              },
+              {
+                "name": "Tubal",
+                "children":[]
+              }
+            ]
+        },
+        {"name": "Merry Wives of Windsor",
+          "children":[
+              {
+                "name": "Anne Page",
+                "children":[]
+              },
+              {
+                "name": "Bardolph",
+                "children":[]
+              },
+              {
+                "name": "Doctor Caius",
+                "children":[]
+              },
+              {
+                "name": "Falstaff",
+                "children":[]
+              },
+              {
+                "name": "Fenton",
+                "children":[]
+              },
+              {
+                "name": "First Servant",
+                "children":[]
+              },
+              {
+                "name": "Ford",
+                "children":[]
+              },
+              {
+                "name": "Host",
+                "children":[]
+              },
+              {
+                "name": "Mistress Ford",
+                "children":[]
+              },
+              {
+                "name": "Mistress Page",
+                "children":[]
+              },
+              {
+                "name": "Nym",
+                "children":[]
+              },
+              {
+                "name": "Page",
+                "children":[]
+              },
+              {
+                "name": "Pistol",
+                "children":[]
+              },
+              {
+                "name": "Hostess Quickly",
+                "children":[]
+              },
+              {
+                "name": "Robin",
+                "children":[]
+              },
+              {
+                "name": "Rugby",
+                "children":[]
+              },
+              {
+                "name": "Second Servant",
+                "children":[]
+              },
+              {
+                "name": "Servant",
+                "children":[]
+              },
+              {
+                "name": "Robert Shallow",
+                "children":[]
+              },
+              {
+                "name": "Simple",
+                "children":[]
+              },
+              {
+                "name": "Sir Hugh Evans",
+                "children":[]
+              },
+              {
+                "name": "Slender",
+                "children":[]
+              },
+              {
+                "name": "William Page",
+                "children":[]
+              }
+            ]
+        },
+        {"name": "Midsummer Night's Dream",
+          "children":[
+              {
+                "name": "Bottom",
+                "children":[]
+              },
+              {
+                "name": "Cobweb",
+                "children":[]
+              },
+              {
+                "name": "Demetrius",
+                "children":[]
+              },
+              {
+                "name": "Egeus",
+                "children":[]
+              },
+              {
+                "name": "Fairy",
+                "children":[]
+              },
+              {
+                "name": "Flute",
+                "children":[]
+              },
+              {
+                "name": "Helena",
+                "children":[]
+              },
+              {
+                "name": "Hermia",
+                "children":[]
+              },
+              {
+                "name": "Hippolyta",
+                "children":[]
+              },
+              {
+                "name": "Lysander",
+                "children":[]
+              },
+              {
+                "name": "Moth",
+                "children":[]
+              },
+              {
+                "name": "Mustardseed",
+                "children":[]
+              },
+              {
+                "name": "Oberon",
+                "children":[]
+              },
+              {
+                "name": "Peaseblossom",
+                "children":[]
+              },
+              {
+                "name": "Philostrate",
+                "children":[]
+              },
+              {
+                "name": "Puck",
+                "children":[]
+              },
+              {
+                "name": "Quince",
+                "children":[]
+              },
+              {
+                "name": "Snout",
+                "children":[]
+              },
+              {
+                "name": "Snug",
+                "children":[]
+              },
+              {
+                "name": "Starveling",
+                "children":[]
+              },
+              {
+                "name": "Theseus",
+                "children":[]
+              },
+              {
+                "name": "Titania",
+                "children":[]
+              }
+            ]
+        },
+        {"name": "Much Ado about Nothing",
+          "children":[
+              {
+                "name": "First Watchman",
+                "children":[]
+              },
+              {
+                "name": "Second Watchman",
+                "children":[]
+              },
+              {
+                "name": "Antonio",
+                "children":[]
+              },
+              {
+                "name": "Balthasar",
+                "children":[]
+              },
+              {
+                "name": "Beatrice",
+                "children":[]
+              },
+              {
+                "name": "Benedick",
+                "children":[]
+              },
+              {
+                "name": "Borachio",
+                "children":[]
+              },
+              {
+                "name": "Boy",
+                "children":[]
+              },
+              {
+                "name": "Claudio",
+                "children":[]
+              },
+              {
+                "name": "Conrade",
+                "children":[]
+              },
+              {
+                "name": "Dogberry",
+                "children":[]
+              },
+              {
+                "name": "Don John",
+                "children":[]
+              },
+              {
+                "name": "Don Pedro",
+                "children":[]
+              },
+              {
+                "name": "Friar Francis",
+                "children":[]
+              },
+              {
+                "name": "Hero",
+                "children":[]
+              },
+              {
+                "name": "Leonato",
+                "children":[]
+              },
+              {
+                "name": "Lord",
+                "children":[]
+              },
+              {
+                "name": "Margaret",
+                "children":[]
+              },
+              {
+                "name": "Messenger",
+                "children":[]
+              },
+              {
+                "name": "Sexton",
+                "children":[]
+              },
+              {
+                "name": "Ursula",
+                "children":[]
+              },
+              {
+                "name": "Verges",
+                "children":[]
+              },
+              {
+                "name": "Watchman",
+                "children":[]
+              }
+            ]
+        },
+        {"name": "Taming of the Shrew",
+          "children":[
+              {
+                "name": "Baptista Minola",
+                "children":[]
+              },
+              {
+                "name": "Bianca",
+                "children":[]
+              },
+              {
+                "name": "Biondello",
+                "children":[]
+              },
+              {
+                "name": "Curtis",
+                "children":[]
+              },
+              {
+                "name": "Gremio",
+                "children":[]
+              },
+              {
+                "name": "Grumio",
+                "children":[]
+              },
+              {
+                "name": "Haberdasher",
+                "children":[]
+              },
+              {
+                "name": "Hortensio",
+                "children":[]
+              },
+              {
+                "name": "Hostess",
+                "children":[]
+              },
+              {
+                "name": "First Huntsman",
+                "children":[]
+              },
+              {
+                "name": "Second Huntsman",
+                "children":[]
+              },
+              {
+                "name": "Joseph",
+                "children":[]
+              },
+              {
+                "name": "Katherina",
+                "children":[]
+              },
+              {
+                "name": "Lord",
+                "children":[]
+              },
+              {
+                "name": "Lucentio",
+                "children":[]
+              },
+              {
+                "name": "Messenger",
+                "children":[]
+              },
+              {
+                "name": "Nathaniel",
+                "children":[]
+              },
+              {
+                "name": "Nicholas",
+                "children":[]
+              },
+              {
+                "name": "Page",
+                "children":[]
+              },
+              {
+                "name": "Pedant",
+                "children":[]
+              },
+              {
+                "name": "Peter",
+                "children":[]
+              },
+              {
+                "name": "Petruchio",
+                "children":[]
+              },
+              {
+                "name": "Philip",
+                "children":[]
+              },
+              {
+                "name": "Players",
+                "children":[]
+              },
+              {
+                "name": "Player",
+                "children":[]
+              },
+              {
+                "name": "First Servant",
+                "children":[]
+              },
+              {
+                "name": "Second Servant",
+                "children":[]
+              },
+              {
+                "name": "Third Servant",
+                "children":[]
+              },
+              {
+                "name": "Servants",
+                "children":[]
+              },
+              {
+                "name": "Servant",
+                "children":[]
+              },
+              {
+                "name": "Christopher Sly",
+                "children":[]
+              },
+              {
+                "name": "Tailor",
+                "children":[]
+              },
+              {
+                "name": "Tranio",
+                "children":[]
+              },
+              {
+                "name": "Vincentio",
+                "children":[]
+              },
+              {
+                "name": "Widow",
+                "children":[]
+              }
+            ]
+        },
+        {"name": "Tempest",
+          "children":[
+              {
+                "name": "Adrian",
+                "children":[]
+              },
+              {
+                "name": "Alonso",
+                "children":[]
+              },
+              {
+                "name": "Antonio",
+                "children":[]
+              },
+              {
+                "name": "Ariel",
+                "children":[]
+              },
+              {
+                "name": "Boatswain",
+                "children":[]
+              },
+              {
+                "name": "Caliban",
+                "children":[]
+              },
+              {
+                "name": "Ceres",
+                "children":[]
+              },
+              {
+                "name": "Ferdinand",
+                "children":[]
+              },
+              {
+                "name": "Francisco",
+                "children":[]
+              },
+              {
+                "name": "Gonzalo",
+                "children":[]
+              },
+              {
+                "name": "Iris",
+                "children":[]
+              },
+              {
+                "name": "Juno",
+                "children":[]
+              },
+              {
+                "name": "Mariners",
+                "children":[]
+              },
+              {
+                "name": "Master",
+                "children":[]
+              },
+              {
+                "name": "Miranda",
+                "children":[]
+              },
+              {
+                "name": "Nymphs",
+                "children":[]
+              },
+              {
+                "name": "Prospero",
+                "children":[]
+              },
+              {
+                "name": "Reapers",
+                "children":[]
+              },
+              {
+                "name": "Sebastian",
+                "children":[]
+              },
+              {
+                "name": "Stephano",
+                "children":[]
+              },
+              {
+                "name": "Trinculo",
+                "children":[]
+              }
+            ]
+        },
+        {"name": "Two Gentlemen of Verona",
+          "children":[
+              {
+                "name": "Antonio",
+                "children":[]
+              },
+              {
+                "name": "Duke of Milan",
+                "children":[]
+              },
+              {
+                "name": "Eglamour",
+                "children":[]
+              },
+              {
+                "name": "First Outlaw",
+                "children":[]
+              },
+              {
+                "name": "Host",
+                "children":[]
+              },
+              {
+                "name": "Julia",
+                "children":[]
+              },
+              {
+                "name": "Launce",
+                "children":[]
+              },
+              {
+                "name": "Lucetta",
+                "children":[]
+              },
+              {
+                "name": "Outlaws",
+                "children":[]
+              },
+              {
+                "name": "Panthino",
+                "children":[]
+              },
+              {
+                "name": "Proteus",
+                "children":[]
+              },
+              {
+                "name": "Second Outlaw",
+                "children":[]
+              },
+              {
+                "name": "Silvia",
+                "children":[]
+              },
+              {
+                "name": "Speed",
+                "children":[]
+              },
+              {
+                "name": "Third Outlaw",
+                "children":[]
+              },
+              {
+                "name": "Thurio",
+                "children":[]
+              },
+              {
+                "name": "Valentine",
+                "children":[]
+              }
+            ]
+        },
+        {"name": "The Winter's Tale",
+          "children":[
+              {
+                "name": "Antigonus",
+                "children":[]
+              },
+              {
+                "name": "Archidamus",
+                "children":[]
+              },
+              {
+                "name": "Autolycus",
+                "children":[]
+              },
+              {
+                "name": "Camillo",
+                "children":[]
+              },
+              {
+                "name": "Cleomenes",
+                "children":[]
+              },
+              {
+                "name": "Clown",
+                "children":[]
+              },
+              {
+                "name": "Dion",
+                "children":[]
+              },
+              {
+                "name": "Dorcas",
+                "children":[]
+              },
+              {
+                "name": "Emilia",
+                "children":[]
+              },
+              {
+                "name": "First Gentleman",
+                "children":[]
+              },
+              {
+                "name": "First Lady",
+                "children":[]
+              },
+              {
+                "name": "First Lord",
+                "children":[]
+              },
+              {
+                "name": "First Servant",
+                "children":[]
+              },
+              {
+                "name": "Florizel",
+                "children":[]
+              },
+              {
+                "name": "Gaoler",
+                "children":[]
+              },
+              {
+                "name": "Gentleman",
+                "children":[]
+              },
+              {
+                "name": "Hermione",
+                "children":[]
+              },
+              {
+                "name": "Leontes",
+                "children":[]
+              },
+              {
+                "name": "Lords",
+                "children":[]
+              },
+              {
+                "name": "Lord",
+                "children":[]
+              },
+              {
+                "name": "Mamillius",
+                "children":[]
+              },
+              {
+                "name": "Mariner",
+                "children":[]
+              },
+              {
+                "name": "Mopsa",
+                "children":[]
+              },
+              {
+                "name": "Officer",
+                "children":[]
+              },
+              {
+                "name": "Old Shepherd",
+                "children":[]
+              },
+              {
+                "name": "Paulina",
+                "children":[]
+              },
+              {
+                "name": "Perdita",
+                "children":[]
+              },
+              {
+                "name": "Polixenes",
+                "children":[]
+              },
+              {
+                "name": "Second Gentleman",
+                "children":[]
+              },
+              {
+                "name": "Second Lady",
+                "children":[]
+              },
+              {
+                "name": "Second Servant",
+                "children":[]
+              },
+              {
+                "name": "Servant",
+                "children":[]
+              },
+              {
+                "name": "Third Gentleman",
+                "children":[]
+              },
+              {
+                "name": "Time",
+                "children":[]
+              }
+            ]
+        }
+      ]
+    },
+    {
+    "name":"h",
+    "children":[
+        {"name": "Cymbeline",
+          "children":[
+              {
+                "name": "Arviragus",
+                "children":[]
+              },
+              {
+                "name": "Attendant",
+                "children":[]
+              },
+              {
+                "name": "Belarius",
+                "children":[]
+              },
+              {
+                "name": "Caius Lucius",
+                "children":[]
+              },
+              {
+                "name": "Cloten",
+                "children":[]
+              },
+              {
+                "name": "Cornelius",
+                "children":[]
+              },
+              {
+                "name": "Cymbeline",
+                "children":[]
+              },
+              {
+                "name": "First Brother",
+                "children":[]
+              },
+              {
+                "name": "First British Captain",
+                "children":[]
+              },
+              {
+                "name": "First Gaoler",
+                "children":[]
+              },
+              {
+                "name": "First Gentleman",
+                "children":[]
+              },
+              {
+                "name": "First Lady",
+                "children":[]
+              },
+              {
+                "name": "First Lord",
+                "children":[]
+              },
+              {
+                "name": "First Senator",
+                "children":[]
+              },
+              {
+                "name": "First Tribune",
+                "children":[]
+              },
+              {
+                "name": "Frenchman",
+                "children":[]
+              },
+              {
+                "name": "Guiderius",
+                "children":[]
+              },
+              {
+                "name": "Helen",
+                "children":[]
+              },
+              {
+                "name": "Iachimo",
+                "children":[]
+              },
+              {
+                "name": "Imogen",
+                "children":[]
+              },
+              {
+                "name": "Jupiter",
+                "children":[]
+              },
+              {
+                "name": "Lady",
+                "children":[]
+              },
+              {
+                "name": "Sicilius Leonatus",
+                "children":[]
+              },
+              {
+                "name": "Lord",
+                "children":[]
+              },
+              {
+                "name": "Lords",
+                "children":[]
+              },
+              {
+                "name": "Messenger",
+                "children":[]
+              },
+              {
+                "name": "Mother",
+                "children":[]
+              },
+              {
+                "name": "Philario",
+                "children":[]
+              },
+              {
+                "name": "Pisanio",
+                "children":[]
+              },
+              {
+                "name": "Posthumus Leonatus",
+                "children":[]
+              },
+              {
+                "name": "Queen",
+                "children":[]
+              },
+              {
+                "name": "Roman Captain",
+                "children":[]
+              },
+              {
+                "name": "Second Brother",
+                "children":[]
+              },
+              {
+                "name": "Second British Captain",
+                "children":[]
+              },
+              {
+                "name": "Second Gaoler",
+                "children":[]
+              },
+              {
+                "name": "Second Gentleman",
+                "children":[]
+              },
+              {
+                "name": "Second Lord",
+                "children":[]
+              },
+              {
+                "name": "Second Senator",
+                "children":[]
+              },
+              {
+                "name": "Soothsayer",
+                "children":[]
+              }
+            ]
+        },
+        {"name": "Henry IV, Part I",
+          "children":
+        },
+        {"name": "Henry IV, Part II",
+          "children":
+        },
+        {"name": "Henry V",
+          "children":
+        },
+        {"name": "Henry VI, Part I",
+          "children":
+        },
+        {"name": "Henry VI, Part II",
+          "children":
+        },
+        {"name": "Henry VI, Part III",
+          "children":
+        },
+        {"name": "Henry VIII",
+          "children":
+        },
+        {"name": "King John",
+          "children":
+        },
+        {"name": "Pericles",
+          "children":
+        },
+        {"name": "Richard II",
+          "children":
+        },
+        {"name": "Richard III",
+          "children":
+        }
+     ]
+    },
+    {
+    "name": "t",
+    "children:":[
+        {"name": "Antony and Cleopatra"},
+        {"name": "Coriolanus"},
+        {"name": "Hamlet"},
+        {"name": "Julius Caesar"},
+        {"name": "King Lear"},
+        {"name": "Macbeth"},
+        {"name": "Othello"},
+        {"name": "Romeo and Juliet"},
+        {"name": "Timon of Athens"},
+        {"name": "Titus Andronicus"},
+        {"name": "Troilus and Cressida"}
+    ]
+    }
+  ]
+  }
+ ]
+}
+
+genre = {
+    "name": "c",
+    "children":,
+    "name": "h",
+    "name": "t"
+}
+plays = {}
+
+
+key="name", value=Shakespeare
+    key="children", valu
