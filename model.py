@@ -24,7 +24,8 @@ class Genre(db.Model):
 
 	def json(self):
 		genre = {}
-		genre["genre_id"] = self.genre_id
+		if self.genre_id in ['c', 'h', 't']:
+			genre["genre_id"] = self.genre_id
 		genre["genre_name"] = self.genre_name
 		# If I leave in plays, I might be able use this to create the links function...
 		genre["plays"] = [play.json() for play in self.plays]
@@ -53,9 +54,8 @@ class Play(db.Model):
 		play["title"] = self.title
 		play["long_title"] = self.long_title
 		play["date"] = self.date
-		play["genre_id"] = self.genre_id
-		play["act"] = [scene.json() for act in self.scenes]
-		play["scene"] = [scene.json() for scene in self.scenes]
+		if self.genre_id in ['c', 'h', 't']:
+			play["genre_id"] = self.genre_id
 		return play
 
 
@@ -81,7 +81,7 @@ class Scene(db.Model):
 		scene["play_id"] = self.play_id
 		scene["act"] = self.act
 		scene["scene"] = self.scene
-		scene["description"] = self.description
+		scene["description"] = self.s_description
 		return scene
 
 
@@ -100,7 +100,18 @@ class Character(db.Model):
 	play = db.relationship("Play",
 						   backref = db.backref("characters", order_by=char_id))
 
-
+	def json(self):
+		character = {}
+		character["char_id"] = self.char_id
+		character["name"] = self.char_name
+		character["play_id"] = self.play_id
+		if len(self.c_description) > 10:
+			character["bio"] = self.c_description
+		if len(self.monologues) > 0:
+			character["mono_count"] = len(self.monologues)
+		# I don't know why this isn't working...
+		character["monologues"] = [monologue.json() for monologue in self.monologues]
+		return character
 
 
 class Monologue(db.Model):
@@ -125,6 +136,18 @@ class Monologue(db.Model):
 	character = db.relationship("Character",
 							   backref = db.backref("monologues", order_by=mono_id))
 
+	def json(self):
+		monologue = {}
+		monologue["mono_id"] = self.mono_id
+		monologue["play_id"] = self.play_id
+		monologue["char_id"] = self.char_id
+		monologue["act_id"] = self.act_id
+		monologue["scene_id"] = self.scene_id
+		monologue["word_count"] = self.word_count
+		monologue["comments"] = [comment.json() for comment in self.comments]
+		monologue["comment_count"] = len(self.comments)
+		return monologue
+
 class User(db.Model):
 	"""Stores users in the database"""
 	__tablename__="users"
@@ -133,6 +156,14 @@ class User(db.Model):
 	email = db.Column(db.String(255), default=" ", nullable=False)
 	name = db.Column(db.String(255), default=" ", nullable=False)
 	picture = db.Column(db.String(500), default=" ", nullable=True)
+
+	def json(self):
+		user = {}
+		user["user_id"] = self.user_id
+		user["name"] = self.name
+		user["comments"] = [comment.json() for comment in self.comments]
+		user["count"] = len(self.comments)
+		return user
 
 
 class Comment(db.Model):
@@ -152,6 +183,15 @@ class Comment(db.Model):
 	#Defines relationship between Comments and Users
 	user = db.relationship("User",
 							backref= db.backref("comments", order_by=comment_id))
+
+	def json(self):
+		comment = {}
+		comment["comment_id"] = self.comment_id
+		comment["line_id"] = self.line_id
+		comment["mono_id"] = self.mono_id
+		comment["comment_text"] = self.comment_text
+		comment["user_id"] = self.user_id
+		return comment
 
 
 
