@@ -1,23 +1,21 @@
 """Line Pls! Shakespeare Squad's up."""
 import os
 import json
-
+import pprint
 from flask_oauth2_login import GoogleLogin
 from flask_login import LoginManager
 from jinja2 import StrictUndefined
 from flask import Flask, render_template, redirect, request, flash, session, jsonify, url_for
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
-from flask.ext.scss import Scss
-from json_for_d3 import db_to_json
 from model import Play, Scene, Genre, Character, Monologue, User, Comment, connect_to_db, db
 
 
 app = Flask(__name__)
+printer = pprint.PrettyPrinter()
 app.secret_key = """Need to figure out"""
 app.jinja_env.undefined = StrictUndefined
 Bootstrap(app)
-Scss(app,static_dir='static', asset_dir='assets')
 login_manager = LoginManager()
 login_manager.init_app(app)
 
@@ -38,7 +36,8 @@ google_login = GoogleLogin(app)
 @app.route('/')
 def index():
     """Renders homepage"""
-    return render_template("homepage.html").format(google_login.authorization_url())
+    # this broke and i have no idea why
+    return render_template("homepage.html")
 
 #Login w/ Google API
 @google_login.login_success
@@ -172,11 +171,19 @@ def store_comments():
 
     return redirect('/monologue/' + str(mono_id))
 
-@app.route('/json')
-def create_d3_json():
-    """Inserts d3 json into HTML so that force graph can access"""
-    d3_json = db_to_json()
-    
+@app.route('/shakespeare.json')
+def create_shakespeare_json():
+    """Creating json object that D3 needs to render to create force graph.
+
+     Main function is defined in helper_functions.py"""
+    genres = Genre.query.all()
+    shakespeare = {}
+    shakespeare["genre"] = [genre.json() for genre in genres]
+    printer.pprint(shakespeare)
+    return jsonify(shakespeare)
+
+
+
 
 
 #Connecting server to db

@@ -22,6 +22,16 @@ class Genre(db.Model):
 	genre_id = db.Column(db.String(255), primary_key=True)
 	genre_name = db.Column(db.String(255), default=" ", nullable=False)
 
+	def json(self):
+		genre = {}
+		genre["genre_id"] = self.genre_id
+		genre["genre_name"] = self.genre_name
+		# If I leave in plays, I might be able use this to create the links function...
+		genre["plays"] = [play.json() for play in self.plays]
+		genre["count"] = len(self.plays)
+		return genre
+
+
 class Play(db.Model):
 	"""All the Shakespeare plays"""
 
@@ -36,6 +46,17 @@ class Play(db.Model):
 	#Defines relationship between Play class and Genre class
 	genre = db.relationship("Genre",
 							backref = db.backref("plays", order_by=play_id))
+
+	def json(self):
+		play = {}
+		play["play_id"] = self.play_id
+		play["title"] = self.title
+		play["long_title"] = self.long_title
+		play["date"] = self.date
+		play["genre_id"] = self.genre_id
+		play["act"] = [scene.json() for act in self.scenes]
+		play["scene"] = [scene.json() for scene in self.scenes]
+		return play
 
 
 class Scene(db.Model):
@@ -53,6 +74,16 @@ class Scene(db.Model):
 	play = db.relationship("Play",
 						   backref = db.backref("scenes", order_by=scene_id))
 
+	# I think I'm done with this but might not be
+	def json(self):
+		scene = {}
+		scene["scene_id"] = self.scene_id
+		scene["play_id"] = self.play_id
+		scene["act"] = self.act
+		scene["scene"] = self.scene
+		scene["description"] = self.description
+		return scene
+
 
 class Character(db.Model):
 	"""Shakespeare characters"""
@@ -68,6 +99,8 @@ class Character(db.Model):
 	#Defines relationship between Play class and Character Class
 	play = db.relationship("Play",
 						   backref = db.backref("characters", order_by=char_id))
+
+
 
 
 class Monologue(db.Model):

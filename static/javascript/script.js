@@ -1,3 +1,4 @@
+
 //Constants for the SVG
 var width = 500,
     height = 500;

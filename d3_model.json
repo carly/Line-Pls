@@ -15,7 +15,9 @@
             },
             {
               "name": "Antonio",
-              "children":[]
+              "children":[
+                {"name": "Mono_id", ""}
+              ]
             },
             {
               "name": "Sir Toby Belch",
@@ -1493,7 +1495,7 @@
                 "children":[]
               },
               {
-                "name": "Philario",
+                "": "Philario",
                 "children":[]
               },
               {
@@ -1543,10 +1545,364 @@
             ]
         },
         {"name": "Henry IV, Part I",
-          "children":
+          "children":[
+              {
+                "name": "Lord Bardolph",
+                "children":[]
+              },
+              {
+                "name": "Blunt",
+                "children":[]
+              },
+              {
+                "name": "Carrier",
+                "children":[]
+              },
+              {
+                "name": "Chamberlain",
+                "children":[]
+              },
+              {
+                "name": "Earl of Douglas",
+                "children":[]
+              },
+              {
+                "name": "Earl of Northumberland",
+                "children":[]
+              },
+              {
+                "name": "Falstaff",
+                "children":[]
+              },
+              {
+                "name": "First Carrier",
+                "children":[]
+              },
+              {
+                "name": "First Traveller",
+                "children":[]
+              },
+              {
+                "name": "Francis",
+                "children":[]
+              },
+              {
+                "name": "Gadshill",
+                "children":[]
+              },
+              {
+                "name": "Glendower",
+                "children":[]
+              },
+              {
+                "name": "Henry IV",
+                "children":[]
+              },
+              {
+                "name": "Henry V",
+                "children":[]
+              },
+              {
+                "name": "Hotspur (Henry Percy)",
+                "children":[]
+              },
+              {
+                "name": "Lady Percy",
+                "children":[]
+              },
+              {
+                "name": "John of Lancaster",
+                "children":[]
+              },
+              {
+                "name": "Messenger",
+                "children":[]
+              },
+              {
+                "name": "Mortimer",
+                "children":[]
+              },
+              {
+                "name": "Ostler",
+                "children":[]
+              },
+              {
+                "name": "Peto",
+                "children":[]
+              },
+              {
+                "name": "Edward Poins",
+                "children":[]
+              },
+              {
+                "name": "Prince John",
+                "children":[]
+              },
+              {
+                "name": "Hostess Quickly",
+                "children":[]
+              },
+              {
+                "name": "Archbishop Scroop",
+                "children":[]
+              },
+              {
+                "name": "Second Carrier",
+                "children":[]
+              },
+              {
+                "name": "Servant",
+                "children":[]
+              },
+              {
+                "name": "Sheriff",
+                "children":[]
+              },
+              {
+                "name": "Sir Michael",
+                "children":[]
+              },
+              {
+                "name": "Thieves",
+                "children":[]
+              },
+              {
+                "name": "Travellers",
+                "children":[]
+              },
+              {
+                "name": "Vernon",
+                "children":[]
+              },
+              {
+                "name": "Vintner",
+                "children":[]
+              },
+              {
+                "name": "Earl of Westmoreland",
+                "children":[]
+              },
+              {
+                "name": "Earl of Worcester",
+                "children":[]
+              }
+            ]
         },
         {"name": "Henry IV, Part II",
-          "children":
+          "children":[
+              {
+                "name": "Lord Bardolph",
+                "children":[]
+              },
+              {
+                "name": "Bardolph",
+                "children":[]
+              },
+              {
+                "name": "First Beadle",
+                "children":[]
+              },
+              {
+                "name": "Second Beadle",
+                "children":[]
+              },
+              {
+                "name": "Blunt",
+                "children":[]
+              },
+              {
+                "name": "Brothers",
+                "children":[]
+              },
+              {
+                "name": "Peter Bullcalf",
+                "children":[]
+              },
+              {
+                "name": "Lord Chief Justice",
+                "children":[]
+              },
+              {
+                "name": "Sir John Colville",
+                "children":[]
+              },
+              {
+                "name": "Davy",
+                "children":[]
+              },
+              {
+                "name": "Second Drawer",
+                "children":[]
+              },
+              {
+                "name": "Third Drawer",
+                "children":[]
+              },
+              {
+                "name": "Earl of Northumberland",
+                "children":[]
+              },
+              {
+                "name": "Falstaff",
+                "children":[]
+              },
+              {
+                "name": "Fang",
+                "children":[]
+              },
+              {
+                "name": "Francis Feeble",
+                "children":[]
+              },
+              {
+                "name": "Francis",
+                "children":[]
+              },
+              {
+                "name": "Gower",
+                "children":[]
+              },
+              {
+                "name": "First Groom",
+                "children":[]
+              },
+              {
+                "name": "Second Groom",
+                "children":[]
+              },
+              {
+                "name": "Third Groom",
+                "children":[]
+              },
+              {
+                "name": "Harcourt",
+                "children":[]
+              },
+              {
+                "name": "Lord Hastings",
+                "children":[]
+              },
+              {
+                "name": "Henry IV",
+                "children":[]
+              },
+              {
+                "name": "Earl of Kent",
+                "children":[]
+              },
+              {
+                "name": "Lady Northumberland",
+                "children":[]
+              },
+              {
+                "name": "Lady Percy",
+                "children":[]
+              },
+              {
+                "name": "Messenger",
+                "children":[]
+              },
+              {
+                "name": "Morton",
+                "children":[]
+              },
+              {
+                "name": "Ralph Mouldy",
+                "children":[]
+              },
+              {
+                "name": "Lord Mowbray",
+                "children":[]
+              },
+              {
+                "name": "Page",
+                "children":[]
+              },
+              {
+                "name": "Peto",
+                "children":[]
+              },
+              {
+                "name": "Pistol",
+                "children":[]
+              },
+              {
+                "name": "Edward Poins",
+                "children":[]
+              },
+              {
+                "name": "Porter",
+                "children":[]
+              },
+              {
+                "name": "Prince Humphrey",
+                "children":[]
+              },
+              {
+                "name": "Prince John",
+                "children":[]
+              },
+              {
+                "name": "Hostess Quickly",
+                "children":[]
+              },
+              {
+                "name": "Rumour",
+                "children":[]
+              },
+              {
+                "name": "Archbishop Scroop",
+                "children":[]
+              },
+              {
+                "name": "Servant",
+                "children":[]
+              },
+              {
+                "name": "Simon Shadow",
+                "children":[]
+              },
+              {
+                "name": "Robert Shallow",
+                "children":[]
+              },
+              {
+                "name": "Silence",
+                "children":[]
+              },
+              {
+                "name": "Snare",
+                "children":[]
+              },
+              {
+                "name": "Earl of Surrey",
+                "children":[]
+              },
+              {
+                "name": "Doll Tearsheet",
+                "children":[]
+              },
+              {
+                "name": "Prince Thomas",
+                "children":[]
+              },
+              {
+                "name": "Travers",
+                "children":[]
+              },
+              {
+                "name": "Thomas Wart",
+                "children":[]
+              },
+              {
+                "name": "Earl of Warwick",
+                "children":[]
+              },
+              {
+                "name": "Earl of Westmoreland",
+                "children":[]
+              }
+            ]
         },
         {"name": "Henry V",
           "children":

@@ -26,15 +26,3 @@ footer {
   margin-top: 200px;
 
 }
-
-/*........................................*/
-/*D3*/
-
-.node {
-    stroke: #fff;
-    stroke-width: 1.5px;
-}
-.link {
-    stroke: #999;
-    stroke-opacity: .6;
-}
