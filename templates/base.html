@@ -19,22 +19,25 @@
 <body>
   <!--Shows the flashed messages when logged in/out-->
 
-<div class="nav-bar">
-  <div class = "container">
+  <nav class="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" src="/static/img/willy.png">
+      </a>
     <!--If user in session show login, if not show logout-->
-    {% if "email" in session %}
-        <p>{{ session["name"] }}</p> <!-- if user is in the session(logged in): -->
-        <button type="button"><a href='/logout'>Log Out</a></button>
-    {% else %} <!-- if no user in the session -->
-        <a class="login" href="{}">Login</a>
-    {% endif %}
-    <ul class="right">
-   {% for message in get_flashed_messages()%}
-       <li>{{message}}</li>
-   {% endfor %}
-   </ul>
-  </div>
-</div>
+        {% if "email" in session %}
+          <p>{{ session["name"] }}</p> <!-- if user is in the session(logged in): -->
+          <button type="button"><a href='/logout'>Log Out</a></button>
+          {% else %} <!-- if no user in the session -->
+          <a class="login" href="{}">Login</a>
+          {% endif %}
+      <ul class="right">
+        {% for message in get_flashed_messages()%}
+         <li>{{message}}</li>
+         {% endfor %}
+     </ul>
+ </div>
+</nav>
 
 
  {% block jumbotron %} {% endblock %}

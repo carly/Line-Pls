@@ -1,11 +1,18 @@
 /* Base.html */
 
-.nav-bar .container {
+.navbar .container-fluid {
   font-family: 'Didact Gothic', sans-serif;
-  width: auto;
   /*margin-top: 20px;*/
-  padding: 20px 0;
+  width: auto;
+  padding: 15px 0;
   background-color:#333333;
+}
+
+.navbar-brand img {
+  height: 50px;
+  width: 50px;
+  margin-left: 20px;
+  margin-top: -20px;
 }
 .login {
   color: #fff;
@@ -13,7 +20,7 @@
   font-weight: 600;
   font-size: 18px;
   letter-spacing: 1.3px;
-  padding: 16px 40px;
+  padding: 50px 10px;
   text-decoration: none;
   text-transform: uppercase;
 }

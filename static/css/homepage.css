@@ -2,6 +2,7 @@
 .jumbotron {
   background-color: #FFFFFF;
   background-size: cover;
+  background-image: url('')
 }
 
 .jumbotron .container {
@@ -10,6 +11,17 @@
 }
 
 .jumbotron .container img {
-  height: 300px;
+  height: 250px;
   width: auto;
+}
+
+
+.nl-search .container .nl-form {
+  margin-top: -50px;
+  margin-left: 350px;
+}
+
+.willy .container img {
+  height: 200px;
+  width: 200px;
 }
