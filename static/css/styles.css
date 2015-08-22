@@ -1,28 +1,22 @@
 /* Base.html */
 
-/*Login Link text*/
-.navbar-left a {
-
+.nav-bar .container {
+  font-family: 'Didact Gothic', sans-serif;
+  width: auto;
+  /*margin-top: 20px;*/
+  padding: 20px 0;
+  background-color:#333333;
 }
-/*Login Flash Messages*/
-.navbar-text li {}
-
-/*Login-Logout Button*/
-.navbar-text a {}
-
-/*Nav Name*/
-.navbar-text p {}
-
-/*Footer*/
-footer {
-
+.login {
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 1.3px;
+  padding: 16px 40px;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 /*.........................................*/
-/* Homepage.html */
-
-.jumbotron {
-  font-family: 'Rye', cursive;
-  margin-top: 200px;
-
-}
+/* Homepage.html *

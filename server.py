@@ -9,6 +9,7 @@ from flask import Flask, render_template, redirect, request, flash, session, jso
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
 from model import Play, Scene, Genre, Character, Monologue, User, Comment, connect_to_db, db
+from helper_functions import shakespeare_data
 
 
 app = Flask(__name__)
@@ -173,59 +174,52 @@ def store_comments():
 
 ######## JSON ROUTES ##########
 
-@app.route('/genres.json')
-def genres_json():
-    """Return info about a genre as JSON."""
-    genres_q = Genre.query.all()
-    genres = {}
-    genres["genre"] = [genre.json() for genre in genres_q]
-    printer.pprint(genres)
-    return jsonify(genres)
+# @app.route('/shakespeare-links.json')
+# def shakespeare_links():
+#     """Return Shakespeare Force Graph Links as JSON."""
+#     genres_lq = Genre.query.all()
+#     plays_lq = Plays.query.all()
+#
+#     for genre in genres_lq:
 
-@app.route('/plays.json')
-def plays_json():
-    """Return info about a play as JSON."""
-    plays = Play.query.all()
-    plays = {}
-    plays["play"] = [play.json() for play in plays]
-    printer.pprint(plays)
-    return jsonify(plays)
 
-@app.route('/characters.json')
-def characters_json():
-    """Return info about a character as JSON."""
-    characters_q = Character.query.all()
-    characters = {}
-    characters["character"] = [character.json() for character in characters_q]
-    printer.pprint(characters)
-    return jsonify(characters)
 
-@app.route('/monologues.json')
-def monologues_json():
-    """Return info about a monologue as JSON."""
-    monologues_q = Monologue.query.all()
-    monologues = {}
-    monologues["monologue"] = [monologue.json() for monologue in monologues_q]
-    printer.pprint(monologues)
-    return jsonify(monologues)
+@app.route('/shakespeare.json')
+def shakespeare_json():
+    """Return Shakespeare Force Graph Nodes as JSON."""
 
-@app.route('/comments.json')
-def comments_json():
-    """Return info about a comment as JSON."""
-    comments_q = Comment.query.all()
-    comments = {}
-    comments["comments"] = [comment.json() for comment in comments_q]
-    printer.pprint(comments)
-    return jsonify(comments)
+    return jsonify(shakespeare_data())
 
-@app.route('/users.json')
-def users_json():
-    """Return info about a user as JSON."""
-    users_q = User.query.all()
-    users = {}
-    users["users"] = [user.json() for user in users_q]
-    printer.pprint(users)
-    return jsonify(users)
+#     genres_q = Genre.query.all()
+#     plays_q = Play.query.all()
+#     characters_q = Character.query.all()
+#     monologues_q = Monologue.query.all()
+#
+#     shakespeare = {}
+#     shakespeare["genre"] = [genre.json() for genre in genres_q]
+#     shakespeare["play"] = [play.json() for play in plays_q]
+#     shakespeare["character"] = [character.json() for character in characters_q]
+#     shakespeare["monologue"] = [monologue.json() for monologue in monologues_q]
+#     printer.pprint(shakespeare)
+#     return jsonify(shakespeare)
+#
+# @app.route('/comments.json')
+# def comments_json():
+#     """Return info about a comment as JSON."""
+#     comments_q = Comment.query.all()
+#     comments = {}
+#     comments["comments"] = [comment.json() for comment in comments_q]
+#     printer.pprint(comments)
+#     return jsonify(comments)
+#
+# @app.route('/users.json')
+# def users_json():
+#     """Return info about a user as JSON."""
+#     users_q = User.query.all()
+#     users = {}
+#     users["users"] = [user.json() for user in users_q]
+#     printer.pprint(users)
+#     return jsonify(users)
 
 
 

@@ -1,0 +1,15 @@
+
+.jumbotron {
+  background-color: #FFFFFF;
+  background-size: cover;
+}
+
+.jumbotron .container {
+  font-family: 'Rye', cursive;
+  text-align: center;
+}
+
+.jumbotron .container img {
+  height: 300px;
+  width: auto;
+}

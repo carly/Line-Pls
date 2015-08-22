@@ -1,118 +1,87 @@
 {% extends 'base.html' %}
 
+{% block css%}
+<link rel="stylesheet" href="/static/css/homepage.css">
+<link rel="stylesheet" href="/static/css/d3.css">
+{% endblock %}
+
+{% block d3 %}<script src="http://d3js.org/d3.v3.js"></script>{% endblock %}
 
 {% block jumbotron %}
-
-   <h1>Line Pls</h1>
-   <h3>Crowdsourced Annotations on Shakespeare</h3>
-   <h5>Or an online community for actors and hipsters with pretentious squad goals.</h5>
+  <div class="jumbotron">
+    <div class="container">
+      <img src="/static/img/William_Shakespeare.png">
+       <h1>Line Pls</h1>
+       <h3>Crowdsourced Annotations on Shakespeare</h3>
+       <h5>Or an online community for actors and hipsters with pretentious squad goals.</h5>
+    </div>
+  </div>
 
 {% endblock %}
 
 
 
 {% block content %}
-  <style>
-  .node {
-    cursor: pointer;
-    stroke: #3182bd;
-    stroke-width: 1.5px;
-  }
-
-  .link {
-    fill: none;
-    stroke: #9ecae1;
-    stroke-width: 1.5px;
-  }
-  </style>
 
   <script>
   var width = 960,
       height = 500,
       root;
 
-  var force = d3.layout.force()
-      .size([width, height])
-      .on("tick", tick);
 
   var svg = d3.select("body").append("svg")
       .attr("width", width)
       .attr("height", height);
 
-  var link = svg.selectAll(".link"),
-      node = svg.selectAll(".node");
 
-  // d3 ajax
-
-  d3.json("/genres.json", function(error, json) {
+  d3.json("/shakespeare.json", function(error, json) {
   if (error) return console.warn(error);
   root = json;
-  visualizeit();
+  visualizeit(json);
   });
 
-  d3.json("/plays.json", function(error, json) {
-  if (error) return console.warn(error);
-  root = json;
-  visualizeit();
-  });
-
-  d3.json("/characters.json", function(error, json) {
-  if (error) return console.warn(error);
-  root = json;
-  visualizeit();
-  });
-
-  d3.json("/monologues.json", function(error, json) {
-  if (error) return console.warn(error);
-  root = json;
-  visualizeit();
-  });
-
-  d3.json("/comments.json", function(error, json) {
-  if (error) return console.warn(error);
-  root = json;
-  visualizeit();
-  });
-
-  d3.json("/users.json", function(error, json) {
-  if (error) return console.warn(error);
-  root = json;
-  visualizeit();
-  });
-
-
-  function visualizeit() {
-    var nodes = flatten(root),
-        links = d3.layout.tree().links(nodes);
+  function visualizeit(data) {
+    var nodes = data.nodes;
+    var links = data.links;
 
     // Restart the force layout.
-    force
-        .nodes(nodes)
+    debugger
+    var force = d3.layout.force()
+        .nodes(d3.values(nodes))
         .links(links)
+        .size([width, height])
+        .on("tick", tick)
+        .charge(-200)
         .start();
 
-    // Update the links…
-    link = link.data(links, function(d) { return d.target.id; });
+    var link = svg.selectAll(".link")
+                  .data(force.links())
+                  .enter().append("line")
+                  .attr("class", "link");
 
-    // Exit any old links.
-    link.exit().remove();
+    var node = svg.selectAll(".node")
+                  .data(force.nodes())
+                  .enter().append("g")
+                  .attr("class", "node")
+                  .call(force.drag);
+
+
+    var color = d3.scale.category20();
+
 
     // Enter any new links.
-    link.enter().insert("line", ".node")
-        .attr("class", "link")
+    link
         .attr("x1", function(d) { return d.source.x; })
         .attr("y1", function(d) { return d.source.y; })
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
 
-    // Update the nodes…
-    node = node.data(nodes, function(d) { return d.id; }).style("fill", color);
 
     // Exit any old nodes.
-    node.exit().remove();
+
 
     // Enter any new nodes.
-    node.enter().append("circle")
+    node.append("circle")
         .attr("class", "node")
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; })
@@ -147,7 +116,7 @@
         d.children = d._children;
         d._children = null;
       }
-      update();
+      // visualizeit();
     }
   }
 

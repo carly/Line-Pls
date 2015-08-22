@@ -2,35 +2,39 @@
 <html>
 <head>
   <title>Line, Pls!</title>
-  <link rel="stylesheet" href="/static/styles.css">
   <link href='http://fonts.googleapis.com/css?family=IM+Fell+Great+Primer+SC|Fredericka+the+Great|Kranky|Rye|Jacques+Francois+Shadow|IM+Fell+Double+Pica+SC|Didact+Gothic|Dosis' rel='stylesheet' type='text/css'>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <meta name="google-signin-client_id" content="GOOGLE_LOGIN_CLIENT_ID">
-  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  {% block css %}{% endblock %}
+  {% block d3 %}{% endblock %}
   <meta charset="utf-8">
 </head>
 
 <body>
   <!--Shows the flashed messages when logged in/out-->
 
-
-     <ul>
-    {% for message in get_flashed_messages()%}
-        <li>{{message}}</li>
-    {% endfor %}
-    </ul>
+<div class="nav-bar">
+  <div class = "container">
     <!--If user in session show login, if not show logout-->
     {% if "email" in session %}
         <p>{{ session["name"] }}</p> <!-- if user is in the session(logged in): -->
         <button type="button"><a href='/logout'>Log Out</a></button>
     {% else %} <!-- if no user in the session -->
-        <h3>Log in with your Google Account</h3>
-        <a href="{}">Login with Google</a>
+        <a class="login" href="{}">Login</a>
     {% endif %}
+    <ul class="right">
+   {% for message in get_flashed_messages()%}
+       <li>{{message}}</li>
+   {% endfor %}
+   </ul>
+  </div>
+</div>
 
 
  {% block jumbotron %} {% endblock %}
