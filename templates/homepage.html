@@ -5,24 +5,29 @@
 <link rel="stylesheet" href="/static/css/d3.css">
 {% endblock %}
 
-{% block d3 %}<script src="http://d3js.org/d3.v3.js"></script>{% endblock %}
-
 {% block jumbotron %}
   <div class="jumbotron">
     <div class="container">
-       <h1>Line Pls</h1>
+      <h1>Line Pls</h1>
+  <h5>An online community for actors.</h5>
+<div class="banner">
+    <ul>
+        <li><img src="/static/img/kara-betsy-will.png"></li>
+        <li><img src="/static/img/katie-thomas-kelly.png"></li>
+        <li><img src="/static/img/nate-ang-dil.png"></li>
+        <li><img src="/static/img/spenc-max-adm.png"></li>
+        <li><img src="/static/img/ryan-mia-linds.png"></li>
+    </ul>
+</div>
        <h3>Crowdsourced Annotations on Shakespeare</h3>
-       <h5>Or an online community for actors and hipsters with pretentious squad goals.</h5>
     </div>
   </div>
 
 {% endblock %}
 
-
-
 {% block content %}
 
-<div class="nl-search">
+<!-- <div class="nl-search">
   <div class="container">
     <form id="nl-form" class="nl-form">
 	Shakespeare, I'm looking for a
@@ -44,16 +49,59 @@
 	 	<option value="1">has annotations</option>
 	 	<option value="2">has youtube videos</option>
 	</select>
+  . Or type a play: <input type="text" value="" placeholder="any play" data-subline="For example: <em>Midsummer</em> or <em>Twelfth Night</em>"/>
 	<div class="nl-submit-wrap">
 		<button class="nl-submit" type="submit">Let's Go.</button>
 	</div>
 	<div class="nl-overlay"></div>
 </form>
 </div>
+</div> -->
+
+<!-- Toggle -->
+
+<!-- <div class="nl-field nl-dd"> -->
+	<!-- <a class="nl-field-toggle">play</a> -->
+	<!-- <ul>
+		<li class="nl-dd-checked">play</li>
+		<li>character</li>
+		<li>monologue</li>
+		<li>Japanese</li>
+		<li>Italian</li>
+	</ul>
+</div> -->
+
+<!-- <div class="nl-field nl-dd"> -->
+	<!-- <a class="nl-field-toggle">any genre</a> -->
+	<!-- <ul>
+		<li class="nl-dd-checked">any genre</li>
+		<li>a Comedy</li>
+		<li>a History</li>
+		<li>a Tragedy</li>
+	</ul>
 </div>
 
+<div class="nl-field nl-dd"> -->
+	<!-- <a class="nl-field-toggle">nothing else</a> -->
+	<!-- <ul>
+		<li class="nl-dd-checked">nothing else</li>
+		<li>has annotations</li>
+		<li>has youtube videos</li>
+	</ul>
+</div> -->
 
-<script src="/static/javascript/script.js"></script>
+<!-- <div class="nl-field nl-ti-text"> -->
+	<!-- <a class="nl-field-toggle">any play</a> -->
+	<!-- <ul>
+		<li class="nl-ti-input">
+			<input type="text" value="" placeholder="any play" />
+			<button class="nl-field-go">Let's Go!</button>
+		</li>
+		<li class="nl-ti-example">For example: <em>Midsummer</em> or <em>Twelfth Night</em></li>
+	</ul>
+</div> -->
+
+<!-- <script src="/static/javascript/homepage-search.js"></script> -->
 
   {% endblock %}
 <!-- <h1>Shakespeare</h1>
