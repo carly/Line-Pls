@@ -2,6 +2,7 @@
 
 from flask_sqlalchemy import SQLAlchemy
 from flask import jsonify
+from werkzeug import generate_password_hash, check_password_hash
 
 #This is the connection to the SQlite database that we get through the Flask-SQLAlchemy helper library. On this, we can find the 'session' object where we do most of the interactions (committing etc.)
 
@@ -154,13 +155,28 @@ class User(db.Model):
 
 	user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
 	email = db.Column(db.String(255), default=" ", nullable=False)
-	name = db.Column(db.String(255), default=" ", nullable=False)
+	firstname = db.Column(db.String(255), default=" ", nullable=False)
+	lastname = db.Column(db.String(255), default=" ", nullable=False)
+	pwdhash = db.Column(db.String(54))
 	picture = db.Column(db.String(500), default=" ", nullable=True)
+
+	def __init__(self, firstname, lastname, email, password):
+		self.firstname = firstname.title()
+		self.lastname = lastname.title()
+		self.email = email.lower()
+		self.set_password(password)
+
+	def set_password(self, password):
+		self.pwdhash = generate_password_hash(password)
+
+	def check_password(self, password):
+		return check_password_hash(self.pwdhash, password)
 
 	def json(self):
 		user = {}
 		user["user_id"] = self.user_id
-		user["name"] = self.name
+		user["firstname"] = self.firstname
+		user["lastname"] = self.lastname
 		user["comments"] = [comment.json() for comment in self.comments]
 		user["count"] = len(self.comments)
 		return user

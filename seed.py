@@ -15,7 +15,7 @@ def load_genres(file_name):
 	for line in file_obj:
 		row = line.split(" ")
 		genre_id = row[0]
-		genre_name = row[1]
+		genre_name = row[1].rstrip()
 
 		#Connects data from Genres.txt to variables in the genre table
 		genre = Genre(genre_id=genre_id, genre_name=genre_name)

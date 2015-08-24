@@ -10,6 +10,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
 from model import Play, Scene, Genre, Character, Monologue, User, Comment, connect_to_db, db
 from helper_functions import shakespeare_data
+from forms import SignupForm
 
 
 app = Flask(__name__)
@@ -41,46 +42,70 @@ def index():
     # this broke and i have no idea why
     return render_template("homepage.html")
 
+
+# @app.route('/login')
+# def index():
+#     """Login Page"""
+#     return render_template("login.html")
+#
+@app.route('/signup', methods=["GET", "POST"])
+def signup():
+    """A form to signup and create an account."""
+    form = SignupForm()
+
+    if request.method == "GET":
+        return render_template('signup.html', form=form)
+
+    else:
+        if form.validate() == False:
+            return render_template('signup.html', form=form)
+        else:
+            new_user = User(form.firstname.data, form.lastname.data, form.email.data, form.password.data)
+            db.session.add(new_user)
+            db.session.commit()
+
+            session['email'] = new_user.email
+            session['firstname'] = new_user.firstname
+            return redirect(url_for('/'))
+
+
 #Login w/ Google API
-@google_login.login_success
-def login_success(token, profile):
+# @google_login.login_success
+# def login_success(token, profile):
     #Everything we want from the gmail JSON thats returned from the server
-    user_gmail = profile["email"]
-    user_firstname = profile["given_name"]
-    user_pic = profile["picture"]
+    # user_gmail = profile["email"]
+    # user_firstname = profile["given_name"]
+    # user_pic = profile["picture"]
 
     # Looks for the the users in the db to see if email is registered in the db
-    registered_user = User.query.filter(User.email==user_gmail).first()
-
-    if registered_user:
-        flash("Thanks %s. Welcome back. You are now logged in!" % (user_firstname))
-    else:
+    # registered_user = User.query.filter(User.email==user_gmail).first()
+    #
+    # if registered_user:
+    #     flash("Thanks %s. Welcome back. You are now logged in!" % (user_firstname))
+    # else:
         #if not in db, create a new user in the user db
-        new_user = User(email=user_gmail, name=user_firstname, picture=user_pic)
-        db.session.add(new_user)
-        db.session.commit()
-        flash("Thanks %s. You are now logged in!" % (user_firstname))
-
-    session["email"] = user_gmail
-    session["name"] = user_firstname
-    session["pic"] = user_pic
-    return redirect('/')
+    #     new_user = User(email=user_gmail, name=user_firstname, picture=user_pic)
+    #     db.session.add(new_user)
+    #     db.session.commit()
+    #     flash("Thanks %s. You are now logged in!" % (user_firstname))
+    #
+    # session["email"] = user_gmail
+    # session["name"] = user_firstname
+    # session["pic"] = user_pic
+    # return redirect('/')
 
 # if it doesn't work..
-@google_login.login_failure
-def login_failure(e):
-    jsonify(error=str(e))
-    return redirect('/')
+# @google_login.login_failure
+# def login_failure(e):
+#     jsonify(error=str(e))
+#     return redirect('/')
 
-@app.route('/logout', methods=['GET', 'POST'])
-def logout():
-    """Logs the current user out. Clears the session, redirects to homepage."""
-    session.clear()
-    return redirect('/')
+# @app.route('/logout', methods=['GET', 'POST'])
+# def logout():
+#     """Logs the current user out. Clears the session, redirects to homepage."""
+#     session.clear()
+#     return redirect('/')
 
-@app.route('/signin')
-def signin():
-    return render_template('signup.html')
 
 # Non login related routes
 @app.route('/plays')
