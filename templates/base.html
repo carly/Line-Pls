@@ -4,8 +4,8 @@
   <title>Line, Pls!</title>
   <link href='http://fonts.googleapis.com/css?family=IM+Fell+Great+Primer+SC|Fredericka+the+Great|Kranky|Rye|Jacques+Francois+Shadow|IM+Fell+Double+Pica+SC|Didact+Gothic|Dosis' rel='stylesheet' type='text/css'>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <script src="/static/javascript/slider.js"></script>
-  <script src="//unslider.com/unslider.min.js"></script>
+  <!-- <script src="/static/javascript/slider.js"></script>
+  <script src="//unslider.com/unslider.min.js"></script> -->
   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -21,23 +21,42 @@
 <body>
   <!--Shows the flashed messages when logged in/out-->
 
+<header>
   <nav class="navbar">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img alt="Brand" src="/static/img/willy.png">
-      </a>
+    <div class="container">
+      <div class="row">
+          <div class="col-md-4 col-xs-4 left">
+           <a href="#">Actors</a>
+           <a href="#">Monologues</a>
+           <a href="#">YouTube</a>
+         </div>
+      <div class="col-md-3 col-xs-3">
+        <a class="logo" href="#"><h3>Line, Pls</h3></a>
+      </div>
+      <div class="col-md-4 col-xs-4 right">
+          <a href="#">Sign Up</a>
+           <a href="#">Login</a>
+           <a href="#">My Account</a>
+    </div>
+  </div>
+</div>
+</nav>
+<header>
+
+
     <!--If user in session show login, if not show logout-->
-        {% if "email" in session %}
-          <p>{{ session["name"] }}</p> <!-- if user is in the session(logged in): -->
-          <button type="button"><a href='/logout'>Log Out</a></button>
-          {% else %} <!-- if no user in the session -->
-          <a class="login" href="{}">Login</a>
+        <!-- {% if "email" in session %}
+          <! <p>{{ session["name"] }}</p> <! if user is in the session(logged in): -->
+          <!-- <button type="button"><a href='/logout'>Log Out</a></button> -->
+          <!-- {% else %} <! if no user in the session -->
+          <!-- <a class="login" href="{}">Login</a>
           {% endif %}
       <ul class="right">
         {% for message in get_flashed_messages()%}
          <li>{{message}}</li>
          {% endfor %}
      </ul>
+      -->
  </div>
 </nav>
 

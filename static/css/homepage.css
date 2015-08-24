@@ -1,38 +1,116 @@
 
-.jumbotron {
-  background-color: #FFFFFF;
-  background-size: cover;
-  background-image: url('')
-  width: 100%;
+h1 {
+  padding-top: 100px;
+  padding-left: 30px;
+  text-align: left;
+  font-family: 'Fredericka the Great', cursive;
+
 }
 
-.jumbotron .container {
-  font-family: 'Rye', cursive;
-  text-align: center;
-}
-
-.banner {
-  position: relative;
-  overflow: auto;
+ h3 {
+   padding-left: 30px;
+   text-align: left;
+   font-family: 'Fredericka the Great', cursive;
  }
 
-.banner li { list-style: none; }
-
-.jumbotron .container .banner ul li img {
-  float: left;
-  width: 75%;
-  height: 75%;
+.jumbotron {
+  color:#ff4444;
+  width: 100%;
+  padding: 0;
+  margin: auto;
+  background-image: url("/static/img/mia.jpg");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 450px;
+  background-color: #FFF;
 }
 
-.nl-search .container .nl-form {
-  margin-top: -50px;
-  margin-left: 350px;
+.jumbotron button {
+  font-family: 'Rye', cursive;
+  border: 1px solid #404040;
+  border-radius: 1em;
+  box-shadow: none;
+  background-color: #404040;
+  color: #fff;
+  padding: 10px 50px;
+  margin-left: 50px;
+  margin-top: 20px;
+  opacity: 0.5;
 }
 
-.willy .container img {
+.jumbotron button:hover {
+  background-color: #05c1ff;
+  border: 1px solid #05c1ff;
+}
+
+.main {
+  height: 400px;
+  background-color: #ff4444;
+}
+ .explains {
+  display: inline-block;
+  margin: 40px;
+  padding: 20px;
+}
+
+.explains h2, p {
+  font-family: 'Fredericka the Great', cursive;
+  text-align: center;
+  color: #fff;
+}
+
+.explains .graph {
   height: 200px;
   width: 200px;
 }
+
+.explains .youtube {
+  margin-left: 60px;
+  height: 100px;
+  width: 100px;
+}
+
+.explains .textbubble {
+  margin-left: 60px;
+  height: 100px;
+  width: 100px;
+}
+
+
+.support .container {
+  height: 400px;
+  background-color: #fff;
+}
+
+.visual {
+  display: inline-block;
+  margin: 40px;
+  padding: 20px;
+}
+
+.willy {
+  margin-top: 30px;
+  margin-right: 50px;
+  float:left;
+  height: 300px;
+  width: 300px;
+}
+
+.nl-search .container {
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+/*.jumbotron .container {
+  height: 100%
+}
+
+.carousel {
+  padding-top: 40px;
+}*/
+
+
 
 /*Search Form*/
 

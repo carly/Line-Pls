@@ -1,29 +1,64 @@
 /* Base.html */
 
-.navbar .container-fluid {
+html, body {
   font-family: 'Didact Gothic', sans-serif;
-  /*margin-top: 20px;*/
-  width: auto;
-  padding: 15px 0;
-  background-color:#333333;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar-brand img {
-  height: 50px;
-  width: 50px;
-  margin-left: 20px;
-  margin-top: -20px;
+header .navbar {
+  margin: 0;
 }
-.login {
-  color: #fff;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  letter-spacing: 1.3px;
-  padding: 50px 10px;
+
+header .navbar .container{
+  background-color:#404040;
+  width: 100%;
+}
+
+ .col-md-4 a, .col-xs-4 a {
+  text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+  color: #fff;
+  font-family: 'Rye', cursive;
+  padding: 20px;
 }
+
+ .col-md-4 a:hover, .col-xs-4 a:hover{
+   color: #ff4444;
+ }
+
+.right{
+  text-align: right;
+  padding-top: 40px;
+}
+
+.left{
+  padding-top: 40px;
+  margin-right: 50px;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+.logo h3 {
+  padding: 30px 5px;
+  margin: 0px;
+  background-color:#ff4444;
+  text-align: center;
+  color:#fff;
+  font-family: 'Rye', cursive;
+  text-decoration: none;
+}
+
+.logo h3:hover{
+  background-color: #05c1ff;
+}
+
+
+
+
+
 
 footer {
   background-color: #333;
