@@ -1,13 +1,8 @@
-from flask.ext.wtf import Form, TextField, TextAreaField, SubmitField, validators, ValidationError, PasswordField
-from models import db, User
+from wtforms import Form, BooleanField, SubmitField, TextField, PasswordField, validators
+from wtforms.validators import DataRequired
+from model import db, User
 
 
-class ContactForm(Form):
-  name = TextField("Name")
-  email = TextField("Email")
-  subject = TextField("Subject")
-  message = TextAreaField("Message")
-  submit = SubmitField("Send")
 
 class SignupForm(Form):
   firstname = TextField("First name",  [validators.Required("Please enter your first name.")])

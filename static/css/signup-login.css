@@ -1,6 +1,19 @@
 /* Signup form */
+h2 {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.signup-form .container {
+  height: 500px;
+  width: 420px;
+}
+
+/*.signup-form .container,*/
 form input#firstname,
 form input#lastname,
+form input#email,
 form input#password {
   width: 400px;
   background-color: #fafafa;
@@ -10,8 +23,15 @@ form input#password {
   border: 1px solid #cccccc;
   padding: 5px;
   font-size: 1.1em;
+  margin-bottom: 10px;
 }
 
-form input#password {
-  margin-bottom: 10px;
+form input#submit {
+  padding: 10px;
+}
+
+form input#submit:hover {
+  background-color: #05c1ff;
+  border: 1px solid #05c1ff;
+  color: #fff;
 }

@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
+{% block css %}<link rel="stylesheet" href="/static/css/signup-login.css"> {% endblock %}
+
 {%block content %}
 
-<h2>Sign up</h2>
-
+<h2>Wanna join the Line,Pls Ensemble?</h2>
+<div class="signup-form">
+  <div class="container">
   {% for message in form.firstname.errors %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
@@ -21,7 +24,6 @@
   {% endfor %}
 
   <form action="{{ url_for('signup') }}" method="post">
-    {{ form.hidden_tag() }}
 
     {{ form.firstname.label }}
     {{ form.firstname }}
@@ -37,6 +39,7 @@
 
     {{ form.submit }}
   </form>
-
+</div>
+</div>
 
 {% endblock %}
