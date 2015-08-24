@@ -13,6 +13,7 @@ from helper_functions import shakespeare_data
 
 
 app = Flask(__name__)
+
 printer = pprint.PrettyPrinter()
 app.secret_key = """Need to figure out"""
 app.jinja_env.undefined = StrictUndefined
@@ -77,6 +78,9 @@ def logout():
     session.clear()
     return redirect('/')
 
+@app.route('/signin')
+def signin():
+    return render_template('signup.html')
 
 # Non login related routes
 @app.route('/plays')

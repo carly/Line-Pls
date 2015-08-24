@@ -14,15 +14,19 @@
       <li>Scene: {{ scene }}</li>
       <li>Description: {{ description }} </li>
     </ul>
-  </div>
-  </div>
+
 <!--Monologue Text-->
     <h3> {{ name }}: </h3>
     <!--Loops through the list 'text' and displays each element, which is a line of the monologue-->
     {% for line in text %}
-      <div class="text" id="line">{{ line|safe }}
-          <img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/128/chat-icon.png" alt="comment-icon" width="20" height="20" id="{{ loop.index0 }}" class="text-bubble">
-      </div>
+
+      <ul>
+      <li class="text" id="line">{{ line|safe }}
+          <img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/128/chat-icon.png" alt="comment-icon" width="20" height="20" id="{{ loop.index0 }}" class="text-bubble"></li>
+      </ul>
+  
+
+
 <div class="add-comment" id="add-{{ loop.index0 }}" style="display:none">
 <!--Comment icon-->
 <!-- comment form that sends text + monologue info to server.py when submitted -->
@@ -34,6 +38,8 @@
     <input type="submit" value="translate"/>
 </form>
 </div>
+</div>
+</div>
 
 {% endfor %}
 
@@ -41,13 +47,23 @@
 <!--jQuery to show/hide comment box-->
   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
   <script>
-  // var target;
+  var target;
       var tlist = $(".text-bubble");
       for (var i = 0; i < tlist.length; i++){
          $(tlist[i]).on("click", function(){
             $("#add-"+ this.id ).toggle();
           });
         }
+
+//     $('#popover').popover({
+//     html : true,
+//     title: function() {
+//       return $("#popover-head").html();
+//     },
+//     content: function() {
+//       return $("#popover-content").html();
+//     }
+// });
   </script>
 
 {% endblock %}
