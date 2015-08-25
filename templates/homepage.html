@@ -12,7 +12,11 @@
 
   <h1>Line, Pls!</h1>
   <h3>An online community by actors for actors</h3>
-  <a href="/signup"><button class="sign up">SIGN UP</button></a>
+  {% if 'username' in session %}
+  <a href="/search"><button class="search-monos">FIND A MONOLOGUE</button></a>
+  {% else %}
+  <a href="/signup"><button class="sign-up">SIGN UP</button></a>
+  {% endif %}
 </div>
 </div>
 

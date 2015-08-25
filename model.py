@@ -155,14 +155,16 @@ class User(db.Model):
 
 	user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
 	email = db.Column(db.String(255), default=" ", nullable=False)
-	firstname = db.Column(db.String(255), default=" ", nullable=False)
-	lastname = db.Column(db.String(255), default=" ", nullable=False)
-	pwdhash = db.Column(db.String(54))
+	username = db.Column(db.String(255), default=" ", nullable=False)
+	pwdhash = db.Column(db.String(300))
 	picture = db.Column(db.String(500), default=" ", nullable=True)
+	name = db.Column(db.String(100), default=" ", nullable="true")
+	bio = db.Column(db.String(500), default=" ", nullable="true")
+	website = db.Column(db.String(300), default=" ", nullable="true")
+	twitter = db.Column(d)
 
-	def __init__(self, firstname, lastname, email, password):
-		self.firstname = firstname.title()
-		self.lastname = lastname.title()
+	def __init__(self, username, email, password):
+		self.username = username.lower()
 		self.email = email.lower()
 		self.set_password(password)
 
@@ -175,8 +177,7 @@ class User(db.Model):
 	def json(self):
 		user = {}
 		user["user_id"] = self.user_id
-		user["firstname"] = self.firstname
-		user["lastname"] = self.lastname
+		user["username"] = self.username
 		user["comments"] = [comment.json() for comment in self.comments]
 		user["count"] = len(self.comments)
 		return user

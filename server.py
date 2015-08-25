@@ -10,7 +10,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
 from model import Play, Scene, Genre, Character, Monologue, User, Comment, connect_to_db, db
 from helper_functions import shakespeare_data
-from forms import SignupForm
+from forms import SignupForm, SigninForm
 
 
 
@@ -52,23 +52,78 @@ def index():
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
     """A form to signup and create an account."""
-    form = SignupForm()
+    form = SignupForm(request.form)
 
-    if request.method == "GET":
-        return render_template('signup.html', form=form)
+    if 'username' in session:
+        return redirect(url_for('profile'))
 
-    else:
-        if form.validate() == False:
-            return render_template('signup.html', form=form)
-        else:
-            new_user = User(form.firstname.data, form.lastname.data, form.email.data, form.password.data)
+    if request.method == 'POST' and form.validate():
+            new_user = User(username=form.username.data,email=form.email.data, password=form.password.data)
             db.session.add(new_user)
             db.session.commit()
+            # flash('Welcome to the ensemble!')
+            return redirect(url_for('profile'))
 
             session['email'] = new_user.email
-            session['firstname'] = new_user.firstname
-            return redirect(url_for('/'))
+            session['username'] = new_user.username
+            return redirect(url_for('profile'))
 
+    return render_template('signup.html', form=form)
+
+@app.route('/signin', methods=["GET", "POST"])
+def signin():
+    form = SigninForm(request.form)
+
+    if 'username' in session:
+        return redirect(url_for('profile'))
+
+    if request.method == "POST":
+        if form.validate()==False:
+            return render_template('signin.html', form=form)
+        else:
+            session['username']= form.username.data
+            user = User.query.filter(User.username==form.username.data.lower()).first()
+            session['email']= user.email
+            return redirect(url_for('profile'))
+
+    elif request.method == "GET":
+        return render_template('signin.html', form=form)
+
+@app.route('/signout')
+def signout():
+
+    if 'username' not in session:
+        return redirect(url_for('signin'))
+
+    session.pop('username', None)
+    return redirect(url_for('index'))
+
+
+@app.route('/profile')
+def profile():
+    """Renders user's profile page."""
+
+    if 'username' not in session:
+        return redirect(url_for('signin'))
+
+    user = User.query.filter(User.username==session['username']).first()
+
+    if user is None:
+        return redirect(url_for('signup'))
+    else:
+        return render_template('profile.html')
+
+@app.route('/search')
+def search():
+    """Renders search page."""
+
+    return render_template('search.html')
+
+@app.route('/account')
+def account():
+    """renders account form."""
+
+    return render_template('myaccount.html')
 
 #Login w/ Google API
 # @google_login.login_success

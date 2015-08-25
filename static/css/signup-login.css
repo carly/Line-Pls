@@ -4,17 +4,18 @@ h2 {
   margin-top: 50px;
   margin-bottom: 20px;
 }
+h4 {text-align: center;}
 
-.signup-form .container {
+.signin-form .container, .signup-form .container {
   height: 500px;
   width: 420px;
 }
 
 /*.signup-form .container,*/
-form input#firstname,
-form input#lastname,
+form input#username,
 form input#email,
-form input#password {
+form input#password,
+form input#confirm {
   width: 400px;
   background-color: #fafafa;
   -webkit-border-radius: 3px;

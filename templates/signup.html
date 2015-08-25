@@ -7,11 +7,7 @@
 <h2>Wanna join the Line,Pls Ensemble?</h2>
 <div class="signup-form">
   <div class="container">
-  {% for message in form.firstname.errors %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
-
-  {% for message in form.lastname.errors %}
+  {% for message in form.username.errors %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
 
@@ -23,19 +19,20 @@
     <div class="flash">{{ message }}</div>
   {% endfor %}
 
-  <form action="{{ url_for('signup') }}" method="post">
 
-    {{ form.firstname.label }}
-    {{ form.firstname }}
+  <form action="{{ url_for('signup') }}" method=post>
 
-    {{ form.lastname.label }}
-    {{ form.lastname }}
+    {{ form.username.label }}
+    {{ form.username }}
 
     {{ form.email.label }}
     {{ form.email }}
 
     {{ form.password.label }}
     {{ form.password }}
+
+    {{ form.confirm.label }}
+    {{ form.confirm }}
 
     {{ form.submit }}
   </form>

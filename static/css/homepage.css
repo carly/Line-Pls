@@ -44,6 +44,10 @@ h1 {
   border: 1px solid #05c1ff;
 }
 
+.search-mono {
+  margin-left: 60px;
+}
+
 .main {
   height: 400px;
   background-color: #ff4444;
