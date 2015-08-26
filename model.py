@@ -215,17 +215,27 @@ class Comment(db.Model):
 
 
 
-###########################################################################
-# Hold off on this until we figure out YoutubeAPI
-#class YoutubeVideo(db.Model):
-#	"""Youtube videos connected to Monologues"""
-#	#video_id (primary key)
-#	#mono_id (foreign key - references Monologues)
-#	#user_id (foreign key - references Users)
-#	#url
-#	__tablename__="youtube_videos"
 
-###########################################################################
+class Youtube(db.Model):
+	"""Youtube videos connected to Monologues"""
+	#video_id (primary key)
+	#mono_id (foreign key - references Monologues)
+	#user_id (foreign key - references Users)
+	#url
+	__tablename__="youtube"
+
+	youtube_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	mono_id = db.Column(db.Integer, db.ForeignKey('monologues.mono_id'), nullable=False)
+	youtube_key = db.Column(db.String(100), nullable=False)
+	user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), default=0, nullable=True)
+
+	# Define relationship between youtube videos and monologues
+	monologue = db.relationship("Monologue",
+							backref= db.backref("youtube", order_by=youtube_id))
+
+	# Define relationship between youtube videos and associated Users
+	user = db.relationship("User",
+							backref=db.backref("youtube", order_by=youtube_id))
 
 
 

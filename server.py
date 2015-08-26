@@ -8,9 +8,9 @@ from jinja2 import StrictUndefined
 from flask import Flask, render_template, redirect, request, flash, session, jsonify, url_for
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
-from model import Play, Scene, Genre, Character, Monologue, User, Comment, connect_to_db, db
+from model import Play, Scene, Genre, Character, Monologue, User, Comment, Youtube, connect_to_db, db
 from helper_functions import shakespeare_data
-from forms import SignupForm, SigninForm
+from forms import SignupForm, SigninForm, YoutubeForm
 
 
 
@@ -144,17 +144,18 @@ def account():
 @app.route('/update_profile', methods=["POST"])
 def update_profile():
     """Change user info in db if the user changes the basic information form."""
-
+    print request.form
     new_name = request.form.get("name")
     new_email = request.form.get("email")
     new_username = request.form.get("username")
     new_bio = request.form.get("bio")
     new_website = request.form.get("web")
     new_twitter = request.form.get("twitter")
+    print new_bio
 
     user_id = session["id"]
     # Updates user info in database
-
+    #
     user = User.query.filter(User.user_id==user_id).first()
 
     if user is not None:
@@ -300,6 +301,19 @@ def store_comments():
     db.session.commit()
 
     return redirect('/monologue/' + str(mono_id))
+
+
+@app.route('/add_youtube', methods=["POST"])
+def add_new_youtube():
+    """Stores a new youtube video into the db associated with a particular monoogue and user."""
+
+    if request.method == 'POST' and form.validate():
+        new_youtube = Youtube(youtube_url=form.youtube_url.data,mono_id=form.mono_id.data, user_id=form.user_id.data)
+        db.session.add(new_user)
+        db.session.commit()
+        # flash('Welcome to the ensemble!')
+        return redirect('/monologue/' + str(form.mono_id.data))
+
 
 ######## JSON ROUTES ##########
 

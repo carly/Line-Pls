@@ -7,41 +7,71 @@
 <!--Displays monologue information based on monologue id in database-->
 <div class="mono_details">
   <div class="container">
-  <h1>Monologue: {{ mono_id }} </h1>
+  <div class="row">
+  <div class="col-md-4 col-md-offset-4 col-xs-4 col-xs-offset-4">
+  <h1>{{ name }} </h1>
     <ul>
-      <li>Play: <b>{{ play_title }}</b></li>
-      <li>Act: {{ act }}</li>
-      <li>Scene: {{ scene }}</li>
+      <li><h2><b>{{ play_title }}</b><h2></li>
+      <li>Act: {{ act }} | Scene: {{ scene }}</li>
       <li>Description: {{ description }} </li>
     </ul>
+    <h3> {{ name }}: </h3>
+  </div>
+</div>
+</div>
+
+<div class="container">
 
 <!--Monologue Text-->
-    <h3> {{ name }}: </h3>
     <!--Loops through the list 'text' and displays each element, which is a line of the monologue-->
-    {% for line in text %}
-
       <ul>
-      <li class="text" id="line">{{ line|safe }}
-          <img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/128/chat-icon.png" alt="comment-icon" width="20" height="20" id="{{ loop.index0 }}" class="text-bubble"></li>
+        {% for line in text %}
+        <!--Displays each line in the monologue-->
+        <div class="col-md-4">
+        <div class="add-comment" id="add-{{ loop.index0 }}" style="display:none">
+        <!-- comment form that sends text + monologue info to server.py when submitted -->
+          <form action="/comments" method="POST">
+            <label for="comment">Acting Coach Notes:</label>
+            <textarea name="comment-text"></textarea>
+            <input type="hidden" name="mono_id" value="{{ mono_id }}">
+            <input type="hidden" name="line_id" value="{{ loop.index0 }}">
+            <input type="submit" value="translate"/>
+          </form>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-md-4">
+            <li class="text" id="line"><img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/128/chat-icon.png" alt="comment-icon" width="20" height="20" id="{{ loop.index0 }}" class="text-bubble">
+              {{ line|safe }}
+              <!--Comment icon-->
+                </li>
+          </div>
+      <!--POP OVER FORM-->
+
+        </div> <!-- close row -->
+        {% endfor %}
       </ul>
-  
+</div> <!-- close container-->
+
+</div> <!--closes row-->
+</div> <!--closes add-comment div-->
+</div> <!--closes container div-->
+</div> <!--closes mono-details div-->
+
+<!--Div that floats comments/youtube divs to right of page-->
+<div class="cmt-yt">
+  <div class="container">
+  <div class="row">
+  <div class="col-md-5 col-xs-5">
+      <!--Display Comments div-->
+      <div class="comment-display">
 
 
-<div class="add-comment" id="add-{{ loop.index0 }}" style="display:none">
-<!--Comment icon-->
-<!-- comment form that sends text + monologue info to server.py when submitted -->
-  <form action="/comments" method="POST">
-    <label for="comment">How would you say this in 2015?:</label>
-    <textarea name="comment-text"></textarea>
-    <input type="hidden" name="mono_id" value="{{ mono_id }}">
-    <input type="hidden" name="line_id" value="{{ loop.index0 }}">
-    <input type="submit" value="translate"/>
-</form>
-</div>
-</div>
-</div>
+</div> <!--closes col-md-5 col-xs-5 -->
+</div> <!--closes row -->
+</div> <!--closes container-->
+</div> <!--closes cmt-yt-->
 
-{% endfor %}
 
 <!-- Fix me-->
 <!--jQuery to show/hide comment box-->
