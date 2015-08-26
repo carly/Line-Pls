@@ -161,7 +161,7 @@ class User(db.Model):
 	name = db.Column(db.String(100), default=" ", nullable="true")
 	bio = db.Column(db.String(500), default=" ", nullable="true")
 	website = db.Column(db.String(300), default=" ", nullable="true")
-	twitter = db.Column(d)
+	twitter = db.Column(db.String(60), default=" ", nullable="true")
 
 	def __init__(self, username, email, password):
 		self.username = username.lower()
@@ -179,6 +179,9 @@ class User(db.Model):
 		user["user_id"] = self.user_id
 		user["username"] = self.username
 		user["comments"] = [comment.json() for comment in self.comments]
+		user["name"] = self.name
+		user['bio'] = self.bio
+		user['twitter'] = self.twitter
 		user["count"] = len(self.comments)
 		return user
 

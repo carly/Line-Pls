@@ -84,6 +84,7 @@ def signin():
             session['username']= form.username.data
             user = User.query.filter(User.username==form.username.data.lower()).first()
             session['email']= user.email
+            session['id'] = user.user_id
             return redirect(url_for('profile'))
 
     elif request.method == "GET":
@@ -122,8 +123,51 @@ def search():
 @app.route('/account')
 def account():
     """renders account form."""
+    # Since we already have these values in session, we wont' include in db query.
+    email = session['email']
+    username = session['username']
 
-    return render_template('myaccount.html')
+    # Query db so we can populate account form with current db values for user
+    user = User.query.filter(User.username==username).first()
+    if user is not None:
+        name = user.name
+        bio = user.bio
+        web = user.website
+        twitter = user.twitter
+    else:
+        name = ""
+        bio = ""
+        web = ""
+        twitter = ""
+    return render_template('myaccount.html', name=name, bio=bio, web=web, twitter=twitter)
+
+@app.route('/update_profile', methods=["POST"])
+def update_profile():
+    """Change user info in db if the user changes the basic information form."""
+
+    new_name = request.form.get("name")
+    new_email = request.form.get("email")
+    new_username = request.form.get("username")
+    new_bio = request.form.get("bio")
+    new_website = request.form.get("web")
+    new_twitter = request.form.get("twitter")
+
+    user_id = session["id"]
+    # Updates user info in database
+
+    user = User.query.filter(User.user_id==user_id).first()
+
+    if user is not None:
+        user.name = new_name
+        user.email= new_email
+        user.username = new_username
+        user.bio= new_bio
+        user.website= new_website
+        user.twitter= new_twitter
+
+    db.session.commit()
+    return redirect(url_for('account'))
+
 
 #Login w/ Google API
 # @google_login.login_success
