@@ -6,94 +6,119 @@
 
 <!--Displays monologue information based on monologue id in database-->
 <div class="mono_details">
-  <div class="container">
+ <div class="container">
   <div class="row">
-  <div class="col-md-4 col-md-offset-4 col-xs-4 col-xs-offset-4">
-  <h1>{{ name }} </h1>
-    <ul>
-      <li><h2><b>{{ play_title }}</b><h2></li>
-      <li>Act: {{ act }} | Scene: {{ scene }}</li>
-      <li>Description: {{ description }} </li>
-    </ul>
-    <h3> {{ name }}: </h3>
-  </div>
-</div>
-</div>
+    <!--Column with Monologue Content - Left side of page-->
+   <div class="col-md-5 col-xs-5 ">
+    <!--Monologue Header-->
+          <h1>{{ name }} </h1>
+            <h2><b>{{ play_title }}</b><h2>
+                <h3>Act: {{ act }} | Scene: {{ scene }}</h3>
+                <h4>Description: {{ description }}</h4>
+        <hr>
 
-<div class="container">
+    <!--Monologue Text-->
+          <h3> {{ name }}: </h3>
 
-<!--Monologue Text-->
     <!--Loops through the list 'text' and displays each element, which is a line of the monologue-->
-      <ul>
         {% for line in text %}
         <!--Displays each line in the monologue-->
-        <div class="col-md-4">
-        <div class="add-comment" id="add-{{ loop.index0 }}" style="display:none">
-        <!-- comment form that sends text + monologue info to server.py when submitted -->
-          <form action="/comments" method="POST">
-            <label for="comment">Acting Coach Notes:</label>
-            <textarea name="comment-text"></textarea>
-            <input type="hidden" name="mono_id" value="{{ mono_id }}">
-            <input type="hidden" name="line_id" value="{{ loop.index0 }}">
-            <input type="submit" value="translate"/>
-          </form>
-        </div>
-      </div>
-        <div class="row">
-          <div class="col-md-4">
-            <li class="text" id="line"><img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/128/chat-icon.png" alt="comment-icon" width="20" height="20" id="{{ loop.index0 }}" class="text-bubble">
-              {{ line|safe }}
+          <div class="text" id="line">
+            <h4>{{ line|safe }}
               <!--Comment icon-->
-                </li>
-          </div>
-      <!--POP OVER FORM-->
-
-        </div> <!-- close row -->
-        {% endfor %}
-      </ul>
-</div> <!-- close container-->
-
-</div> <!--closes row-->
-</div> <!--closes add-comment div-->
-</div> <!--closes container div-->
-</div> <!--closes mono-details div-->
-
-<!--Div that floats comments/youtube divs to right of page-->
-<div class="cmt-yt">
-  <div class="container">
-  <div class="row">
-  <div class="col-md-5 col-xs-5">
-      <!--Display Comments div-->
-      <div class="comment-display">
+                <a href="#" data-toggle="modal" data-target="#myModalHorizontal"><img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/128/chat-icon.png" alt="comment-icon" width="20" height="20" id="{{ loop.index0 }}" class="text-bubble" >
+                </a></h4>
+          </div> <!--end text line div-->
+       {% endfor %}
 
 
-</div> <!--closes col-md-5 col-xs-5 -->
-</div> <!--closes row -->
+        <!-- Modal -->
+    <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+                  <!-- Modal Header -->
+                 <div class="modal-header">
+                     <button type="button" class="close"
+                        data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                     </button>
+                     <h4 class="modal-title" id="myModalLabel">
+                         Acting Coach Notes
+                     </h4>
+                 </div>
+                 <!--End Model Header-->
+
+                 <!-- Modal Body -->
+              <div class="modal-body">
+                    <!-- comment form that sends text + monologue info to server.py when submitted -->
+                <form action="/comments" class="form-horizontal" role="form" method="post">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="comment">Thoughts?</label>
+                      <div class="col-sm-10">
+                        <textarea rows="5" cols="50" name="comment-text" placeholder="This is what I think..." ></textarea>
+                        <input type="hidden" class="form-control" name="mono_id" value="{{ mono_id }}"/>
+                        <input type="hidden" class="form-control" name="line_id" value="{{ loop.index0 }}"/>
+                      </div>
+                  </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Thats what I think.</button>
+                      </div>
+                    </div>
+               </form>
+               <!-- End Model Body -->
+
+               <!-- Modal Footer -->
+                 <div class="modal-footer">
+                  {% for key, in comment_list %}
+                  <div class="comment">
+                    <h6>{{comment.user}}
+                    <p>{{ comment.comment_text }}</p>
+                  </div> <!--close comment-->
+                  <button type="button" class="btn btn-default"
+                          data-dismiss="modal">
+                              Close
+                  </button>
+                </div><!--close modal footer-->
+              </div><!--close modal body-->
+            </div><!--close modal content-->
+        </div><!--close modal dialog-->
+      </div><!--close modal fade-->
+    </div><!--close col-md-5 col-xs-5-->
+
+  <!-- Column that displays youtube videos - Right side of Page-->
+    <div class="col-md-6 col-xs-7">
+        <div class="youtube form">
+          <h3>POST A VIDEO</h3>
+          <form action="/youtube" method="POST">
+            <div class="form-group">
+              <label for="field-youtube">Post a youtube URL:</label>
+              <input type="text" name="youtube_url" id="field-youtube"
+                     placeholder="https://youtu.be/paste_your_url_key"/>
+            </div>
+            <div class="form-group">
+              <input type="hidden" name="mono_id" value="{{ mono_id }}"/>
+              <input type="hidden" name="line_id" value="{{ loop.index0 }}"/>
+            </div>
+            <div class="form-group">
+            <input type="submit" value="translate"/>
+           </div>
+          </form>
+        </div> <!--closes youtube form-->
+    </div> <!--closes col-md-5-->
+  </div> <!--closes row-->
 </div> <!--closes container-->
-</div> <!--closes cmt-yt-->
+</div><!--closes mono-details-->
 
 
-<!-- Fix me-->
-<!--jQuery to show/hide comment box-->
-  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- jQuery to generate each comment modal.-->
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
   <script>
-  var target;
-      var tlist = $(".text-bubble");
-      for (var i = 0; i < tlist.length; i++){
-         $(tlist[i]).on("click", function(){
-            $("#add-"+ this.id ).toggle();
-          });
-        }
-
-//     $('#popover').popover({
-//     html : true,
-//     title: function() {
-//       return $("#popover-head").html();
-//     },
-//     content: function() {
-//       return $("#popover-content").html();
-//     }
-// });
+        $('#myModal').on('shown.bs.modal', function () {
+          $('#myInput').focus()
+        })
   </script>
 
 {% endblock %}

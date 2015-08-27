@@ -260,27 +260,36 @@ def show_monologue(mono_id):
 
 	# Gets all the info we need from the Monologues Table
 	mono_object = Monologue.query.filter(Monologue.mono_id==mono_id).first()
-	#character, play, text, act, scene, scene description
-	#these are only here to access the things we need from the Play/Characters tables
-	char_id = mono_object.char_id
-	play_id = mono_object.play_id
-	scene = mono_object.scene_id
+        mono_id = mono_object.mono_id
+        char_id = mono_object.char_id
+        play_id = mono_object.play_id
+        scene = mono_object.scene_id
+        act = mono_object.act_id
+        text = mono_object.text
+        text = text.replace('[p]', '<br>').split('<br>')
 
-	# Gets all the info we need from the Play, Scene, and Character tables using values pulled from the Monologue table
+	# Gets info about this monologue ffrom Play Table
 	play_object = Play.query.filter(Play.play_id==play_id).first()
+        play_title = play_object.title
+
+    # Gets info about this monologue from Scene Table
 	scene_object = Scene.query.filter(Scene.scene_id==scene).first()
+        description = scene_object.s_description
+
+    # Get's info about this monologue from Character's table
 	char_object = Character.query.filter(Character.char_id==char_id).first()
+        name = char_object.char_name
 
-	#Everything going into the view.. + scene, which we use up there to get the description
-	mono_id = mono_object.mono_id
-	text = mono_object.text
-	act = mono_object.act_id
-	description = scene_object.s_description
-	play_title = play_object.title
-	name = char_object.char_name
-	text = text.replace('[p]', '<br>').split('<br>')
+    # Gets list of comments associated with this monologue from Comments table
+        comments_list = Comment.query.filter(Comment.mono_id==mono_id).all()
 
-	return render_template("monologue.html", mono_id=mono_id, name=name, play_title=play_title, act=act, scene=scene, description=description, text=text)
+    comments_dict = {}
+
+    for comment in comments_list:
+        user = User.Query.filter(User.user_id==comment.user_id).first()
+        comments_dict["user.username"] = comment.comment_text
+
+	return render_template("monologue.html", mono_id=mono_id, name=name, play_title=play_title, act=act, scene=scene, description=description, text=text, comments_dict=comments_dict)
 
 @app.route('/comments', methods=["POST"])
 def store_comments():
