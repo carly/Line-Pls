@@ -228,6 +228,7 @@ class Youtube(db.Model):
 	mono_id = db.Column(db.Integer, db.ForeignKey('monologues.mono_id'), nullable=False)
 	youtube_key = db.Column(db.String(100), nullable=False)
 	user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), default=0, nullable=True)
+	username = db.Column(db.String(100), default=" ", nullable=True)
 
 	# Define relationship between youtube videos and monologues
 	monologue = db.relationship("Monologue",

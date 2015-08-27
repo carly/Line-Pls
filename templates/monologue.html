@@ -14,7 +14,7 @@
           <h1>{{ name }} </h1>
             <h2><b>{{ play_title }}</b><h2>
                 <h3>Act: {{ act }} | Scene: {{ scene }}</h3>
-                <h4>Description: {{ description }}</h4>
+                <h4>Description: {{ description|safe }}</h4>
         <hr>
 
     <!--Monologue Text-->
@@ -91,25 +91,37 @@
 
   <!-- Column that displays youtube videos - Right side of Page-->
     <div class="col-md-5">
-          <h3>POST A VIDEO</h3>
-          <h4>Paste your video key below. </h4>
-             <h5><b>http://youtu.be/[this_is_your_key]<b></h5>
-          <form action="/add_youtube" method="post">
-            <div class="form-group">
-                <label for="field-url">video key:</label>
-                <input type="text" name="youtube" class="form-control" id="field-url"
-                 placeholder="just paste the key, not the http://youtu.be/ part ........">
-            </div>
-            <div class="form-group">
-                <input type="hidden" class="form-control" name="user_id" value="session['id']">
-            </div>
-            <div class="form-group">
-                <input type="hidden" class="form-control" name="mono_id" value="{{ mono_id }}">
-            </div>
-            <div class="form-group">
-                <input type="submit" value="add video">
-            </div>
-            </form>
+      <h2>POST A VIDEO</h2>
+      <h4>Have you performed this monologue?</h4>
+      <h5>Awesome! Share your performance with other actors like you.</h5>
+      <h5>Paste your video key below. </h5>
+      <form action="/add_youtube" method="post">
+        <div class="form-group">
+            <label for="field-url"><h6>video key: <b>http://youtu.be/[this_is_your_key]<b></h6></label>
+            <input type="text" name="youtube" class="form-control"
+              id="field-url" min="7" max="11"
+             placeholder="just paste the key, not the http://youtu.be/ part ........">
+        </div>
+        <div class="form-group">
+            <input type="hidden" class="form-control" name="user_id" value="{{ user_id }}">
+        </div>
+        <div class="form-group">
+            <input type="hidden" class="form-control" name="mono_id" value="{{ mono_id }}">
+        </div>
+        <div class="form-group">
+            <input type="hidden" class="form-control" name="username" value="{{ username }}">
+        </div>
+        <div class="form-group">
+            <input type="submit" value="add video">
+        </div>
+        </form>
+
+      <div class="youtube-vids" style="overflow:scroll; height:400px;">
+       {% for vid in youtube_playlist %}
+        <h4>Posted by: {{ vid.username }}</h4>
+            <iframe width="350" height="280" src="https://www.youtube.com/embed/{{vid.youtube_key}}?rel=0&autoplay=0" frameborder="0" allowfullscreen></iframe>
+      {% endfor %}
+        </div><!--closes youtube-vids-->
     </div> <!--closes col-md-5-->
   </div> <!--closes row-->
 </div> <!--closes container-->
@@ -122,6 +134,7 @@
         $('#myModal').on('shown.bs.modal', function () {
           $('#myInput').focus()
         })
+
   </script>
 
 {% endblock %}

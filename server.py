@@ -112,6 +112,9 @@ def profile():
     if user is None:
         return redirect(url_for('signup'))
     else:
+        name = user.name
+        username = user.username
+        
         return render_template('profile.html')
 
 @app.route('/search')
@@ -257,7 +260,6 @@ def show_character(char_id):
 @app.route('/monologue/<int:mono_id>')
 def show_monologue(mono_id):
 	"""Shows the chosen monologue + ability to make annotations view"""
-
 	# Gets all the info we need from the Monologues Table
 	mono_object = Monologue.query.filter(Monologue.mono_id==mono_id).first()
         mono_id = mono_object.mono_id
@@ -276,9 +278,18 @@ def show_monologue(mono_id):
 	scene_object = Scene.query.filter(Scene.scene_id==scene).first()
         description = scene_object.s_description
 
-    # Get's info about this monologue from Character's table
+    # Gets info about this monologue from Character's table
 	char_object = Character.query.filter(Character.char_id==char_id).first()
         name = char_object.char_name
+
+    # Gets info about the current user's id
+
+        user = User.query.filter(User.username==session['username']).first()
+        user_id = user.user_id
+        username = user.username
+
+    # Gets list of all youtube keys associated with mono_id
+        youtube_playlist = Youtube.query.filter(Youtube.mono_id==mono_id).all()
 
     # Gets list of comments associated with this monologue from Comments table
         comments_list = Comment.query.filter(Comment.mono_id==mono_id).all()
@@ -291,7 +302,7 @@ def show_monologue(mono_id):
             id = comment.comment_id
             comments_dict[id] = [username, comment.comment_text]
 
-	return render_template("monologue.html", mono_id=mono_id, name=name, play_title=play_title, act=act, scene=scene, description=description, text=text, comments_dict=comments_dict)
+	return render_template("monologue.html", mono_id=mono_id, name=name, play_title=play_title, act=act, scene=scene, description=description, text=text, comments_dict=comments_dict, user_id=user_id, username=username, youtube_playlist=youtube_playlist)
 
 @app.route('/comments', methods=["POST"])
 def store_comments():
@@ -321,14 +332,14 @@ def add_new_youtube():
     youtube_key = request.form.get("youtube")
     mono_id = request.form.get("mono_id")
     user_id = request.form.get("user_id")
+    username = request.form.get("username")
 
-    new_video = Youtube(mono_id=mono_id, user_id=user_id, youtube_key=youtube_key)
+    new_video = Youtube(mono_id=mono_id, user_id=user_id, youtube_key=youtube_key, username=username)
 
     db.session.add(new_video)
     db.session.commit()
 
     return redirect('/monologue/' + str(mono_id))
-
 
 ######## JSON ROUTES ##########
 
