@@ -48,16 +48,3 @@ class SigninForm(Form):
         else:
             self.username.errors.append("Invalid username or password")
             return False
-
-class YoutubeForm(Form):
-    youtube_url = TextField("Paste your video URL:", validators.Required("Please enter a valid Youtube URL."))
-    mono_id = HiddenField()
-    user_id = HiddenField()
-    submit = SubmitField("ADD YOUTUBE VIDEO")
-
-    def __init__(self, *args, **kwargs):
-        Form.__init__(self, *args, **kwargs)
-
-    def validate(self):
-        if not Form.validate(self):
-            return False

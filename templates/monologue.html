@@ -50,14 +50,14 @@
                  </div>
                  <!--End Model Header-->
 
-                 <!-- Modal Body -->
+            <!-- Modal Body -->
               <div class="modal-body">
                     <!-- comment form that sends text + monologue info to server.py when submitted -->
                 <form action="/comments" class="form-horizontal" role="form" method="post">
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="comment">Thoughts?</label>
                       <div class="col-sm-10">
-                        <textarea rows="5" cols="50" name="comment-text" placeholder="This is what I think..." ></textarea>
+                        <textarea rows="5" cols="50" name="comment-text" placeholder="This is what I think..." required></textarea>
                         <input type="hidden" class="form-control" name="mono_id" value="{{ mono_id }}"/>
                         <input type="hidden" class="form-control" name="line_id" value="{{ loop.index0 }}"/>
                       </div>
@@ -68,45 +68,48 @@
                       </div>
                     </div>
                </form>
-               <!-- End Model Body -->
+                   {% for id, comment in comments_dict.items() %}
+                     <div class="comment">
+                       <h6>{{ comment[0] }}</h6>
+                       <p>{{ comment[1] }}</p>
+                     </div> <!--close comment-->
+                   {% endfor %}
+                   </div><!--close modal body-->
+          <!-- End Model Body -->
 
-               <!-- Modal Footer -->
+            <!-- Modal Footer -->
                  <div class="modal-footer">
-                  {% for key, in comment_list %}
-                  <div class="comment">
-                    <h6>{{comment.user}}
-                    <p>{{ comment.comment_text }}</p>
-                  </div> <!--close comment-->
                   <button type="button" class="btn btn-default"
                           data-dismiss="modal">
                               Close
                   </button>
                 </div><!--close modal footer-->
-              </div><!--close modal body-->
-            </div><!--close modal content-->
-        </div><!--close modal dialog-->
-      </div><!--close modal fade-->
-    </div><!--close col-md-5 col-xs-5-->
+              </div><!--close modal content-->
+            </div><!--close modal dialog-->
+        </div><!--close modal fade-->
+      </div><!--close col-md-5-->
 
   <!-- Column that displays youtube videos - Right side of Page-->
-    <div class="col-md-6 col-xs-7">
-        <div class="youtube form">
+    <div class="col-md-5">
           <h3>POST A VIDEO</h3>
-          <form action="/youtube" method="POST">
+          <h4>Paste your video key below. </h4>
+             <h5><b>http://youtu.be/[this_is_your_key]<b></h5>
+          <form action="/add_youtube" method="post">
             <div class="form-group">
-              <label for="field-youtube">Post a youtube URL:</label>
-              <input type="text" name="youtube_url" id="field-youtube"
-                     placeholder="https://youtu.be/paste_your_url_key"/>
+                <label for="field-url">video key:</label>
+                <input type="text" name="youtube" class="form-control" id="field-url"
+                 placeholder="just paste the key, not the http://youtu.be/ part ........">
             </div>
             <div class="form-group">
-              <input type="hidden" name="mono_id" value="{{ mono_id }}"/>
-              <input type="hidden" name="line_id" value="{{ loop.index0 }}"/>
+                <input type="hidden" class="form-control" name="user_id" value="session['id']">
             </div>
             <div class="form-group">
-            <input type="submit" value="translate"/>
-           </div>
-          </form>
-        </div> <!--closes youtube form-->
+                <input type="hidden" class="form-control" name="mono_id" value="{{ mono_id }}">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="add video">
+            </div>
+            </form>
     </div> <!--closes col-md-5-->
   </div> <!--closes row-->
 </div> <!--closes container-->

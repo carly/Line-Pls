@@ -10,7 +10,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
 from model import Play, Scene, Genre, Character, Monologue, User, Comment, Youtube, connect_to_db, db
 from helper_functions import shakespeare_data
-from forms import SignupForm, SigninForm, YoutubeForm
+from forms import SignupForm, SigninForm
 
 
 
@@ -283,11 +283,13 @@ def show_monologue(mono_id):
     # Gets list of comments associated with this monologue from Comments table
         comments_list = Comment.query.filter(Comment.mono_id==mono_id).all()
 
-    comments_dict = {}
+        comments_dict = {}
 
-    for comment in comments_list:
-        user = User.Query.filter(User.user_id==comment.user_id).first()
-        comments_dict["user.username"] = comment.comment_text
+        for comment in comments_list:
+            user = User.query.filter(User.user_id==comment.user_id).first()
+            username = user.username
+            id = comment.comment_id
+            comments_dict[id] = [username, comment.comment_text]
 
 	return render_template("monologue.html", mono_id=mono_id, name=name, play_title=play_title, act=act, scene=scene, description=description, text=text, comments_dict=comments_dict)
 
@@ -314,14 +316,18 @@ def store_comments():
 
 @app.route('/add_youtube', methods=["POST"])
 def add_new_youtube():
-    """Stores a new youtube video into the db associated with a particular monoogue and user."""
+    """Stores a new youtube video into the db associated with a particular Monologue and user."""
 
-    if request.method == 'POST' and form.validate():
-        new_youtube = Youtube(youtube_url=form.youtube_url.data,mono_id=form.mono_id.data, user_id=form.user_id.data)
-        db.session.add(new_user)
-        db.session.commit()
-        # flash('Welcome to the ensemble!')
-        return redirect('/monologue/' + str(form.mono_id.data))
+    youtube_key = request.form.get("youtube")
+    mono_id = request.form.get("mono_id")
+    user_id = request.form.get("user_id")
+
+    new_video = Youtube(mono_id=mono_id, user_id=user_id, youtube_key=youtube_key)
+
+    db.session.add(new_video)
+    db.session.commit()
+
+    return redirect('/monologue/' + str(mono_id))
 
 
 ######## JSON ROUTES ##########
