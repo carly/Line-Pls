@@ -5,16 +5,21 @@ import pprint
 from flask_oauth2_login import GoogleLogin
 from flask_login import LoginManager
 from jinja2 import StrictUndefined
-from flask import Flask, render_template, redirect, request, flash, session, jsonify, url_for
+from flask import Flask, render_template, redirect, request, flash, session, jsonify, url_for, send_from_directory
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
 from model import Play, Scene, Genre, Character, Monologue, User, Comment, Youtube, connect_to_db, db
 from helper_functions import shakespeare_data
 from forms import SignupForm, SigninForm
+from werkzeug import secure_filename
 
 
+UPLOAD_FOLDER = 'uploads/resumes/'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 printer = pprint.PrettyPrinter()
 app.secret_key = """Need to figure out"""
@@ -34,6 +39,10 @@ for config in (
 ):
   app.config[config] = os.environ[config]
 google_login = GoogleLogin(app)
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 # Routes/Views
 
@@ -114,7 +123,7 @@ def profile():
     else:
         name = user.name
         username = user.username
-        
+
         return render_template('profile.html')
 
 @app.route('/search')
@@ -137,16 +146,34 @@ def account():
         bio = user.bio
         web = user.website
         twitter = user.twitter
+        picture = user.picture
     else:
         name = ""
         bio = ""
         web = ""
         twitter = ""
-    return render_template('myaccount.html', name=name, bio=bio, web=web, twitter=twitter)
+        picture = ""
+    return render_template('myaccount.html', name=name, bio=bio, web=web, twitter=twitter, picture=picture)
+
+@app.route('/uploads/<path:filename>', methods=["GET", "POST"])
+def upload(filename):
+    if request.method == 'POST':
+        file = request.files['file']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(current_app.root_folder, app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('account'))
+
+@app.route('/uploads/<path:filename>')
+def uploaded_file(filename):
+    send_from_directory(current_app.root_folder, app.config['UPLOAD_FOLDER'],
+                               filename)
+    pass
 
 @app.route('/update_profile', methods=["POST"])
 def update_profile():
     """Change user info in db if the user changes the basic information form."""
+
     print request.form
     new_name = request.form.get("name")
     new_email = request.form.get("email")
@@ -154,6 +181,7 @@ def update_profile():
     new_bio = request.form.get("bio")
     new_website = request.form.get("web")
     new_twitter = request.form.get("twitter")
+    new_pic = request.form.get("picture")
     print new_bio
 
     user_id = session["id"]
@@ -168,9 +196,11 @@ def update_profile():
         user.bio= new_bio
         user.website= new_website
         user.twitter= new_twitter
+        user.picture = new_pic
 
     db.session.commit()
     return redirect(url_for('account'))
+
 
 
 #Login w/ Google API
@@ -397,7 +427,6 @@ def shakespeare_json():
 if __name__ == "__main__":
 	#debug=True for DebugToolbarExtension to work
 	app.debug = True
-
 	connect_to_db(app)
 
 	#Use the DebugToolbar

@@ -1,4 +1,4 @@
-from wtforms import Form, BooleanField, SubmitField, TextField, PasswordField, HiddenField, validators
+from wtforms import Form, BooleanField, SubmitField, TextField, PasswordField, HiddenField, validators, FileField
 from wtforms.validators import DataRequired
 from model import db, User
 

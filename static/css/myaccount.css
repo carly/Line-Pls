@@ -5,7 +5,12 @@
 .main {
   height: 1000px;
   background-color: #f2f2f2;
-  background-image: linear-gradient(to bottom, #ffffff, #e6f8ff 100%);
+  background-image: linear-gradient(to bottom, #ffffff, #a4f4f9 100%);
+}
+
+img {
+  margin-left: 120px;
+  margin-bottom: 20px;
 }
 
 

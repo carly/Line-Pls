@@ -9,6 +9,7 @@
       <div class="col-md-4 col-xs-4">
         <div class="menu row">
             <div class='menu-item selected'>
+              <img src="{{ picture }}" alt="self" height="150" width="150">
               <h5><a href="/account">Basic Information</a></h5>
             </div>
             <div class='menu-item'>
@@ -50,9 +51,18 @@
          <label for="field-twitter">Twitter</label>
          <input type="text" name="twitter" class="form-control" id="field-twitter" placeholder="Twitter" value="{{ twitter }}">
      </div>
+     <div class="form-group">
+         <label for="field-picture">Picture URL</label>
+         <input type="text" name="picture" class="form-control" id="field-picture" placeholder="You're so pretty!" value="{{ picture }}">
+     </div>
      <input class="submit" type="submit" value="UPDATE PROFILE">
     </form>
 
+    <h1>Upload your Theater Resume</h1>
+    <form action="/uploads/<path:filename>" method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+         <input type=submit value=Upload>
+    </form>
 
 
     </div>

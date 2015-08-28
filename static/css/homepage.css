@@ -4,6 +4,7 @@ h1 {
   padding-left: 30px;
   text-align: left;
   font-family: 'Fredericka the Great', cursive;
+  margin-left: 15px;
 
 }
 
@@ -14,7 +15,7 @@ h1 {
  }
 
 .jumbotron {
-  color:#ff4444;
+  color:#FF962E;
   width: 100%;
   padding: 0;
   margin: auto;
@@ -28,20 +29,20 @@ h1 {
 
 .jumbotron button {
   font-family: 'Rye', cursive;
-  border: 1px solid #404040;
+  border: 1px solid #FF2E96;
   border-radius: 1em;
   box-shadow: none;
-  background-color: #404040;
+  background-color: #FF2E96;
   color: #fff;
   padding: 10px 50px;
-  margin-left: 100px;
+  margin-left: 65px;
   margin-top: 20px;
   opacity: 0.5;
 }
 
 .jumbotron button:hover {
-  background-color: #05c1ff;
-  border: 1px solid #05c1ff;
+  background-color: #40E0D0;
+  border: 1px solid #40E0D0;
 }
 
 .search-mono {
@@ -50,7 +51,7 @@ h1 {
 
 .main {
   height: 400px;
-  background-color: #ff4444;
+  background-color: #FF3030;
 }
  .explains {
   display: inline-block;
