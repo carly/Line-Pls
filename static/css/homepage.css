@@ -15,7 +15,7 @@ h1 {
  }
 
 .jumbotron {
-  color:#FF962E;
+  color:#796878;
   width: 100%;
   padding: 0;
   margin: auto;
@@ -29,20 +29,20 @@ h1 {
 
 .jumbotron button {
   font-family: 'Rye', cursive;
-  border: 1px solid #FF2E96;
+  border: 1px solid #f70078;
   border-radius: 1em;
   box-shadow: none;
-  background-color: #FF2E96;
+  background-color: #f70078;
   color: #fff;
   padding: 10px 50px;
   margin-left: 65px;
   margin-top: 20px;
-  opacity: 0.5;
+  opacity: 0.9;
 }
 
 .jumbotron button:hover {
-  background-color: #40E0D0;
-  border: 1px solid #40E0D0;
+  background-color: #3b5998;
+  border: 1px solid #3b5998;
 }
 
 .search-mono {
@@ -51,7 +51,7 @@ h1 {
 
 .main {
   height: 400px;
-  background-color: #FF3030;
+  background-color: #3b5998;
 }
  .explains {
   display: inline-block;

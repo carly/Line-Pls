@@ -8,7 +8,26 @@
     <h2>Profile<h2>
     <h3>This is {{ session['username'] }}'s profile page<h3>
 
-      <embed src="{{file}}" width="800px" height="2100px">
+    <div class="userinfo">
+        <h2>{{name}}</h2>
+      <img src={{picture}} alt="picture" height="300px" width="300"px>
+      <h2></h2>
+        <div>Twitter: {{twitter}}</div>
+        <div>Website: {{website}}</div>
+        <div>About Me: {{bio}}</div>
+    </div>
+
+  <form action="/follow" method="post">
+  <div class="form-group">
+      <input type="hidden" name="follow" class="form-control" value="{{session['id']}}">
+      <input type="hidden" name="follower" class="form-control" value="{{session['username']}}">
+  </div>
+  <input class="submit" type="submit" value="FOLLOW">
+  </form>
+
+
+
+
 </div>
 </div>
 

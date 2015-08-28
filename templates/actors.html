@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="actor_list">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+            {% for actor in actors_db %}
+          <div class="actor">
+            <img class="pull-left" src="{{actor.picture}}" alt="profpic" height="100px" width="100px">
+            <div class="actorinfo">
+              <h3>name: {{actor.name}}</h3>
+              <p>username: {{actor.username}}<br>
+              twitter: @{{actor.twitter}}<br>
+              website: {{actor.website}}<br>
+              Bio: {{actor.bio}}</p>
+            </div><!--closes actorinfo-->
+          </div><!--closes actor-->
+          <hr>
+            {% endfor %}
+</div><!-- closes col-md-6-->
+</div><!--closes row-->
+</div><!--closes container-->
+</div><!--closes actor list-->
+{% endblock %}

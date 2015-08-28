@@ -14,7 +14,7 @@ from forms import SignupForm, SigninForm
 from werkzeug import secure_filename
 
 
-UPLOAD_FOLDER = 'uploads/resumes/'
+UPLOAD_FOLDER = 'uploads/'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
@@ -123,8 +123,13 @@ def profile():
     else:
         name = user.name
         username = user.username
+        picture = user.picture
+        bio = user.bio
+        website = user.website
+        twitter = user.twitter
 
-        return render_template('profile.html')
+
+        return render_template('profile.html', name=name, username=username, picture=picture, bio=bio, website=website, twitter=twitter)
 
 @app.route('/search')
 def search():
@@ -202,6 +207,26 @@ def update_profile():
     return redirect(url_for('account'))
 
 
+@app.route('/follow/', methods=['GET', 'POST'])
+def follower():
+    """Add followers to a user, display user followers."""
+    pass
+    # if request.method == "GET":
+    #     follower = Follower.query.filter(Follower.user_id==session['id']).all()
+    #     follower_list = []
+    #
+    #     for f in followers:
+    #         follower_list.append(f.follower)
+    #
+    # if request.method == "POST":
+
+@app.route('/actors')
+def display_actors():
+
+     actors_db = User.query.all()
+
+     return render_template("actors.html", actors_db=actors_db)
+
 
 #Login w/ Google API
 # @google_login.login_success
@@ -263,7 +288,23 @@ def play_details(play_id):
 	genre = play_object.genre_id
 
 	# Gets all the info we need from the Characters table to be able to display all their monologues
-	characters = Character.query.filter(Character.play_id==play_id).all()
+        mono_list = Monologue.query.filter(Monologue.play_id==play_id).all()
+
+        mono_characters = []
+        print mono_characters
+
+        for mono in mono_list:
+            mono_characters.append(mono.char_id)
+
+        characters = Character.query.filter(Character.play_id==play_id).all()
+
+        char_monos = []
+
+        for char in characters:
+            if char.char_id in mono_characters:
+                char_monos.append(char_monos)
+
+        print char_monos
 
 	return render_template("play_details.html", title=title, long_title=long_title, date=date, genre=genre, characters=characters)
 

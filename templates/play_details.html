@@ -3,20 +3,21 @@
 
 <h1>Play Details</h1>
 <ul>
-    <li> Title: <b>{{title}}</b></li>    
+    <li> Title: <b>{{title}}</b></li>
     <li> Long Title: {{long_title}}</li>  <!--This will be null for most of them  -->
-    <li> Date: {{ date }}</li>     
+    <li> Date: {{ date }}</li>
 </ul>
 
 <h3>Characters</h3>
-<ul>
+
       {% for character in characters %}
-          <li><a href="/characters/{{ character.char_id }}"> Name: {{ character.char_name }} </a></li>
-          <li> Description: {{ character.c_description }}</li>
-          <li> Monologue Count: {{ character.mono_count}} </li>
-          
+        <div><a href="/characters/{{ character.char_id }}">{{ character.char_name }} </a>
+            <ul>
+              <li> Monologue Count: {{ character.mono_count}} </li>
+            </ul>
+         </div>
       {% endfor %}
-</ul>
+
 
 
 

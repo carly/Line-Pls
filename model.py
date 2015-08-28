@@ -240,6 +240,18 @@ class Youtube(db.Model):
 
 
 
+class Follower(db.Model):
+	"""People who follow eachother"""
+	__tablename__="followers"
+
+	f_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+	follower = db.Column(db.String(200), default=" ", nullable=False)
+
+	user = db.relationship("User",
+						backref= db.backref("followers", order_by=f_id))
+
+
 ##############################################################################
 # Helper functions
 
