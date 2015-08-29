@@ -1,20 +1,27 @@
-"""Models and database functions for Rap Genius for Shakespeare"""
+"""Models and database functions for Line Pls """
 
-from flask_sqlalchemy import SQLAlchemy
+############################################################
+##########               IMPORTS                 ###########
+############################################################
+
 from flask import jsonify
+from flask_sqlalchemy import SQLAlchemy
 from werkzeug import generate_password_hash, check_password_hash
 
-#This is the connection to the SQlite database that we get through the Flask-SQLAlchemy helper library. On this, we can find the 'session' object where we do most of the interactions (committing etc.)
+#############################################################
+############        DB to SQLAlchemy             ############
+#############################################################
 
 db = SQLAlchemy()
 
-###########################################################
-# Model definitions: Scenes Character, Genre, Monologue, Play, User, Annotations, Youtube]
+##############################################################
+##########       DEFINE MODEL CLASSES FOR DB   ###############
+##############################################################
 
-## Instead of doing this.... write a function that switches out the genre id with the genre type when you load the plays
+##############################################################
+#####   MODELS RELATED TO STORAGE OF PLAYS/MONOLOUGES  #######
+##############################################################
 
-
-# Fix me
 class Genre(db.Model):
 	"""Genres of Shakespeare plays"""
 
@@ -59,7 +66,6 @@ class Play(db.Model):
 			play["genre_id"] = self.genre_id
 		return play
 
-
 class Scene(db.Model):
 	"""Shakespeare plays divided into Scenes"""
 
@@ -84,7 +90,6 @@ class Scene(db.Model):
 		scene["scene"] = self.scene
 		scene["description"] = self.s_description
 		return scene
-
 
 class Character(db.Model):
 	"""Shakespeare characters"""
@@ -113,7 +118,6 @@ class Character(db.Model):
 		# I don't know why this isn't working...
 		character["monologues"] = [monologue.json() for monologue in self.monologues]
 		return character
-
 
 class Monologue(db.Model):
 	"""Shakespeare monologues"""
@@ -148,6 +152,11 @@ class Monologue(db.Model):
 		monologue["comments"] = [comment.json() for comment in self.comments]
 		monologue["comment_count"] = len(self.comments)
 		return monologue
+
+
+#######################################################################
+########## DEFINE MODELS RELATED TO STORING USER INFO   ###############
+#######################################################################
 
 class User(db.Model):
 	"""Stores users in the database"""
@@ -185,7 +194,6 @@ class User(db.Model):
 		user["count"] = len(self.comments)
 		return user
 
-
 class Comment(db.Model):
 	"""Stores lines with user commentary/annotations in database."""
 
@@ -213,15 +221,9 @@ class Comment(db.Model):
 		comment["user_id"] = self.user_id
 		return comment
 
-
-
-
 class Youtube(db.Model):
 	"""Youtube videos connected to Monologues"""
-	#video_id (primary key)
-	#mono_id (foreign key - references Monologues)
-	#user_id (foreign key - references Users)
-	#url
+
 	__tablename__="youtube"
 
 	youtube_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
@@ -239,21 +241,23 @@ class Youtube(db.Model):
 							backref=db.backref("youtube", order_by=youtube_id))
 
 
-
 class Follower(db.Model):
-	"""People who follow eachother"""
+	"""Displays followers of a particular user"""
 	__tablename__="followers"
 
 	f_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	# Followed
 	user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+	# Follower
 	follower = db.Column(db.String(200), default=" ", nullable=False)
 
 	user = db.relationship("User",
 						backref= db.backref("followers", order_by=f_id))
 
 
-##############################################################################
-# Helper functions
+#####################################################################
+##########         MODEL Helper functions    ########################
+#####################################################################
 
 def connect_to_db(app):
     """Connect the database to our Flask app."""
@@ -265,8 +269,6 @@ def connect_to_db(app):
 
 
 if __name__ == "__main__":
-    # As a convenience, if we run this module interactively, it will leave
-    # you in a state of being able to work with the database directly.
 
     from server import app
     connect_to_db(app)

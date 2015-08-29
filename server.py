@@ -1,26 +1,31 @@
-"""Line Pls! Shakespeare Squad's up."""
+"""Line Pls! An online community for actors."""
+
+###############################################################
+#######               Imports                  ################
+###############################################################
+
 import os
 import json
 import pprint
+
+from flask import Flask, render_template, redirect, request, flash, session, jsonify, url_for, send_from_directory
 from flask_oauth2_login import GoogleLogin
 from flask_login import LoginManager
-from jinja2 import StrictUndefined
-from flask import Flask, render_template, redirect, request, flash, session, jsonify, url_for, send_from_directory
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_bootstrap import Bootstrap
-from model import Play, Scene, Genre, Character, Monologue, User, Comment, Youtube, connect_to_db, db
+from forms import SignupForm, SigninForm, PasswordForm
 from helper_functions import shakespeare_data
-from forms import SignupForm, SigninForm
+from jinja2 import StrictUndefined
+from model import Play, Scene, Genre, Character, Monologue, User, Comment, Youtube, Follower, connect_to_db, db
 from werkzeug import secure_filename
 
-
-UPLOAD_FOLDER = 'uploads/'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+###############################################################
+#########             App Config                  #############
+###############################################################
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
+# Config adjustments
 printer = pprint.PrettyPrinter()
 app.secret_key = """Need to figure out"""
 app.jinja_env.undefined = StrictUndefined
@@ -28,6 +33,7 @@ Bootstrap(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+# FIX ME
 #Setup for Google Login using flask_oauth2_login
 app.config.update(
   SECRET_KEY="GOOGLE_LOGIN_CLIENT_SECRET",
@@ -39,25 +45,24 @@ for config in (
 ):
   app.config[config] = os.environ[config]
 google_login = GoogleLogin(app)
+# FIX ME
 
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-# Routes/Views
+
+###################################################################
+########              Routes/Views                 ################
+###################################################################
+
+####################################################################
+############          SIGN IN/OUT                    ###############
+####################################################################
 
 @app.route('/')
 def index():
     """Renders homepage"""
-    # this broke and i have no idea why
+
     return render_template("homepage.html")
 
-
-# @app.route('/login')
-# def index():
-#     """Login Page"""
-#     return render_template("login.html")
-#
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
     """A form to signup and create an account."""
@@ -70,7 +75,6 @@ def signup():
             new_user = User(username=form.username.data,email=form.email.data, password=form.password.data)
             db.session.add(new_user)
             db.session.commit()
-            # flash('Welcome to the ensemble!')
             return redirect(url_for('profile'))
 
             session['email'] = new_user.email
@@ -81,6 +85,8 @@ def signup():
 
 @app.route('/signin', methods=["GET", "POST"])
 def signin():
+    """Form for signing into the app."""
+
     form = SigninForm(request.form)
 
     if 'username' in session:
@@ -94,6 +100,7 @@ def signin():
             user = User.query.filter(User.username==form.username.data.lower()).first()
             session['email']= user.email
             session['id'] = user.user_id
+            session['picture'] = user.picture
             return redirect(url_for('profile'))
 
     elif request.method == "GET":
@@ -101,6 +108,7 @@ def signin():
 
 @app.route('/signout')
 def signout():
+    """Form for signing out."""
 
     if 'username' not in session:
         return redirect(url_for('signin'))
@@ -108,10 +116,13 @@ def signout():
     session.pop('username', None)
     return redirect(url_for('index'))
 
+########################################################################
+########        SIGNED IN USER => ACCOUNT RELATED             ##########
+########################################################################
 
 @app.route('/profile')
 def profile():
-    """Renders user's profile page."""
+    """Renders user's profile page when they are logged in."""
 
     if 'username' not in session:
         return redirect(url_for('signin'))
@@ -127,25 +138,32 @@ def profile():
         bio = user.bio
         website = user.website
         twitter = user.twitter
+        user_id = user.user_id
+
+        following = Follower.query.filter(Follower.user_id==user_id).all()
+        your_follower_ids = []
+        for f in following:
+            # Appends your followers user ids to list
+            your_follower_ids.append(f.follower)
+
+        your_followers = {}
+        for user_id in your_follower_ids:
+            user = User.query.filter(User.user_id==user_id).first()
+            your_followers['user.user_id'] = {"pic": user.picture, "username": user.username}
 
 
-        return render_template('profile.html', name=name, username=username, picture=picture, bio=bio, website=website, twitter=twitter)
-
-@app.route('/search')
-def search():
-    """Renders search page."""
-
-    return render_template('search.html')
+        return render_template('profile.html', name=name, username=username, picture=picture, bio=bio, website=website, twitter=twitter, user_id=user_id, your_followers=your_followers)
 
 @app.route('/account')
 def account():
-    """renders account form."""
+    """Renders view for user to view, change, update account information."""
     # Since we already have these values in session, we wont' include in db query.
     email = session['email']
     username = session['username']
 
     # Query db so we can populate account form with current db values for user
     user = User.query.filter(User.username==username).first()
+
     if user is not None:
         name = user.name
         bio = user.bio
@@ -158,22 +176,8 @@ def account():
         web = ""
         twitter = ""
         picture = ""
+
     return render_template('myaccount.html', name=name, bio=bio, web=web, twitter=twitter, picture=picture)
-
-@app.route('/uploads/<path:filename>', methods=["GET", "POST"])
-def upload(filename):
-    if request.method == 'POST':
-        file = request.files['file']
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(current_app.root_folder, app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('account'))
-
-@app.route('/uploads/<path:filename>')
-def uploaded_file(filename):
-    send_from_directory(current_app.root_folder, app.config['UPLOAD_FOLDER'],
-                               filename)
-    pass
 
 @app.route('/update_profile', methods=["POST"])
 def update_profile():
@@ -206,74 +210,96 @@ def update_profile():
     db.session.commit()
     return redirect(url_for('account'))
 
+@app.route('/password/<string:username>', methods=["GET","POST"])
+def change_password(username):
+    """Change/Update password"""
+    form = PasswordForm(request.form)
 
-@app.route('/follow/', methods=['GET', 'POST'])
-def follower():
-    """Add followers to a user, display user followers."""
-    pass
-    # if request.method == "GET":
-    #     follower = Follower.query.filter(Follower.user_id==session['id']).all()
-    #     follower_list = []
-    #
-    #     for f in followers:
-    #         follower_list.append(f.follower)
-    #
-    # if request.method == "POST":
+    if request.method =='GET':
+        return render_template("password.html")
+
+    if request.method == 'POST' and form.validate():
+        current_user = User.query.filter(User.user_id==session['id']).first()
+        current_user.password = form.password.data
+        picture = current_user.picture
+        db.session.commit()
+
+
+    return render_template('password.html', form=form)
+
+#####################################################################
+#######        SOCIAL NETWORKING RELATED              ###############
+#####################################################################
 
 @app.route('/actors')
 def display_actors():
+    """Display a list of all actors on the site with links to their profile pages."""
 
-     actors_db = User.query.all()
+    actors_db = User.query.all()
 
-     return render_template("actors.html", actors_db=actors_db)
+    return render_template("actors.html", actors_db=actors_db)
 
+@app.route('/profile/<string:username>')
+def view_profile(username):
+    """View another users public profile."""
 
-#Login w/ Google API
-# @google_login.login_success
-# def login_success(token, profile):
-    #Everything we want from the gmail JSON thats returned from the server
-    # user_gmail = profile["email"]
-    # user_firstname = profile["given_name"]
-    # user_pic = profile["picture"]
+    user = User.query.filter(User.username == username).first()
+    user_id = user.user_id
+    username = user.username
+    name = user.name
+    website = user.website
+    bio = user.bio
+    twitter = user.twitter
+    picture = user.picture
 
-    # Looks for the the users in the db to see if email is registered in the db
-    # registered_user = User.query.filter(User.email==user_gmail).first()
-    #
-    # if registered_user:
-    #     flash("Thanks %s. Welcome back. You are now logged in!" % (user_firstname))
-    # else:
-        #if not in db, create a new user in the user db
-    #     new_user = User(email=user_gmail, name=user_firstname, picture=user_pic)
-    #     db.session.add(new_user)
-    #     db.session.commit()
-    #     flash("Thanks %s. You are now logged in!" % (user_firstname))
-    #
-    # session["email"] = user_gmail
-    # session["name"] = user_firstname
-    # session["pic"] = user_pic
-    # return redirect('/')
+    following = Follower.query.filter(Follower.user_id==user_id).all()
+    your_follower_ids = []
+    for f in following:
+        # Appends your followers user ids to list
+        your_follower_ids.append(f.follower)
 
-# if it doesn't work..
-# @google_login.login_failure
-# def login_failure(e):
-#     jsonify(error=str(e))
-#     return redirect('/')
+    your_followers = {}
+    for user_id in your_follower_ids:
+        user = User.query.filter(User.user_id==user_id).first()
+        your_followers['user.user_id'] = {"pic": user.picture, "username": user.username}
 
-# @app.route('/logout', methods=['GET', 'POST'])
-# def logout():
-#     """Logs the current user out. Clears the session, redirects to homepage."""
-#     session.clear()
-#     return redirect('/')
+    return render_template("profile.html", user_id=user_id, username=username, name=name, website=website, bio=bio, twitter=twitter, picture=picture, your_followers=your_followers)
 
+@app.route('/follow', methods=['GET', 'POST'])
+def follower():
+    """Add followers to a user, display user followers."""
 
-# Non login related routes
+    if request.method == "GET":
+        pass
+
+    if request.method == "POST":
+        current_user = request.form.get('follower') # (user in current session)
+        followed = request.form.get('follow') #user_id (who you want to follow)
+        followed_user = request.form.get('followed-user')
+
+        new_follower = Follower(user_id=followed, follower=current_user)
+
+        db.session.add(new_follower)
+        db.session.commit()
+
+        return redirect('/profile/' + str(followed_user))
+
+########################################################################
+#######         MONOLOGUE SEARCH RELATED              ##################
+########################################################################
+
+@app.route('/search')
+def search():
+    """Renders search page."""
+
+    return render_template('search.html')
+
 @app.route('/plays')
 def play_list():
-	"""Show list of all the Shakespeare Plays in the database"""
+    """Show list of all the Shakespeare Plays in the database."""
+    plays = Play.query.order_by(Play.title).all()
 
-	#Lists all the plays as links right now
-	plays = Play.query.order_by(Play.title).all()
-	return render_template("play_list.html", plays=plays)
+    return render_template("play_list.html", plays=plays)
 
 @app.route('/plays/<string:play_id>')
 def play_details(play_id):
@@ -288,6 +314,7 @@ def play_details(play_id):
 	genre = play_object.genre_id
 
 	# Gets all the info we need from the Characters table to be able to display all their monologues
+    # FIX ME
         mono_list = Monologue.query.filter(Monologue.play_id==play_id).all()
 
         mono_characters = []
@@ -341,7 +368,7 @@ def show_monologue(mono_id):
         text = mono_object.text
         text = text.replace('[p]', '<br>').split('<br>')
 
-	# Gets info about this monologue ffrom Play Table
+	# Gets info about this monologue from Play Table
 	play_object = Play.query.filter(Play.play_id==play_id).first()
         play_title = play_object.title
 
@@ -375,6 +402,9 @@ def show_monologue(mono_id):
 
 	return render_template("monologue.html", mono_id=mono_id, name=name, play_title=play_title, act=act, scene=scene, description=description, text=text, comments_dict=comments_dict, user_id=user_id, username=username, youtube_playlist=youtube_playlist)
 
+
+####### RELATED TO MONOLOGUE ANNOTATIONS AND YOUTUBE VIDS ####################
+
 @app.route('/comments', methods=["POST"])
 def store_comments():
     """Stores comments on monologues by line into db"""
@@ -395,7 +425,6 @@ def store_comments():
 
     return redirect('/monologue/' + str(mono_id))
 
-
 @app.route('/add_youtube', methods=["POST"])
 def add_new_youtube():
     """Stores a new youtube video into the db associated with a particular Monologue and user."""
@@ -412,58 +441,17 @@ def add_new_youtube():
 
     return redirect('/monologue/' + str(mono_id))
 
-######## JSON ROUTES ##########
-
-# @app.route('/shakespeare-links.json')
-# def shakespeare_links():
-#     """Return Shakespeare Force Graph Links as JSON."""
-#     genres_lq = Genre.query.all()
-#     plays_lq = Plays.query.all()
-#
-#     for genre in genres_lq:
-
-
-
 @app.route('/shakespeare.json')
 def shakespeare_json():
     """Return Shakespeare Force Graph Nodes as JSON."""
 
     return jsonify(shakespeare_data())
 
-#     genres_q = Genre.query.all()
-#     plays_q = Play.query.all()
-#     characters_q = Character.query.all()
-#     monologues_q = Monologue.query.all()
-#
-#     shakespeare = {}
-#     shakespeare["genre"] = [genre.json() for genre in genres_q]
-#     shakespeare["play"] = [play.json() for play in plays_q]
-#     shakespeare["character"] = [character.json() for character in characters_q]
-#     shakespeare["monologue"] = [monologue.json() for monologue in monologues_q]
-#     printer.pprint(shakespeare)
-#     return jsonify(shakespeare)
-#
-# @app.route('/comments.json')
-# def comments_json():
-#     """Return info about a comment as JSON."""
-#     comments_q = Comment.query.all()
-#     comments = {}
-#     comments["comments"] = [comment.json() for comment in comments_q]
-#     printer.pprint(comments)
-#     return jsonify(comments)
-#
-# @app.route('/users.json')
-# def users_json():
-#     """Return info about a user as JSON."""
-#     users_q = User.query.all()
-#     users = {}
-#     users["users"] = [user.json() for user in users_q]
-#     printer.pprint(users)
-#     return jsonify(users)
 
 
-
-#Connecting server to db
+#############################################################
+#######        Connecting server to db           ############
+#############################################################
 
 if __name__ == "__main__":
 	#debug=True for DebugToolbarExtension to work

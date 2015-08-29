@@ -6,7 +6,7 @@
 <div class="profile-jumbotron">
   <div class="container">
     <h2>Profile<h2>
-    <h3>This is {{ session['username'] }}'s profile page<h3>
+    <h3>This is {{ username }}'s profile page<h3>
 
     <div class="userinfo">
         <h2>{{name}}</h2>
@@ -19,14 +19,23 @@
 
   <form action="/follow" method="post">
   <div class="form-group">
-      <input type="hidden" name="follow" class="form-control" value="{{session['id']}}">
-      <input type="hidden" name="follower" class="form-control" value="{{session['username']}}">
+      <input type="hidden" name="follow" class="form-control" value="{{user_id}}">
+      <input type="hidden" name="follower" class="form-control" value="{{session['id']}}">
+      <input type="hidden" name="followed-user" class="form-control" value="{{username}}">
   </div>
   <input class="submit" type="submit" value="FOLLOW">
   </form>
 
-
-
+<div class="follower-list">
+  {% for key, value in your_followers.items() %}
+  <div>
+  <a href="/profile/{{your_followers[key]['username']}}">
+    <img src="{{your_followers[key]["pic"]}}" alt='pic' height="50px" width="50px">
+  </a>
+</div>
+<hr>
+{% endfor %}
+</div>
 
 </div>
 </div>

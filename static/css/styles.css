@@ -61,7 +61,11 @@ a:hover{
   color:#ea0a8e;
 }
 
+#char_names {
+  color: skyblue;
+  font-family: 'Didact Gothic', sans-serif;
 
+}
 
 
 /*Footer*/

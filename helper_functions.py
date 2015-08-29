@@ -1,13 +1,45 @@
-import requests, os, psycopg2
+
+##################################################################
+##########        Imports for Helper Functions          ##########
+##################################################################
+
+import json
+import os
+import psycopg2
+import requests
+
 from model import Play, Scene, Genre, Character, Monologue, User, Comment, connect_to_db, db
 
-db_connection = psycopg2.connect('dbname=monologues')
-db_cursor = db_connection.cursor()
 
-# DB Queries and functions to create Shakespeare Nodes/Lists
+##################################################################
+##########        Defines D3 Json Helper Functions      ##########
+##################################################################
+
+
+############# GENERATES JSON FROM COMMAND LINE ###################
+
+def to_json(QUERY, (columns)):
+    """Queries Monologues, Characters, and Plays tables in database to create JSON for d3"""
+
+    db_connection = psycopg2.connect('dbname=monologues')
+    db_cursor = db_connection.cursor()
+
+    db_cursor.execute(QUERY)
+
+    columns_tup = columns
+
+    d3_json = []
+    for row in db_cursor.fetchall():
+        d3_json.append(dict(zip(columns_tup, row)))
+
+    print json.dumps(d3_json, indent=2)
+
+
+############### USES DATABSE JSON CLASSES #######################
 
 def shakespeare_data():
-    """Creates node structure."""
+    """Creates node structure for json for future D3 integration."""
+
     nodes = []
     links = []
 
@@ -26,16 +58,20 @@ def shakespeare_data():
                 links.append({"source": source_index, "target": target_index})
 
     return {"nodes": nodes, "links": links}
-    # genres = Genre.query.filter(genre_id).all()
-    # plays = Play.query.filter(play_id).all()
-    # monologues = Monologue.query.filter(mono_id).all()
-    # characters = Character.query.filter(char_id).all()
-    #
-    # for genre in genres:
-    #     if genre.genre_id=='c':
-    #         shakespeare.children.append(Node(genre.genre_name))
-    #     else if genre.genre_id
-    #
-    # plays = Play.query.filter(play_id).all()
-    # for play in plays:
-    #     if play
+
+
+    ### Below is unused code.. keeping for future integrations. ######
+
+            # genres = Genre.query.filter(genre_id).all()
+            # plays = Play.query.filter(play_id).all()
+            # monologues = Monologue.query.filter(mono_id).all()
+            # characters = Character.query.filter(char_id).all()
+            #
+            # for genre in genres:
+            #     if genre.genre_id=='c':
+            #         shakespeare.children.append(Node(genre.genre_name))
+            #     else if genre.genre_id
+            #
+            # plays = Play.query.filter(play_id).all()
+            # for play in plays:
+            #     if play

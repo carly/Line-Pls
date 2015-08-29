@@ -13,6 +13,15 @@
               twitter: @{{actor.twitter}}<br>
               website: {{actor.website}}<br>
               Bio: {{actor.bio}}</p>
+              <a href="/profile/{{actor.username}}"> View Profile </a>
+              <form action="/follow" method="post">
+              <div class="form-group">
+                  <input type="hidden" name="follow" class="form-control" value="{{actor.user_id}}">
+                  <input type="hidden" name="follower" class="form-control" value="{{session['id']}}">
+                  <input type="hidden" name="followed-user" class="form-control" value="{{actor.username}}">
+              </div>
+              <input class="submit" type="submit" value="FOLLOW">
+              </form>
             </div><!--closes actorinfo-->
           </div><!--closes actor-->
           <hr>
