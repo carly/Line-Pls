@@ -1,13 +1,14 @@
 """Line Pls! An online community for actors."""
 
-###############################################################
-#######               Imports                  ################
-###############################################################
+# Imports
 
 import os
+import boto
 import json
 import pprint
+import time
 
+from boto.s3.key import Key
 from flask import Flask, render_template, redirect, request, flash, session, jsonify, url_for, send_from_directory
 from flask_oauth2_login import GoogleLogin
 from flask_login import LoginManager
@@ -16,12 +17,19 @@ from flask_bootstrap import Bootstrap
 from forms import SignupForm, SigninForm, PasswordForm
 from helper_functions import shakespeare_data
 from jinja2 import StrictUndefined
-from model import Play, Scene, Genre, Character, Monologue, User, Comment, Youtube, Follower, connect_to_db, db
+from model import Play, Scene, Genre, Character, Monologue, User, Comment, Youtube, Follower, UserVid, Reel, connect_to_db, db
 from werkzeug import secure_filename
 
-###############################################################
-#########             App Config                  #############
-###############################################################
+#s3 connection and bucket creation
+
+c = boto.connect_s3()
+b = c.get_bucket('linepls')
+
+UPLOAD_FOLDER = 'http://s3.amazonaws.com/linepls'
+ALLOWED_EXTENSIONS = set(['txt', 'jpg', 'png', 'pdf'])
+
+#  App Config
+
 
 app = Flask(__name__)
 
@@ -33,35 +41,17 @@ Bootstrap(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-# FIX ME
-#Setup for Google Login using flask_oauth2_login
-app.config.update(
-  SECRET_KEY="GOOGLE_LOGIN_CLIENT_SECRET",
-  GOOGLE_LOGIN_REDIRECT_SCHEME="http",
-)
-for config in (
-  "GOOGLE_LOGIN_CLIENT_ID",
-  "GOOGLE_LOGIN_CLIENT_SECRET",
-):
-  app.config[config] = os.environ[config]
-google_login = GoogleLogin(app)
-# FIX ME
 
+## ROUTES/VIEWS
 
-
-###################################################################
-########              Routes/Views                 ################
-###################################################################
-
-####################################################################
-############          SIGN IN/OUT                    ###############
-####################################################################
+## SIGN IN/OUT
 
 @app.route('/')
 def index():
     """Renders homepage"""
 
     return render_template("homepage.html")
+
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
@@ -76,12 +66,13 @@ def signup():
             db.session.add(new_user)
             db.session.commit()
             return redirect(url_for('profile'))
-
+            # PLOKI
             session['email'] = new_user.email
             session['username'] = new_user.username
             return redirect(url_for('profile'))
 
     return render_template('signup.html', form=form)
+
 
 @app.route('/signin', methods=["GET", "POST"])
 def signin():
@@ -106,6 +97,7 @@ def signin():
     elif request.method == "GET":
         return render_template('signin.html', form=form)
 
+
 @app.route('/signout')
 def signout():
     """Form for signing out."""
@@ -115,6 +107,7 @@ def signout():
 
     session.pop('username', None)
     return redirect(url_for('index'))
+
 
 ########################################################################
 ########        SIGNED IN USER => ACCOUNT RELATED             ##########
@@ -154,6 +147,7 @@ def profile():
 
         return render_template('profile.html', name=name, username=username, picture=picture, bio=bio, website=website, twitter=twitter, user_id=user_id, your_followers=your_followers)
 
+
 @app.route('/account')
 def account():
     """Renders view for user to view, change, update account information."""
@@ -178,6 +172,7 @@ def account():
         picture = ""
 
     return render_template('myaccount.html', name=name, bio=bio, web=web, twitter=twitter, picture=picture)
+
 
 @app.route('/update_profile', methods=["POST"])
 def update_profile():
@@ -210,6 +205,7 @@ def update_profile():
     db.session.commit()
     return redirect(url_for('account'))
 
+
 @app.route('/password/<string:username>', methods=["GET","POST"])
 def change_password(username):
     """Change/Update password"""
@@ -226,6 +222,29 @@ def change_password(username):
 
 
     return render_template('password.html', form=form)
+
+
+@app.route('/save_resume', methods=['POST'])
+def save_file():
+    """Name and save resume file to s3."""
+
+    if request.method == 'POST':
+        file = request.files['file']
+        filename = secure_filename('%s' %int(time.time()) + '.pdf')
+
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        user_id = session['id']
+        update_user = User.query.filter(User.user_id==user_id).first()
+        update_user.resume = file_path
+        db.session.commit()
+
+    k = b.new_key(filename)
+    k.set_contents_from_file(file)
+    k = b.lookup(file)
+    db.session.commit()
+
+    return "success"
+
 
 #####################################################################
 #######        SOCIAL NETWORKING RELATED              ###############
@@ -260,8 +279,9 @@ def view_profile(username):
 
     your_followers = {}
     for user_id in your_follower_ids:
-        user = User.query.filter(User.user_id==user_id).first()
-        your_followers['user.user_id'] = {"pic": user.picture, "username": user.username}
+        user_list = User.query.filter(User.user_id==user_id).all()
+        for u in user_list:
+            your_followers['u.user_id'] = {"pic": u.picture, "username": u.username}
 
     return render_template("profile.html", user_id=user_id, username=username, name=name, website=website, bio=bio, twitter=twitter, picture=picture, your_followers=your_followers)
 

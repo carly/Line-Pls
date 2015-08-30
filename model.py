@@ -167,10 +167,11 @@ class User(db.Model):
 	username = db.Column(db.String(255), default=" ", nullable=False)
 	pwdhash = db.Column(db.String(300))
 	picture = db.Column(db.String(500), default=" ", nullable=True)
-	name = db.Column(db.String(100), default=" ", nullable="true")
-	bio = db.Column(db.String(500), default=" ", nullable="true")
-	website = db.Column(db.String(300), default=" ", nullable="true")
-	twitter = db.Column(db.String(60), default=" ", nullable="true")
+	name = db.Column(db.String(100), default=" ", nullable=True)
+	bio = db.Column(db.String(500), default=" ", nullable=True)
+	website = db.Column(db.String(300), default=" ", nullable=True)
+	twitter = db.Column(db.String(60), default=" ", nullable=True)
+	resume = db.Column(db.String(300), default=" ", nullable=True)
 
 	def __init__(self, username, email, password):
 		self.username = username.lower()
@@ -253,6 +254,33 @@ class Follower(db.Model):
 
 	user = db.relationship("User",
 						backref= db.backref("followers", order_by=f_id))
+
+
+class UserVid(db.Model):
+	"""stores videos of user performances to be displayed on profile pages."""
+	__tablename__="uservids"
+
+	uv_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+	uv_key = db.Column(db.String(100), nullable=False)
+
+	#Define relationship between UserVids and Users
+	user = db.relationship("User",
+						backref=db.backref("uservids", order_by=uv_id))
+
+
+class Reel(db.Model):
+	"""Stores performer reels to be displayed on profile pages."""
+	__tablename__="reels"
+
+	r_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+	reel_key = db.Column(db.String(100), nullable=False)
+
+	#Define relationship between Reels and Users
+	user = db.relationship("User",
+						backref=db.backref("reels", order_by=r_id))
+
 
 
 #####################################################################
