@@ -137,7 +137,10 @@ def profile():
 
     # Get reel from db
         reel = Reel.query.filter(Reel.user_id==user_id).first()
-        get_reel = reel.reel_key
+        if reel is not None:
+            get_reel = reel.reel_key
+        else:
+            get_reel= " "
 
         following = Follower.query.filter(Follower.user_id==user_id).all()
         your_follower_ids = []

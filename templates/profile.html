@@ -13,10 +13,11 @@
     <div class="userinfo">
         <h2>{{name}}</h2>
       <img src={{picture}} alt="picture" height="300px" width="300"px>
-      <h2></h2>
-        <div>Twitter: {{twitter}} | Snapchat: {{snapchat}} | Instagram: {{instagram}} </div>
-        <div>Website: {{website}}</div>
-        <div>About Me: {{bio}}</div>
+        <div><h5>Twitter: <a href="www.twitter.com/{{twitter}}">{{twitter}}</a></div>
+        <div><h5>Snapchat: {{snapchat}}</div> 
+        <div><h5>Instagram: <a href="www.instagram.com/{{instagram}}">{{instagram}}</a></h5></div>
+        <div><h5>Website:<a href="{{website}}">{{website}}</a></h5></div>
+        <div><h5>About Me: {{bio}}</h5></div>
     </div><!--closes usersinfo-->
   </div><!--closes col-md-5-->
 <div class="col-md-5">
@@ -43,10 +44,12 @@
       </form>
     </div><!--closes newfollower-->
 
+    {% if get_reel != " " %}
     <div class="reel" style="overflow:scroll; height:400px;">
       <h4>{{name}}'s Reel</h4>
           <iframe width="350" height="280" src="https://www.youtube.com/embed/{{get_reel}}?rel=0&autoplay=0" frameborder="0" allowfullscreen></iframe>
     </div><!--close reel-->
+    {% endif %}
 </div><!--close col-md-5-->
 </div><!--closes row-->
 </div><!--closes container-->
