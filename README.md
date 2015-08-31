@@ -41,7 +41,7 @@ Python, Javascript, Flask, Jinja, jQuery, SQLalchemy, D3.js, HTML/CSS, Bootstrap
 - Designing database architecture 
 - YouTube API 
 
-
+![alt tag](https://raw.github.com/carly/line-pls/master/static/img/mia-copy.jpg)
 
 
 
