@@ -28,9 +28,6 @@ header .navbar .container{
    color: #ffe2f1;
  }
 
- .pull-right {
-   margin-top: -20px;
- }
 
 .right{
   text-align: right;
@@ -39,7 +36,7 @@ header .navbar .container{
 
 .left{
   padding-top: 40px;
-  margin-right: 50px;
+  margin-right: 60px;
 }
 
 a:hover{

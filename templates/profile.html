@@ -3,8 +3,10 @@
 {% block css %}<link rel="stylesheet" href="/static/css/profile.css">{% endblock %}
 
 {% block content %}
-<div class="profile-jumbotron">
+<div class="profile-main">
   <div class="container">
+    <div class="row">
+      <div class="col-md-5">
     <h2>Profile<h2>
     <h3>This is {{ username }}'s profile page<h3>
 
@@ -12,32 +14,42 @@
         <h2>{{name}}</h2>
       <img src={{picture}} alt="picture" height="300px" width="300"px>
       <h2></h2>
-        <div>Twitter: {{twitter}}</div>
+        <div>Twitter: {{twitter}} | Snapchat: {{snapchat}} | Instagram: {{instagram}} </div>
         <div>Website: {{website}}</div>
         <div>About Me: {{bio}}</div>
-    </div>
+    </div><!--closes usersinfo-->
+  </div><!--closes col-md-5-->
+<div class="col-md-5">
 
-  <form action="/follow" method="post">
-  <div class="form-group">
-      <input type="hidden" name="follow" class="form-control" value="{{user_id}}">
-      <input type="hidden" name="follower" class="form-control" value="{{session['id']}}">
-      <input type="hidden" name="followed-user" class="form-control" value="{{username}}">
-  </div>
-  <input class="submit" type="submit" value="FOLLOW">
-  </form>
+      <div class="follower-list">
+        {% for key, value in your_followers.items() %}
+        <div>
+        <a href="/profile/{{your_followers[key]['username']}}">
+          <img src="{{your_followers[key]["pic"]}}" alt='pic' height="50px" width="50px">
+        </a>
+      </div>
+      {% endfor %}
+      <hr>
+    </div><!--closes follower-list-->
 
-<div class="follower-list">
-  {% for key, value in your_followers.items() %}
-  <div>
-  <a href="/profile/{{your_followers[key]['username']}}">
-    <img src="{{your_followers[key]["pic"]}}" alt='pic' height="50px" width="50px">
-  </a>
-</div>
-<hr>
-{% endfor %}
-</div>
+    <div class="new-follower">
+      <form action="/follow" method="post">
+      <div class="form-group">
+          <input type="hidden" name="follow" class="form-control" value="{{user_id}}">
+          <input type="hidden" name="follower" class="form-control" value="{{session['id']}}">
+          <input type="hidden" name="followed-user" class="form-control" value="{{username}}">
+      </div>
+      <input class="submit" type="submit" value="FOLLOW">
+      </form>
+    </div><!--closes newfollower-->
 
-</div>
-</div>
+    <div class="reel" style="overflow:scroll; height:400px;">
+      <h4>{{name}}'s Reel</h4>
+          <iframe width="350" height="280" src="https://www.youtube.com/embed/{{get_reel}}?rel=0&autoplay=0" frameborder="0" allowfullscreen></iframe>
+    </div><!--close reel-->
+</div><!--close col-md-5-->
+</div><!--closes row-->
+</div><!--closes container-->
+</div><!--closes profile-main -->
 
 {% endblock %}

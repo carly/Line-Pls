@@ -171,6 +171,8 @@ class User(db.Model):
 	bio = db.Column(db.String(500), default=" ", nullable=True)
 	website = db.Column(db.String(300), default=" ", nullable=True)
 	twitter = db.Column(db.String(60), default=" ", nullable=True)
+	instagram = db.Column(db.String(100), default=" ", nullable=True)
+	snapchat = db.Column(db.String(100), default=" ", nullable=True)
 	resume = db.Column(db.String(300), default=" ", nullable=True)
 
 	def __init__(self, username, email, password):

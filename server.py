@@ -132,6 +132,12 @@ def profile():
         website = user.website
         twitter = user.twitter
         user_id = user.user_id
+        snapchat = user.snapchat
+        instagram = user.instagram
+
+    # Get reel from db
+        reel = Reel.query.filter(Reel.user_id==user_id).first()
+        get_reel = reel.reel_key
 
         following = Follower.query.filter(Follower.user_id==user_id).all()
         your_follower_ids = []
@@ -145,7 +151,7 @@ def profile():
             your_followers['user.user_id'] = {"pic": user.picture, "username": user.username}
 
 
-        return render_template('profile.html', name=name, username=username, picture=picture, bio=bio, website=website, twitter=twitter, user_id=user_id, your_followers=your_followers)
+        return render_template('profile.html', name=name, username=username, picture=picture, bio=bio, website=website, twitter=twitter, snapchat=snapchat, instagram=instagram, user_id=user_id, get_reel=get_reel, your_followers=your_followers)
 
 
 @app.route('/account')
@@ -164,14 +170,19 @@ def account():
         web = user.website
         twitter = user.twitter
         picture = user.picture
+        instagram = user.instagram
+        snapchat = user.snapchat
+
     else:
         name = ""
         bio = ""
         web = ""
         twitter = ""
         picture = ""
+        instagram = ""
+        snapchat = ""
 
-    return render_template('myaccount.html', name=name, bio=bio, web=web, twitter=twitter, picture=picture)
+    return render_template('myaccount.html', name=name, bio=bio, web=web, twitter=twitter, picture=picture, instagram=instagram, snapchat=snapchat)
 
 
 @app.route('/update_profile', methods=["POST"])
@@ -186,6 +197,8 @@ def update_profile():
     new_website = request.form.get("web")
     new_twitter = request.form.get("twitter")
     new_pic = request.form.get("picture")
+    new_insta = request.form.get("instagram")
+    new_snap = request.form.get("snapchat")
     print new_bio
 
     user_id = session["id"]
@@ -201,6 +214,8 @@ def update_profile():
         user.website= new_website
         user.twitter= new_twitter
         user.picture = new_pic
+        user.instagram = new_insta
+        user.snapchat = new_snap
 
     db.session.commit()
     return redirect(url_for('account'))
@@ -245,6 +260,20 @@ def save_file():
 
     return "success"
 
+@app.route('/reel', methods=['POST'])
+def add_reel():
+
+    if request.method == "POST":
+        user_id = session['id']
+        reel_key = request.form.get("reel")
+
+        new_reel = Reel(user_id=user_id, reel_key=reel_key)
+        db.session.add(new_reel)
+        db.session.commit()
+
+    return redirect(url_for('account'))
+
+
 
 #####################################################################
 #######        SOCIAL NETWORKING RELATED              ###############
@@ -270,6 +299,12 @@ def view_profile(username):
     bio = user.bio
     twitter = user.twitter
     picture = user.picture
+    snapchat = user.snapchat
+    istagram = user.instagram
+
+    #Show user reel
+    reel = Reel.query.filter(Reel.user_id==user_id).first()
+    get_reel = reel.reel_key
 
     following = Follower.query.filter(Follower.user_id==user_id).all()
     your_follower_ids = []
@@ -283,7 +318,7 @@ def view_profile(username):
         for u in user_list:
             your_followers['u.user_id'] = {"pic": u.picture, "username": u.username}
 
-    return render_template("profile.html", user_id=user_id, username=username, name=name, website=website, bio=bio, twitter=twitter, picture=picture, your_followers=your_followers)
+    return render_template("profile.html", user_id=user_id, username=username, name=name, website=website, bio=bio, twitter=twitter, snapchat=snapchat, instagram=instagram, picture=picture, get_reel=get_reel, your_followers=your_followers)
 
 @app.route('/follow', methods=['GET', 'POST'])
 def follower():
