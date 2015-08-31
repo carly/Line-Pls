@@ -300,7 +300,7 @@ def view_profile(username):
     twitter = user.twitter
     picture = user.picture
     snapchat = user.snapchat
-    istagram = user.instagram
+    instagram = user.instagram
 
     #Show user reel
     reel = Reel.query.filter(Reel.user_id==user_id).first()
@@ -343,11 +343,29 @@ def follower():
 #######         MONOLOGUE SEARCH RELATED              ##################
 ########################################################################
 
-@app.route('/search')
+@app.route('/search', methods=["POST"])
 def search():
     """Renders search page."""
 
-    return render_template('search.html')
+    multiselect = request.form.getlist('mymultiselect')
+
+    if "all" in multiselect:
+        return render_template("play_list.html", plays=plays)
+
+    elif "c" in multiselect:
+        plays = Play.query.filter(Play.genre_id=='c').all()
+        return render_template("play_list.html", plays=plays)
+
+    elif "h" in multiselect:
+        plays = Play.query.filter(Play.genre_id=='h').all()
+        return render_template("play_list.html", plays=plays)
+
+    elif "t" in multiselect:
+        plays = Play.query.filter(Play.genre_id=='t').all()
+        return render_template("play_list.html", plays=plays)
+
+    return render_template("search.html")
+
 
 @app.route('/plays')
 def play_list():
@@ -373,22 +391,19 @@ def play_details(play_id):
         mono_list = Monologue.query.filter(Monologue.play_id==play_id).all()
 
         mono_characters = []
-        print mono_characters
-
         for mono in mono_list:
             mono_characters.append(mono.char_id)
 
         characters = Character.query.filter(Character.play_id==play_id).all()
 
-        char_monos = []
+        chars = {}
 
         for char in characters:
             if char.char_id in mono_characters:
-                char_monos.append(char_monos)
+                char= Character.query.filter(Character.char_id==char.char_id).first()
+                chars[char.char_id] = char.char_name
 
-        print char_monos
-
-	return render_template("play_details.html", title=title, long_title=long_title, date=date, genre=genre, characters=characters)
+	return render_template("play_details.html", title=title, long_title=long_title, date=date, genre=genre, chars=chars)
 
 @app.route('/characters/<string:char_id>')
 def show_character(char_id):
@@ -459,6 +474,32 @@ def show_monologue(mono_id):
 
 
 ####### RELATED TO MONOLOGUE ANNOTATIONS AND YOUTUBE VIDS ####################
+
+@app.route('/show_reels')
+def reel_list():
+    """Show list of all the user Reels in the database."""
+    reels = Reel.query.all()
+
+    reel_dict = {}
+
+    for reel in reels:
+        user = User.query.filter(User.user_id==reel.user_id).first()
+        reel_dict[user.username]=reel.reel_key
+
+    return render_template("reels.html", reel_dict=reel_dict)
+
+@app.route('/mono_vids')
+def mono_vids():
+    """Show list of all the user posted monologues in the database."""
+    youtube = Youtube.query.all()
+
+    yt_dict = {}
+
+    for y in youtube:
+        user = User.query.filter(User.user_id==reel.user_id).first()
+        yt_dict[user.username]= y.youtube_key
+
+    return render_template("monologue_vids.html", yt_dict=yt_dict)
 
 @app.route('/comments', methods=["POST"])
 def store_comments():

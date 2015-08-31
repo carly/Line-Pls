@@ -14,8 +14,8 @@
 <div class="row">
   <div class="col-md-3 col-md-offset-5 ">
     <h2>Characters</h2>
-      {% for character in characters %}
-        <a id="char_names" href="/characters/{{ character.char_id }}"><h4>{{ character.char_name }}</h4></a>
+      {% for id, name in chars.items() %}
+        <a id="char_names" href="/characters/{{ id }}"><h4>{{ name }}</h4></a>
       {% endfor %}
     </div><!--closes col-md-4-->
   </div><!--closes row-->

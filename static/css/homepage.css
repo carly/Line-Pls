@@ -86,6 +86,11 @@ h1 {
 .support .container {
   height: 400px;
   background-color: #fff;
+  font-size: 30px;
+}
+
+.support .container .search {
+  margin-top: 150px;
 }
 
 .visual {

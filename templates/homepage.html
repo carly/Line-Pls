@@ -13,7 +13,7 @@
   <h1>Line, Pls!</h1>
   <h3>An online community by actors for actors</h3>
   {% if 'username' in session %}
-  <a href="/search"><button class="search-monos">FIND A MONOLOGUE</button></a>
+  <a href="/plays"><button class="search-monos">FIND A PLAY</button></a>
   {% else %}
   <a href="/signup"><button class="sign-up">SIGN UP</button></a>
   {% endif %}
@@ -46,80 +46,16 @@
 <div class="support">
   <div class="container">
     <img class="willy" src="/static/img/willy.png">
-
-    <div class="nl-search">
-      <div class="container">
-        <form id="nl-form" class="nl-form">
-    	Shakespeare, I'm looking for a
-    	<select>
-    		<option value="1" selected>play</option>
-    		<option value="2">character</option>
-    		<option value="3">monologue</option>
-    	</select>
-    	<br /> that is
-    	<select>
-    		<option value="1" selected>any genre</option>
-    		<option value="2">a Comedy</option>
-    		<option value="3">a History</option>
-    		<option value="4">a Tragedy</option>
-    	</select>
-    	and
-    	<select>
-    		<option value="1" selected>nothing else.</option>
-    	 	<option value="1">has annotations</option>
-    	 	<option value="2">has youtube videos</option>
-    	</select>
-      . Or type a play: <input type="text" value="" placeholder="any play" data-subline="For example: <em>Midsummer</em> or <em>Twelfth Night</em>"/>
-    	<div class="nl-submit-wrap">
-    		<button class="nl-submit" type="submit">Let's Go.</button>
-    	</div>
-    	<div class="nl-overlay"></div>
+    <div class="search">
+    <form action="/plays" method="get">
+    	Shakespeare, I'm looking for a play.
+    		<button class="submit" type="submit">Let's Go.</button>
     </form>
     </div>
     </div>
-
-    <!-- Toggle -->
-
-    <div class="nl-field nl-dd">
-    <a class="nl-field-toggle">play</a>
-    <ul>
-    		<li class="nl-dd-checked">play</li>
-    		<li>character</li>
-    		<li>monologue</li>
-    		<li>Japanese</li>
-    		<li>Italian</li>
-    	</ul>
     </div>
 
-    <div class="nl-field nl-dd">
-    	<a class="nl-field-toggle">any genre</a>
-    	<ul>
-    		<li class="nl-dd-checked">any genre</li>
-    		<li>a Comedy</li>
-    		<li>a History</li>
-    		<li>a Tragedy</li>
-    	</ul>
-    </div>
 
-    <div class="nl-field nl-dd">
-    	<a class="nl-field-toggle">nothing else</a>
-    	<ul>
-    		<li class="nl-dd-checked">nothing else</li>
-    		<li>has annotations</li>
-    		<li>has youtube videos</li>
-    	</ul>
-    </div>
-
-    <div class="nl-field nl-ti-text">
-    	<a class="nl-field-toggle">any play</a>
-     <ul>
-    		<li class="nl-ti-input">
-    			<input type="text" value="" placeholder="any play" />
-    			<button class="nl-field-go">Let's Go!</button>
-    		</li>
-    		<li class="nl-ti-example">For example: <em>Midsummer</em> or <em>Twelfth Night</em></li>
-    	</ul>
-    </div>
 
     <!-- <script src="/static/javascript/homepage-search.js"></script> -->
   </div>
