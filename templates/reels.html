@@ -12,7 +12,7 @@
 
       <div class="reels">
         {% for key, value in reel_dict.items() %}
-        <h4>Posted by: {{ key }}</h4>
+        <a href="/profile/{{ key }}"><h4>Posted by: {{ key }}</h4></a>
             <iframe width="350" height="280" src="https://www.youtube.com/embed/{{value}}?rel=0&autoplay=0" frameborder="0" allowfullscreen></iframe>
         {% endfor %}
         </div><!--closes youtube-vids-->
