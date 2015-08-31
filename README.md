@@ -1,6 +1,8 @@
 # Line-Pls
 <h3>Rap Genius meets LinkedIn for aspiring Actors.</h3>
 
+![alt tag](https://raw.github.com/carly/line-pls/master/static/img/mia-copy.jpg)
+
 <h5> Overview </h5>
 So you want to be an actor!...Success in the entertainment industry hinges on a delicate balance of talent, good audition material and who you know. Line Pls is designed to address all of those needs by providing a platform for actors to showcase their talent, collaborate, and easily find compelling new audition material by combining social networking with a large database of crowdsourced annotations on dramatic literature. Additionally, Actors can tag youtube videos of their performances to various monologues, and showcase their work on personal profile pages... and who knows, maybe even get discovered! 
 
@@ -41,7 +43,6 @@ Python, Javascript, Flask, Jinja, jQuery, SQLalchemy, D3.js, HTML/CSS, Bootstrap
 - Designing database architecture 
 - YouTube API 
 
-![alt tag](https://raw.github.com/carly/line-pls/master/static/img/mia-copy.jpg)
 
 
 
