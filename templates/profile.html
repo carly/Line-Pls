@@ -7,52 +7,51 @@
   <div class="container">
     <div class="row">
       <div class="col-md-5">
-    <h2>Profile<h2>
-    <h3>This is {{ username }}'s profile page<h3>
-
-    <div class="userinfo">
+        <div class="userpic">
         <h2>{{name}}</h2>
-      <img src={{picture}} alt="picture" height="300px" width="300"px>
-        <div><h5>Twitter: <a href="www.twitter.com/{{twitter}}">{{twitter}}</a></div>
-        <div><h5>Snapchat: {{snapchat}}</div> 
-        <div><h5>Instagram: <a href="www.instagram.com/{{instagram}}">{{instagram}}</a></h5></div>
-        <div><h5>Website:<a href="{{website}}">{{website}}</a></h5></div>
-        <div><h5>About Me: {{bio}}</h5></div>
-    </div><!--closes usersinfo-->
-  </div><!--closes col-md-5-->
-<div class="col-md-5">
+          <img src={{picture}} alt="picture" width="500px">
+            <div class="new-follower">
+              <form action="/follow" method="post">
+                <div class="form-group">
+                  <input type="hidden" name="follow" class="form-control" value="{{user_id}}">
+                  <input type="hidden" name="follower" class="form-control" value="{{session['id']}}">
+                  <input type="hidden" name="followed-user" class="form-control" value="{{username}}">
+              </div>
+              <input class="submit" type="submit" value="FOLLOW">
+            </form>
+            </div><!--closes newfollower-->
+          </div><!--closes col-md-5-->
+        </div><!--closes col-md-5-->
+        <div class="col-md-6">
+          {% if get_reel != " " %}
+            <div class="reel right" style="overflow:scroll; height:400px;">
+                <h4>{{name}}'s Reel</h4>
+                <iframe width="350" height="280" src="https://www.youtube.com/embed/{{get_reel}}?rel=0&autoplay=0" frameborder="0" allowfullscreen></iframe>
+            </div><!--close reel-->
+          {% endif %}
 
-      <div class="follower-list">
-        {% for key, value in your_followers.items() %}
-        <div>
-        <a href="/profile/{{your_followers[key]['username']}}">
-          <img src="{{your_followers[key]["pic"]}}" alt='pic' height="50px" width="50px">
-        </a>
-      </div>
-      {% endfor %}
-      <hr>
-    </div><!--closes follower-list-->
+          <div class="userinfo">
 
-    <div class="new-follower">
-      <form action="/follow" method="post">
-      <div class="form-group">
-          <input type="hidden" name="follow" class="form-control" value="{{user_id}}">
-          <input type="hidden" name="follower" class="form-control" value="{{session['id']}}">
-          <input type="hidden" name="followed-user" class="form-control" value="{{username}}">
-      </div>
-      <input class="submit" type="submit" value="FOLLOW">
-      </form>
-    </div><!--closes newfollower-->
+            <div><h5>Twitter: <a href="www.twitter.com/{{twitter}}">{{twitter}}</a> |
+              Instagram: <a href="www.instagram.com/{{instagram}}">{{instagram}}</a></h5></div>
+              <div><h5>Website:<a href="{{website}}">{{website}}</a></h5></div>
+                <div id="bio"><h5>About Me: <br> {{bio}}</h5></div>
 
-    {% if get_reel != " " %}
-    <div class="reel" style="overflow:scroll; height:400px;">
-      <h4>{{name}}'s Reel</h4>
-          <iframe width="350" height="280" src="https://www.youtube.com/embed/{{get_reel}}?rel=0&autoplay=0" frameborder="0" allowfullscreen></iframe>
-    </div><!--close reel-->
-    {% endif %}
-</div><!--close col-md-5-->
-</div><!--closes row-->
-</div><!--closes container-->
+          </div><!--closes userinfo-->
+
+          <h5>Followers:</h5>
+            <div class="follower-list">
+              {% for key, value in your_followers.items() %}
+              <div>
+                <a href="/profile/{{your_followers[key]['username']}}">
+                  <img src="{{your_followers[key]["pic"]}}" alt='pic' height="50px" width="50px">
+                </a>
+              </div>
+              {% endfor %}
+            </div><!--closes follower-list-->
+      </div><!--closes col-md-6-->
+    </div><!--closes row-->
+  </div><!--closes container-->
 </div><!--closes profile-main -->
 
 {% endblock %}

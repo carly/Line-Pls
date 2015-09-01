@@ -1,4 +1,36 @@
-.profile-jumbotron {
-  text-align: center;
-  margin: 0 auto;
+
+.reel {
+  margin-bottom: 0px;
+}
+
+.userinfo {
+  text-align: right;
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+h5{
+  text-align: right;
+}
+
+.follower-list{
+float: right;
+}
+
+.userinfo {
+  width: 90%;
+  float: right;
+}
+
+.submit {
+  border: 1px solid #3b5998;
+  background-color: #3b5998;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 0.9;
+}
+
+.submit:hover{
+  border: 1px solid #f70078;
+  background-color: #f70078;
 }

@@ -1,0 +1,43 @@
+
+.prof {
+  margin-left: 50px;
+  text-decoration: none;
+  color: #f70078;
+}
+
+.prof:hover{
+  color:#3b5998;
+}
+
+.actor p {
+  margin-top: 30px;
+  margin-left:300px;
+}
+
+
+.pic {
+  margin-right: 20px;
+}
+
+span {
+  font-weight: bolder;
+  color: #f70078;
+}
+
+.submit {
+  margin-top: 5px;
+  border: 1px solid #3b5998;
+  background-color: #3b5998;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 0.9;
+}
+
+.submit:hover{
+  border: 1px solid #f70078;
+  background-color: #f70078;
+}
+
+.actor_list {
+  margin-bottom: 300px;
+}

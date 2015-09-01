@@ -1,0 +1,10 @@
+.col-md-3 .col-md-offset-4{
+  margin-bottom: 20px;
+}
+
+.row {
+  height: auto;
+}
+.container .row .col-md-3.col-md-offset-4 ul{
+  margin-bottom: 100px;
+}

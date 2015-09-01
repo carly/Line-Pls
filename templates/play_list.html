@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
+
+{% block css %}<link rel="stylesheet" href="/static/css/playlist.css">{% endblock %}
+
 {% block content %}
 
 <div class="container">
   <div class="row">
     <div class="col-md-4 col-md-offset-5">
       <h1>Plays</h1>
-    </div>
-  </div>
+    </div><!--closes md-4 offset5-->
+  </div><!--closes row-->
   <div class="row">
-    <div class="col-md-3 col-md-offset-4"
+    <div class="col-md-3 col-md-offset-4">
     <ul>
       {% for play in plays %}
           <li>
@@ -18,7 +21,7 @@
           </li>
       {% endfor %}
     </ul>
-  </div>
-</div>
-</div>
+   </div><!--closes col-md-3 offset4-->
+  </div><!--closes row-->
+</div><!--closes container-->
 {% endblock %}

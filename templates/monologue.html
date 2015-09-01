@@ -71,23 +71,23 @@
                    {% for id, comment in comments_dict.items() %}
                      <div class="comment">
                        <h6>{{ comment[0] }}</h6>
-                       <p>{{ comment[1] }}</p>
+                        <p>{{ comment[1] }}</p>
                      </div> <!--close comment-->
                    {% endfor %}
-                   </div><!--close modal body-->
+            </div><!--close modal body-->
           <!-- End Model Body -->
 
             <!-- Modal Footer -->
-                 <div class="modal-footer">
+             <div class="modal-footer">
                   <button type="button" class="btn btn-default"
                           data-dismiss="modal">
                               Close
                   </button>
-                </div><!--close modal footer-->
-              </div><!--close modal content-->
-            </div><!--close modal dialog-->
-        </div><!--close modal fade-->
-      </div><!--close col-md-5-->
+            </div><!--close modal footer-->
+          </div><!--close modal content-->
+        </div><!--close modal dialog-->
+      </div><!--close modal fade-->
+    </div><!--close col-md-5-->
 
   <!-- Column that displays youtube videos - Right side of Page-->
     <div class="col-md-5">
@@ -96,45 +96,45 @@
       <h5>Awesome! Share your performance with other actors like you.</h5>
       <h5>Paste your video key below. </h5>
       <form action="/add_youtube" method="post">
-        <div class="form-group">
+          <div class="form-group">
             <label for="field-url"><h6>video key: <b>http://youtu.be/[this_is_your_key]<b></h6></label>
-            <input type="text" name="youtube" class="form-control"
-              id="field-url" min="7" max="11"
-             placeholder="just paste the key, not the http://youtu.be/ part ........">
-        </div>
-        <div class="form-group">
-            <input type="hidden" class="form-control" name="user_id" value="{{ user_id }}">
-        </div>
-        <div class="form-group">
-            <input type="hidden" class="form-control" name="mono_id" value="{{ mono_id }}">
-        </div>
-        <div class="form-group">
-            <input type="hidden" class="form-control" name="username" value="{{ username }}">
-        </div>
-        <div class="form-group">
-            <input type="submit" value="add video">
-        </div>
+              <input type="text" name="youtube" class="form-control"
+                  id="field-url" min="7" max="11"
+                 placeholder="just paste the key, not the http://youtu.be/ part ........">
+          </div>
+          <div class="form-group">
+              <input type="hidden" class="form-control" name="user_id" value="{{ user_id }}">
+          </div>
+          <div class="form-group">
+              <input type="hidden" class="form-control" name="mono_id" value="{{ mono_id }}">
+          </div>
+          <div class="form-group">
+              <input type="hidden" class="form-control" name="username" value="{{ username }}">
+          </div>
+          <div class="form-group">
+              <input type="submit" value="add video">
+          </div>
         </form>
 
-      <div class="youtube-vids" style="overflow:scroll; height:400px;">
-       {% for vid in youtube_playlist %}
-        <h4>Posted by: {{ vid.username }}</h4>
-            <iframe width="350" height="280" src="https://www.youtube.com/embed/{{vid.youtube_key}}?rel=0&autoplay=0" frameborder="0" allowfullscreen></iframe>
-      {% endfor %}
-        </div><!--closes youtube-vids-->
+        <div class="youtube-vids" style="overflow:scroll; height:400px;">
+          {% for vid in youtube_playlist %}
+            <a href="profile/{{vid.username}}"><h4>Posted by: {{ vid.username }}</h4></a>
+              <iframe width="350" height="280" src="https://www.youtube.com/embed/{{vid.youtube_key}}?rel=0&autoplay=0" frameborder="0" allowfullscreen></iframe>
+          {% endfor %}
+      </div><!--closes youtube-vids-->
     </div> <!--closes col-md-5-->
   </div> <!--closes row-->
-</div> <!--closes container-->
+ </div> <!--closes container-->
 </div><!--closes mono-details-->
 
 
 <!-- jQuery to generate each comment modal.-->
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script>
-        $('#myModal').on('shown.bs.modal', function () {
-          $('#myInput').focus()
-        })
+<script>
+  $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+  })
 
-  </script>
+</script>
 
 {% endblock %}

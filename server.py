@@ -109,9 +109,8 @@ def signout():
     return redirect(url_for('index'))
 
 
-########################################################################
-########        SIGNED IN USER => ACCOUNT RELATED             ##########
-########################################################################
+# SIGNED IN USER => ACCOUNT RELATED
+
 
 @app.route('/profile')
 def profile():
@@ -277,10 +276,8 @@ def add_reel():
     return redirect(url_for('account'))
 
 
+# SOCIAL NETWORKING RELATED
 
-#####################################################################
-#######        SOCIAL NETWORKING RELATED              ###############
-#####################################################################
 
 @app.route('/actors')
 def display_actors():
@@ -307,7 +304,10 @@ def view_profile(username):
 
     #Show user reel
     reel = Reel.query.filter(Reel.user_id==user_id).first()
-    get_reel = reel.reel_key
+    if reel:
+        get_reel = reel.reel_key
+    else:
+        get_reel = " "
 
     following = Follower.query.filter(Follower.user_id==user_id).all()
     your_follower_ids = []
@@ -342,9 +342,7 @@ def follower():
 
         return redirect('/profile/' + str(followed_user))
 
-########################################################################
-#######         MONOLOGUE SEARCH RELATED              ##################
-########################################################################
+# MONOLOGUE SEARCH RELATED
 
 @app.route('/search', methods=["POST"])
 def search():
@@ -476,7 +474,7 @@ def show_monologue(mono_id):
 	return render_template("monologue.html", mono_id=mono_id, name=name, play_title=play_title, act=act, scene=scene, description=description, text=text, comments_dict=comments_dict, user_id=user_id, username=username, youtube_playlist=youtube_playlist)
 
 
-####### RELATED TO MONOLOGUE ANNOTATIONS AND YOUTUBE VIDS ####################
+# RELATED TO MONOLOGUE ANNOTATIONS AND YOUTUBE VIDS
 
 @app.route('/show_reels')
 def reel_list():
@@ -499,7 +497,7 @@ def mono_vids():
     yt_dict = {}
 
     for y in youtube:
-        user = User.query.filter(User.user_id==reel.user_id).first()
+        user = User.query.filter(User.user_id==y.user_id).first()
         yt_dict[user.username]= y.youtube_key
 
     return render_template("monologue_vids.html", yt_dict=yt_dict)
@@ -548,9 +546,9 @@ def shakespeare_json():
 
 
 
-#############################################################
-#######        Connecting server to db           ############
-#############################################################
+
+##########  Connecting server to db    ############
+
 
 if __name__ == "__main__":
 	#debug=True for DebugToolbarExtension to work
