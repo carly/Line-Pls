@@ -4,24 +4,32 @@
 
 {% block content %}
 
+<!--Renders view for individual Play details, and Character List-->
+
 <div class="container">
+
   <div class="row">
     <div class="col-md-4 col-md-offset-5">
+
         <h1>Play Details</h1>
             <div> Title: <b>{{title}}</b></div>
-            <div> Long Title: {{long_title}}</div>  <!--This will be null for most of them  -->
+            <div> Long Title: {{long_title}}</div>
             <div> Date: {{ date }}</div>
-      </div><!--closes col-md-4-->
+
+      </div><!--closes col-md-4 col-md-offset-5-->
     </div><!--closes row-->
 
   <div class="row playlist">
     <div class="col-md-3 col-md-offset-5 ">
+
       <h2>Characters</h2>
         {% for id, name in chars.items() %}
           <a id="char_names" href="/characters/{{ id }}"><h4>{{ name }}</h4></a>
         {% endfor %}
-    </div><!--closes col-md-3-->
+
+    </div><!--closes col-md-3 col-md-offset-5-->
   </div><!--closes row-->
+
 </div><!--closes container-->
 
 
