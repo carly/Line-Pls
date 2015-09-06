@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+
+{% block css %}<link rel="stylesheet" href="/static/css/playchars.css">{% endblock %}
+
 {% block content %}
 
 <div class="container">
@@ -11,13 +14,13 @@
       </div><!--closes col-md-4-->
     </div><!--closes row-->
 
-<div class="row">
-  <div class="col-md-3 col-md-offset-5 ">
-    <h2>Characters</h2>
-      {% for id, name in chars.items() %}
-        <a id="char_names" href="/characters/{{ id }}"><h4>{{ name }}</h4></a>
-      {% endfor %}
-    </div><!--closes col-md-4-->
+  <div class="row playlist">
+    <div class="col-md-3 col-md-offset-5 ">
+      <h2>Characters</h2>
+        {% for id, name in chars.items() %}
+          <a id="char_names" href="/characters/{{ id }}"><h4>{{ name }}</h4></a>
+        {% endfor %}
+    </div><!--closes col-md-3-->
   </div><!--closes row-->
 </div><!--closes container-->
 

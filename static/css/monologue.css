@@ -1,6 +1,13 @@
+
+.col-md-5 .text {
+  margin-bottom: 300px;
+}
+
 .mono_details .container {
   margin-left: 20px;
+  margin-bottom: 200px;
 }
+
 
 .col-md-5 form input#field-youtube {
   width: 200px;

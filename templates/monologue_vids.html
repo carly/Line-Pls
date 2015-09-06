@@ -1,24 +1,30 @@
 
 {% extends 'base.html' %}
+
+{% block css %}<link rel="stylesheet" href="/static/css/monovids.css"> {% endblock %}
+
 {% block content %}
 
 <div class="container">
+
   <div class="row">
-    <div class="col-md-4 col-md-offset-5">
+    <div class="col-md-4 col-md-offset-4">
       <h1>Videos of Monologues</h1>
-    </div>
-  </div>
+    </div><!--closes col-md-4off5-->
+  </div><!--closes row-->
+
   <div class="row">
     <div class="col-md-3 col-md-offset-4"
 
       <div class="mono-vids">
         {% for key, value in yt_dict.items() %}
-        <h4>Posted by: {{ key }}</h4>
+          <a href="/profile/{{key}}"><h4>Posted by: {{ key }}</h4></a>
             <iframe width="350" height="280" src="https://www.youtube.com/embed/{{value}}?rel=0&autoplay=0" frameborder="0" allowfullscreen></iframe>
         {% endfor %}
-        </div><!--closes youtube-vids-->
-  </div>
-</div>
-</div>
-</div>
+      </div><!--closes mono-vids-->
+
+    </div><!--closes col-md-3-->
+  </div><!--closes row-->
+</div><!--closes container-->
+
 {% endblock %}

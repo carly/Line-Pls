@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% block css %}<link rel="stylesheet" src="/static/css/monologue.css">{% endblock %}
 
 
@@ -11,43 +12,45 @@
     <!--Column with Monologue Content - Left side of page-->
    <div class="col-md-5 col-xs-5 ">
     <!--Monologue Header-->
-          <h1>{{ name }} </h1>
-            <h2><b>{{ play_title }}</b><h2>
-                <h3>Act: {{ act }} | Scene: {{ scene }}</h3>
-                <h4>Description: {{ description|safe }}</h4>
-        <hr>
+      <h1>{{ name }} </h1>
+      <h2><b>{{ play_title }}</b><h2>
+      <h3>Act: {{ act }} | Scene: {{ scene }}</h3>
+      <h4>Description: {{ description|safe }}</h4>
+      <hr>
 
     <!--Monologue Text-->
-          <h3> {{ name }}: </h3>
+      <h3> {{ name }}: </h3>
 
     <!--Loops through the list 'text' and displays each element, which is a line of the monologue-->
-        {% for line in text %}
         <!--Displays each line in the monologue-->
-          <div class="text" id="line">
-            <h4>{{ line|safe }}
+
+    <div class="text" id="line">
+      {% for line in text %}
+              <h4>{{ line|safe }}
               <!--Comment icon-->
-                <a href="#" data-toggle="modal" data-target="#myModalHorizontal"><img src="https://cdn4.iconfinder.com/data/icons/flat-icon-set/128/chat-icon.png" alt="comment-icon" width="20" height="20" id="{{ loop.index0 }}" class="text-bubble" >
-                </a></h4>
-          </div> <!--end text line div-->
-       {% endfor %}
-
-
+                <a href="#" data-toggle="modal" data-target="#myModalHorizontal">
+                  <img src="http://www.clipartbest.com/cliparts/4cb/4zX/4cb4zXezi.png"
+                    alt="comment-icon" width="20" height="20" id="{{ loop.index0 }}" class="text-bubble" >
+                </a>
+              </h4>
+      {% endfor %}
+      </div> <!--end text line div-->
         <!-- Modal -->
-    <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog"
+        <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog"
              aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
+          <div class="modal-dialog">
+            <div class="modal-content">
                   <!-- Modal Header -->
-                 <div class="modal-header">
-                     <button type="button" class="close"
-                        data-dismiss="modal">
-                            <span aria-hidden="true">&times;</span>
-                            <span class="sr-only">Close</span>
-                     </button>
-                     <h4 class="modal-title" id="myModalLabel">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                  <span aria-hidden="true">&times;</span>
+                  <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
                          Acting Coach Notes
-                     </h4>
-                 </div>
+                </h4>
+              </div><!--closes modal header-->
+
                  <!--End Model Header-->
 
             <!-- Modal Body -->
@@ -60,34 +63,35 @@
                         <textarea rows="5" cols="50" name="comment-text" placeholder="This is what I think..." required></textarea>
                         <input type="hidden" class="form-control" name="mono_id" value="{{ mono_id }}"/>
                         <input type="hidden" class="form-control" name="line_id" value="{{ loop.index0 }}"/>
-                      </div>
-                  </div>
-                    <div class="form-group">
+                      </div><!--closes col-sm-10-->
+                  </div><!--closes form-group-->
+                  <div class="form-group">
                       <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-default">Thats what I think.</button>
-                      </div>
-                    </div>
-               </form>
-                   {% for id, comment in comments_dict.items() %}
-                     <div class="comment">
-                       <h6>{{ comment[0] }}</h6>
-                        <p>{{ comment[1] }}</p>
-                     </div> <!--close comment-->
-                   {% endfor %}
+                      </div><!--closes col-sm-offset2-->
+                  </div><!--closes form-group-->
+               </form><!--closes form-->
+
+              {% for id, comment in comments_dict.items() %}
+               <div class="comment">
+                <h6>{{ comment[0] }}</h6>
+                <p>{{ comment[1] }}</p>
+               </div> <!--close comment-->
+              {% endfor %}
             </div><!--close modal body-->
+
           <!-- End Model Body -->
 
             <!-- Modal Footer -->
-             <div class="modal-footer">
-                  <button type="button" class="btn btn-default"
-                          data-dismiss="modal">
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">
                               Close
-                  </button>
+             </button>
             </div><!--close modal footer-->
           </div><!--close modal content-->
         </div><!--close modal dialog-->
       </div><!--close modal fade-->
-    </div><!--close col-md-5-->
+  </div><!--close col-md-5-->
 
   <!-- Column that displays youtube videos - Right side of Page-->
     <div class="col-md-5">
@@ -101,32 +105,31 @@
               <input type="text" name="youtube" class="form-control"
                   id="field-url" min="7" max="11"
                  placeholder="just paste the key, not the http://youtu.be/ part ........">
-          </div>
+          </div><!--close formgroup-->
           <div class="form-group">
               <input type="hidden" class="form-control" name="user_id" value="{{ user_id }}">
-          </div>
+          </div><!--close formgroup-->
           <div class="form-group">
               <input type="hidden" class="form-control" name="mono_id" value="{{ mono_id }}">
-          </div>
+          </div><!--close formgroup-->
           <div class="form-group">
               <input type="hidden" class="form-control" name="username" value="{{ username }}">
-          </div>
+          </div><!--close formgroup-->
           <div class="form-group">
               <input type="submit" value="add video">
-          </div>
-        </form>
+          </div><!--close formgroup-->
+      </form><!--closes form-->
 
-        <div class="youtube-vids" style="overflow:scroll; height:400px;">
-          {% for vid in youtube_playlist %}
-            <a href="profile/{{vid.username}}"><h4>Posted by: {{ vid.username }}</h4></a>
-              <iframe width="350" height="280" src="https://www.youtube.com/embed/{{vid.youtube_key}}?rel=0&autoplay=0" frameborder="0" allowfullscreen></iframe>
-          {% endfor %}
-      </div><!--closes youtube-vids-->
-    </div> <!--closes col-md-5-->
+      <div class="youtube-vids" style="overflow:scroll; height:400px;">
+        {% for vid in youtube_playlist %}
+          <a href="/profile/{{vid.username}}"><h4>Posted by: {{ vid.username }}</h4></a>
+            <iframe width="350" height="280" src="https://www.youtube.com/embed/{{vid.youtube_key}}?rel=0&autoplay=0" frameborder="0" allowfullscreen></iframe>
+        {% endfor %}
+     </div><!--closes youtube-vids-->
+   </div> <!--closes col-md-5-->
   </div> <!--closes row-->
  </div> <!--closes container-->
 </div><!--closes mono-details-->
-
 
 <!-- jQuery to generate each comment modal.-->
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -136,5 +139,4 @@
   })
 
 </script>
-
 {% endblock %}

@@ -4,24 +4,33 @@
 
 {% block content %}
 
+<!--Renders view that lists all the plays currently in the db.-->
+
 <div class="container">
+
   <div class="row">
     <div class="col-md-4 col-md-offset-5">
+
       <h1>Plays</h1>
+
     </div><!--closes md-4 offset5-->
   </div><!--closes row-->
+
   <div class="row">
     <div class="col-md-3 col-md-offset-4">
-    <ul>
-      {% for play in plays %}
-          <li>
-              <a href="/plays/{{ play.play_id }}">
-                <h3>{{ play.title }}</h3>
-              </a>
-          </li>
-      {% endfor %}
-    </ul>
+
+      <ul>
+        {% for play in plays %}
+            <li>
+                <a href="/plays/{{ play.play_id }}">
+                  <h3>{{ play.title }}</h3>
+                </a>
+            </li>
+        {% endfor %}
+      </ul>
+
    </div><!--closes col-md-3 offset4-->
   </div><!--closes row-->
+
 </div><!--closes container-->
 {% endblock %}

@@ -2,32 +2,30 @@
 
 {% block content %}
 
+<!--Template for search page. As of 9/6/15 not routed to currently.-->
+
 <div class="search-page">
   <div class="container">
     <div class="row">
       <div class="col-md-5">
 
-    <img class="willy" src="/static/img/willy.png">
+        <img class="willy" src="/static/img/willy.png">
 
-      <div class="search">
-      <form action="/search" method="get">
-      Shakespeare, I'm looking for a play that is
-          <select multiple id="mymultiselect" name="mymultiselect">         
-                <option name="all" value="1" selected>any genre</option>
-                <option name="c" value="2">a Comedy</option>
-                <option name="h" value="3">a History</option>
-                <option name="t" value="4">a Tragedy</option>
-          </select>
-           <button class="submit" type="submit">Let's GO!</button>
-      </form>
-    </div><!--closes search-->
-  </div><!--closes col-md-5-->
-
-
-
-
-</div><!--closes row-->
-</div><!--closes container -->
+        <div class="search">
+            <form action="/search" method="get">
+              Shakespeare, I'm looking for a play that is
+                <select multiple id="mymultiselect" name="mymultiselect">
+                    <option name="all" value="1" selected>any genre</option>
+                    <option name="c" value="2">a Comedy</option>
+                    <option name="h" value="3">a History</option>
+                    <option name="t" value="4">a Tragedy</option>
+                  </select>
+               <button class="submit" type="submit">Let's GO!</button>
+             </form>
+        </div><!--closes search-->
+      </div><!--closes col-md-5-->
+    </div><!--closes row-->
+  </div><!--closes container -->
 </div><!--closes search-page-->
 
 

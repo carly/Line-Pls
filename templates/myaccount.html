@@ -9,117 +9,95 @@
       <div class="col-md-4 col-xs-4">
         <div class="menu row">
             <div class='menu-item selected'>
-              <img src="{{ picture }}" alt="self" height="300" width="300">
-              <h5><a href="/account">Basic Information</a></h5>
-            </div>
+                <img src="{{ picture }}" alt="self" width="300">
+                  <h5><a href="/account">Basic Information</a></h5>
+            </div><!--closes menu-item selected-->
+              <div class='menu-item'>
+                <h5><a href="/password/{{session['username']}}">Password</a></h5>
+              </div><!--closes menu-item-->
             <div class='menu-item'>
-              <h5><a href="/password/{{session['username']}}">Password</a></h5>
-            </div>
+                <h5><a href="/account">Manage Youtube</a></h5>
+            </div><!--closes menu-item-->
             <div class='menu-item'>
-              <h5><a href="/account">Manage Youtube</a></h5>
-            </div>
-            <div class='menu-item'>
-              <h5><a href="/account">Manage Comments</a></h5>
-            </div>
-          </div>
-      </div>
+                <h5><a href="/account">Manage Comments</a></h5>
+            </div><!--closes menu-item-->
+        </div><!--closes menu row-->
+      </div><!--closes col-md-4 xs-4-->
+      <div class="col-md-4 col-xs-4 acct">
+
         <div id="basic_info">
-          <div class="col-md-4 col-xs-4 acct">
+
           <h1>Basic Information</h1>
-      <form action="/update_profile" method="post">
-      <div class="form-group">
-          <label for="field-name">Name</label>
-          <input type="text" name="name" class="form-control"
-          id="field-name" placeholder="Name" value="{{ name }}">
-        </div>
-      <div class="form-group">
-          <label for="field-email">Email(required)</label>
-          <input type="email" name="email" class="form-control"
-                  id="field-email" value="{{session['email']}}">
-      </div>
-      <div class="form-group">
-          <label for="field-username">Username(required)</label>
-          <input type="text" name="username" class="form-control"
-                id="field-username" value="{{session['username']}}">
-      </div>
-      <div class="form-group">
-          <label for="field-bio">About Me</label>
-          <textarea name="bio" class="form-control"
-                    id="field-bio" placeholder="About Me">{{bio}}</textarea>
-      </div>
-      <div class="form-group">
-          <label for="field-web">Website</label>
-          <input type="text" name="web" class="form-control"
-                 id="field-web" placeholder="http://" value="{{ web }}">
-      </div>
-     <div class="form-group">
-         <label for="field-twitter">Twitter</label>
-         <input type="text" name="twitter" class="form-control"
-                id="field-twitter" placeholder="Twitter" value="{{ twitter }}">
-     </div>
-     <div class="form-group">
-         <label for="field-instagram">Instagram</label>
-         <input type="text" name="instagram" class="form-control"
-                id="field-instagram" placeholder="Instagram" value="{{ instagram }}">
-     </div>
-     <div class="form-group">
-         <label for="field-snapchat">Snapchat</label>
-         <input type="text" name="snapchat" class="form-control"
-                id="field-snapchat" placeholder="Snapchat" value="{{ snapchat }}">
-     </div>
-     <div class="form-group">
-         <label for="field-picture">Picture URL</label>
-         <input type="text" name="picture" class="form-control"
-                id="field-picture" placeholder="You're so pretty!" value="{{ picture }}">
-     </div>
-     <input class="submit" type="submit" value="UPDATE PROFILE">
-    </form>
+            <!-- Starts form -->
+            <form action="/update_profile" method="post">
+              <div class="form-group">
+                  <label for="field-name">Name</label>
+                    <input type="text" name="name" class="form-control"
+                    id="field-name" placeholder="Name" value="{{ name }}">
+                </div><!--closes form-group-->
+              <div class="form-group">
+                  <label for="field-email">Email(required)</label>
+                    <input type="email" name="email" class="form-control"
+                        id="field-email" value="{{session['email']}}">
+              </div><!--closes form-group-->
+              <div class="form-group">
+                  <label for="field-username">Username(required)</label>
+                    <input type="text" name="username" class="form-control"
+                      id="field-username" value="{{session['username']}}">
+              </div><!--closes form-group-->
+              <div class="form-group">
+                  <label for="field-bio">About Me</label>
+                    <textarea name="bio" class="form-control"
+                          id="field-bio" placeholder="About Me">{{bio}}</textarea>
+              </div><!--closes form-group-->
+              <div class="form-group">
+                  <label for="field-web">Website</label>
+                    <input type="text" name="web" class="form-control"
+                       id="field-web" placeholder="http://" value="{{ web }}">
+              </div><!--closes form-group-->
+              <div class="form-group">
+                <label for="field-twitter">Twitter</label>
+                  <input type="text" name="twitter" class="form-control"
+                      id="field-twitter" placeholder="Twitter" value="{{ twitter }}">
+              </div><!--closes form-group-->
+              <div class="form-group">
+                <label for="field-instagram">Instagram</label>
+                  <input type="text" name="instagram" class="form-control"
+                      id="field-instagram" placeholder="Instagram" value="{{ instagram }}">
+              </div><!--closes form-group-->
+              <div class="form-group">
+                <label for="field-snapchat">Snapchat</label>
+                  <input type="text" name="snapchat" class="form-control"
+                      id="field-snapchat" placeholder="Snapchat" value="{{ snapchat }}">
+              </div><!--closes form-group-->
+              <div class="form-group">
+                <label for="field-picture">Picture URL</label>
+                  <input type="text" name="picture" class="form-control"
+                      id="field-picture" placeholder="You're so pretty!" value="{{ picture }}">
+              </div><!--closes form-group-->
+           <input class="submit" type="submit" value="UPDATE PROFILE">
+          </form>
+          <!-- End Form -->
 
+            <h1>Upload your Reel</h1>
+            <!-- Start Form -->
+              <form action="/reel" method="post">
+                <div class="form-group">
+                  <label for="field-url"><h6>video key: <b>http://youtu.be/[this_is_your_key]<b></h6></label>
+                    <input type="text" name="reel" class="form-control"
+                      id="field-url" min="7" max="11"
+                     placeholder="just paste the key, not the http://youtu.be/ part ........">
+                </div><!--closes form-group-->
+                <div class="form-group">
+                    <input class="submit" type="submit" value="add video">
+                </div><!--closes form-group-->
+              </form><!--closes form-->
 
-    <h1>Upload your Reel</h1>
-    <form action="/reel" method="post">
-      <div class="form-group">
-          <label for="field-url"><h6>video key: <b>http://youtu.be/[this_is_your_key]<b></h6></label>
-          <input type="text" name="reel" class="form-control"
-            id="field-url" min="7" max="11"
-           placeholder="just paste the key, not the http://youtu.be/ part ........">
-      </div>
-      <div class="form-group">
-          <input type="submit" value="add video">
-      </div>
-      </form>
-
-
-    <h1>Upload your Theater Resume</h1>
-    <form action="http://linepls.s3.amazonaws.com/" method="post"
-          enctype="multipart/form-data">
-      <!--Key to upload-->
-      <input type="input"  name="key" value="user/user1/${filename}" /><br />
-      <input type="hidden" name="acl" value="public-read" />
-      <input type="hidden" name="success_action_redirect" value="http://linepls.s3.amazonaws.com/myaccount.html" />
-      Content-Type:
-      <input type="input"  name="Content-Type" value="image/jpeg" /><br />
-      <input type="hidden" name="x-amz-meta-uuid" value="14365123651274" />
-      <input type="text"   name="X-Amz-Credential" value="AKIAIOSFODNN7EXAMPLE/20130806/us-east-1/s3/aws4_request" />
-      <input type="text"   name="X-Amz-Algorithm" value="AWS4-HMAC-SHA256" />
-      <input type="text"   name="X-Amz-Date" value="20130806T000000Z" />
-
-      <!--Tags-->
-      <input type="input"  name="x-amz-meta-tag" value="" /><br />
-      <input type="hidden" name="Policy" value='<Base64-encoded policy string>'<br />
-      <input type="hidden" name="X-Amz-Signature" value="<signature-value>" />
-       File:
-      <input type="file"   name="file" /> <br />
-      <!-- The elements after this will be ignored -->
-      <input type="submit" name="submit" value="Upload to Amazon S3" />
-    </form>
-
-
-    </div>
-  </div>
-        </div>
-      </div>
-    </div>
+    </div><!--closes basic info-->
+   </div><!--closes col-md-4-->
+  </div> <!--closes row-->
+ </div><!--closes container-->
+</div><!--closes main-->
 
 
 {% endblock %}

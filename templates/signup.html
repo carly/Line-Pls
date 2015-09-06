@@ -4,39 +4,41 @@
 
 {%block content %}
 
+<!-- Form for Sign Up page view. See helper_functions.py for form breakdown -->
+
 <h2>Wanna join the Line,Pls Ensemble?</h2>
-<div class="signup-form">
-  <div class="container">
-  {% for message in form.username.errors %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
+  <div class="signup-form">
+    <div class="container">
+      {% for message in form.username.errors %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
 
-  {% for message in form.email.errors %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
+      {% for message in form.email.errors %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
 
-  {% for message in form.password.errors %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
+      {% for message in form.password.errors %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
 
 
-  <form action="{{ url_for('signup') }}" method=post>
+      <form action="{{ url_for('signup') }}" method=post>
 
-    {{ form.username.label }}
-    {{ form.username }}
+          {{ form.username.label }}
+          {{ form.username }}
 
-    {{ form.email.label }}
-    {{ form.email }}
+          {{ form.email.label }}
+          {{ form.email }}
 
-    {{ form.password.label }}
-    {{ form.password }}
+          {{ form.password.label }}
+          {{ form.password }}
 
-    {{ form.confirm.label }}
-    {{ form.confirm }}
+          {{ form.confirm.label }}
+          {{ form.confirm }}
 
-    {{ form.submit }}
-  </form>
-</div>
-</div>
+          {{ form.submit }}
+    </form><!--closes form-->
+  </div><!--closes container-->
+</div><!--closes signup-form-->
 
 {% endblock %}

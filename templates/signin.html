@@ -4,31 +4,33 @@
 
 {% block content %}
 
+<!--Form for Sign In - for breakdown of python, see helper_functions.py -->
+
 <h2>Sign In</h2>
 <h4>Call Time: Now-O-Clock</h4>
 
 <div class="signin-form">
   <div class="container">
 
-{% for message in form.username.errors %}
-  <div class="flash">{{ message }}</div>
-{% endfor %}
+      {% for message in form.username.errors %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
 
-{% for message in form.password.errors %}
-  <div class="flash">{{ message }}</div>
-{% endfor %}
+      {% for message in form.password.errors %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
 
-<form action="{{ url_for('signin') }}" method=post>
+    <form action="{{ url_for('signin') }}" method=post>
 
-  {{ form.username.label }}
-  {{ form.username }}
+      {{ form.username.label }}
+      {{ form.username }}
 
-  {{ form.password.label }}
-  {{ form.password }}
+      {{ form.password.label }}
+      {{ form.password }}
 
-  {{ form.submit }}
-</form>
-</div>
-</div>
+      {{ form.submit }}
+    </form><!--closes form-->
+  </div><!--closes container-->
+</div><!--closes signin-form-->
 
 {% endblock %}

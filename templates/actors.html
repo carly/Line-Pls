@@ -5,9 +5,9 @@
 {% block content %}
 <div class="actor_list">
   <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-            {% for actor in actors_db %}
+      {% for actor in actors_db %}
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
           <div class="actor">
             <div class="actorinfo">
               <h3>{{actor.name}}</h3>
@@ -32,11 +32,12 @@
               </form>
             </div><!--closes actorinfo-->
           </div><!--closes actor-->
-            {% endfor %}
+    </div><!-- closes col-md-8 offset2-->
+  </div><!--closes row-->
+  <hr>
+  {% endfor %}
 
-            <hr>
-      </div><!-- closes col-md-8 offset2-->
-    </div><!--closes row-->
+
   </div><!--closes container-->
 </div><!--closes actor list-->
 {% endblock %}

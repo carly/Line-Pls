@@ -1,48 +1,57 @@
 """Line Pls! An online community for actors."""
 
-# Imports
-
-import os
+# Imports - standard lib
 import boto
 import json
+import os
 import pprint
 import time
 
-from boto.s3.key import Key
+# Imports - flask + flask ext
 from flask import Flask, render_template, redirect, request, flash, session, jsonify, url_for, send_from_directory
+from flask_bootstrap import Bootstrap
+from flask_debugtoolbar import DebugToolbarExtension
 from flask_oauth2_login import GoogleLogin
 from flask_login import LoginManager
-from flask_debugtoolbar import DebugToolbarExtension
-from flask_bootstrap import Bootstrap
-from forms import SignupForm, SigninForm, PasswordForm
-from helper_functions import shakespeare_data
+
+# Imports - 3rd party + flask integration
+from boto.s3.key import Key
 from jinja2 import StrictUndefined
-from model import Play, Scene, Genre, Character, Monologue, User, Comment, Youtube, Follower, UserVid, Reel, connect_to_db, db
 from werkzeug import secure_filename
 
-#s3 connection and bucket creation
+# Imports - local application based
+from forms import SignupForm, SigninForm, PasswordForm
+from helper_functions import shakespeare_data
+from model import Play, Scene, Genre, Character, Monologue, User, Comment, Youtube, Follower, UserVid, Reel, connect_to_db, db
 
+
+#s3 connection and bucket creation
+# this was not implemented yet on demo day. Continuing to add features - learning about s3 buckets.
 c = boto.connect_s3()
 b = c.get_bucket('linepls')
 
+# This connects to an s3 bucket I made so users can store large pdf files (like their resume)
 UPLOAD_FOLDER = 'http://s3.amazonaws.com/linepls'
 ALLOWED_EXTENSIONS = set(['txt', 'jpg', 'png', 'pdf'])
 
-#  App Config
 
+#  App Config
 
 app = Flask(__name__)
 
 # Config adjustments
+# used for jSON functions attached to models for future implementation of d3
 printer = pprint.PrettyPrinter()
-app.secret_key = """Need to figure out"""
+
+app.secret_key = """supersecret"""
 app.jinja_env.undefined = StrictUndefined
 Bootstrap(app)
+# Flask login manager extension
 login_manager = LoginManager()
 login_manager.init_app(app)
 
 
-## ROUTES/VIEWS
+################################ ROUTES/VIEWS  #################################
 
 ## SIGN IN/OUT
 
@@ -55,18 +64,20 @@ def index():
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
-    """A form to signup and create an account."""
+    """A form for users to signup and create an account."""
+    # Using WTFforms here - see forms.py for breakdown of form code
     form = SignupForm(request.form)
 
+    # Checks to see if username is in session. If they've logged in it redirects them to the profile page.
     if 'username' in session:
         return redirect(url_for('profile'))
-
+    # If they haven't logged in, when they fill out the form, send it to this function. This creates a new user in the db.
     if request.method == 'POST' and form.validate():
             new_user = User(username=form.username.data,email=form.email.data, password=form.password.data)
             db.session.add(new_user)
             db.session.commit()
             return redirect(url_for('profile'))
-            # PLOKI
+            # Saves username and email into the session
             session['email'] = new_user.email
             session['username'] = new_user.username
             return redirect(url_for('profile'))
@@ -76,13 +87,16 @@ def signup():
 
 @app.route('/signin', methods=["GET", "POST"])
 def signin():
-    """Form for signing into the app."""
+    """Form for signing into the app, once you have created an account."""
 
+    #Flask WTForms
     form = SigninForm(request.form)
 
+    #Once they are signed in, redirect to profile
     if 'username' in session:
         return redirect(url_for('profile'))
 
+    #If not signed in yet, make sure the form validates. Then save the following into the session.
     if request.method == "POST":
         if form.validate()==False:
             return render_template('signin.html', form=form)
@@ -100,7 +114,7 @@ def signin():
 
 @app.route('/signout')
 def signout():
-    """Form for signing out."""
+    """Form for signing out. Dumps user session info and redirects to homepage."""
 
     if 'username' not in session:
         return redirect(url_for('signin'))
@@ -109,21 +123,21 @@ def signout():
     return redirect(url_for('index'))
 
 
+
 # SIGNED IN USER => ACCOUNT RELATED
-
-
 @app.route('/profile')
 def profile():
     """Renders user's profile page when they are logged in."""
 
     if 'username' not in session:
         return redirect(url_for('signin'))
-
+    #Queries user from db info based on session
     user = User.query.filter(User.username==session['username']).first()
-
+    #if there is no user in the db associated with the username in session, redirect them for the signup page.
     if user is None:
         return redirect(url_for('signup'))
     else:
+        # assign the user data to these variables that we will pass to jinja to render the profile page template w/ updated info
         name = user.name
         username = user.username
         picture = user.picture
@@ -134,23 +148,26 @@ def profile():
         snapchat = user.snapchat
         instagram = user.instagram
 
-    # Get reel from db
+    # Get reel from db - if they have a reel, assign it to a var so we can render it with jinja on their prof page.
         reel = Reel.query.filter(Reel.user_id==user_id).first()
         if reel is not None:
             get_reel = reel.reel_key
         else:
             get_reel= " "
 
+        #If this user has followers, go to the follower table and give back a list of all users who follow the current user
         following = Follower.query.filter(Follower.user_id==user_id).all()
         your_follower_ids = []
         for f in following:
             # Appends your followers user ids to list
             your_follower_ids.append(f.follower)
-
+        
         your_followers = {}
         for user_id in your_follower_ids:
             user = User.query.filter(User.user_id==user_id).first()
-            your_followers['user.user_id'] = {"pic": user.picture, "username": user.username}
+            if user is not None:
+                your_followers['user.user_id'] = {"pic": user.picture, "username": user.username}
+
 
 
         return render_template('profile.html', name=name, username=username, picture=picture, bio=bio, website=website, twitter=twitter, snapchat=snapchat, instagram=instagram, user_id=user_id, get_reel=get_reel, your_followers=your_followers)
@@ -552,7 +569,7 @@ def shakespeare_json():
 
 if __name__ == "__main__":
 	#debug=True for DebugToolbarExtension to work
-	app.debug = True
+	app.debug = False
 	connect_to_db(app)
 
 	#Use the DebugToolbar
