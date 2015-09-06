@@ -5,10 +5,13 @@
 
 {% block content %}
 
+<!--Renders template that displays individual monologues w/ comments + videos -->
+
 <!--Displays monologue information based on monologue id in database-->
 <div class="mono_details">
  <div class="container">
   <div class="row">
+
     <!--Column with Monologue Content - Left side of page-->
    <div class="col-md-5 col-xs-5 ">
     <!--Monologue Header-->
@@ -95,38 +98,50 @@
 
   <!-- Column that displays youtube videos - Right side of Page-->
     <div class="col-md-5">
+
       <h2>POST A VIDEO</h2>
       <h4>Have you performed this monologue?</h4>
       <h5>Awesome! Share your performance with other actors like you.</h5>
       <h5>Paste your video key below. </h5>
+
       <form action="/add_youtube" method="post">
+
           <div class="form-group">
-            <label for="field-url"><h6>video key: <b>http://youtu.be/[this_is_your_key]<b></h6></label>
+            <label for="field-url"><h6>video key: <b>http://youtu.be/[this_is_your_key]<b>
+            </h6></label>
               <input type="text" name="youtube" class="form-control"
                   id="field-url" min="7" max="11"
                  placeholder="just paste the key, not the http://youtu.be/ part ........">
-          </div><!--close formgroup-->
-          <div class="form-group">
-              <input type="hidden" class="form-control" name="user_id" value="{{ user_id }}">
-          </div><!--close formgroup-->
-          <div class="form-group">
-              <input type="hidden" class="form-control" name="mono_id" value="{{ mono_id }}">
-          </div><!--close formgroup-->
-          <div class="form-group">
-              <input type="hidden" class="form-control" name="username" value="{{ username }}">
-          </div><!--close formgroup-->
-          <div class="form-group">
-              <input type="submit" value="add video">
-          </div><!--close formgroup-->
-      </form><!--closes form-->
+            </div><!--close formgroup-->
+                <div class="form-group">
+                    <input type="hidden" class="form-control"
+                           name="user_id" value="{{ user_id }}">
+                </div><!--close formgroup-->
+                <div class="form-group">
+                    <input type="hidden" class="form-control"
+                           name="mono_id" value="{{ mono_id }}">
+                </div><!--close formgroup-->
+                <div class="form-group">
+                    <input type="hidden" class="form-control"
+                           name="username" value="{{ username }}">
+                </div><!--close formgroup-->
+                <div class="form-group">
+                    <input type="submit" value="add video">
+                </div><!--close formgroup-->
+
+        </form><!--closes form-->
 
       <div class="youtube-vids" style="overflow:scroll; height:400px;">
-        {% for vid in youtube_playlist %}
+       {% for vid in youtube_playlist %}
           <a href="/profile/{{vid.username}}"><h4>Posted by: {{ vid.username }}</h4></a>
-            <iframe width="350" height="280" src="https://www.youtube.com/embed/{{vid.youtube_key}}?rel=0&autoplay=0" frameborder="0" allowfullscreen></iframe>
+            <iframe width="350" height="280"
+              src="https://www.youtube.com/embed/{{vid.youtube_key}}?rel=0&autoplay=0"
+              frameborder="0" allowfullscreen></iframe>
         {% endfor %}
-     </div><!--closes youtube-vids-->
-   </div> <!--closes col-md-5-->
+      </div><!--closes youtube-vids-->
+
+    </div> <!--closes col-md-5-->
+
   </div> <!--closes row-->
  </div> <!--closes container-->
 </div><!--closes mono-details-->

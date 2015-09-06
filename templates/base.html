@@ -1,76 +1,81 @@
 <!doctype html>
+<!--Base Template -->
 <html>
-<head>
-  <title>Line, Pls!</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link href='http://fonts.googleapis.com/css?family=IM+Fell+Great+Primer+SC|Fredericka+the+Great|Kranky|Rye|Jacques+Francois+Shadow|IM+Fell+Double+Pica+SC|Didact+Gothic|Dosis' rel='stylesheet' type='text/css'>
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <!-- <script src="/static/javascript/slider.js"></script>
-  <script src="//unslider.com/unslider.min.js"></script> -->
-  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-  <!-- <meta name="google-signin-client_id" content="GOOGLE_LOGIN_CLIENT_ID"> -->
-  <link rel="stylesheet" href="/static/css/styles.css">
-  {% block css %}{% endblock %}
-  {% block d3 %}{% endblock %}
-  <meta charset="utf-8">
-</head>
 
-<body>
+  <head>
+    <title>Line, Pls!</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <link href='http://fonts.googleapis.com/css?family=IM+Fell+Great+Primer+SC|Fredericka+the+Great|Kranky|Rye|Jacques+Francois+Shadow|IM+Fell+Double+Pica+SC|Didact+Gothic|Dosis' rel='stylesheet' type='text/css'>
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+      <!-- <script src="/static/javascript/slider.js"></script>
+      <script src="//unslider.com/unslider.min.js"></script> -->
+      <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+      <!-- <meta name="google-signin-client_id" content="GOOGLE_LOGIN_CLIENT_ID"> -->
+      <link rel="stylesheet" href="/static/css/styles.css">
+      {% block css %}{% endblock %}
+      {% block d3 %}{% endblock %}
+      <meta charset="utf-8">
+  </head>
+
+ <body>
   <!--Shows the flashed messages when logged in/out-->
+    <header>
+      <nav class="navbar">
+        <div class="container">
+          <div class="row">
+              <div class="col-md-4 col-xs-4 left">
+                <a href="/actors">Find Actors</a>
+                <a href="/plays">Find A Play</a>
+              <div class="dropdown pull-right">
+               <a href='/youtube' class="dropdown-toggle" type="button"
+                  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="true">YouTube<span class="caret"></span></a>
+               <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                 <li><a href="/mono_vids">Monologues</a></li>
+                 <li><a href="/show_reels">Actor Reels</a></li>
+               </ul>
+             </div>
+             </div>
+          <div class="col-md-3 col-xs-3">
+            <a class="logo" href="/"><h3>Line, Pls</h3></a>
+          </div>
 
-<header>
-  <nav class="navbar">
-    <div class="container">
-      <div class="row">
-          <div class="col-md-4 col-xs-4 left">
-            <a href="/actors">Find Actors</a>
-            <a href="/plays">Find A Play</a>
-          <div class="dropdown pull-right">
-           <a href='/youtube' class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">YouTube<span class="caret"></span></a>
-           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-             <li><a href="/mono_vids">Monologues</a></li>
-             <li><a href="/show_reels">Actor Reels</a></li>
-           </ul>
-         </div>
-         </div>
-      <div class="col-md-3 col-xs-3">
-        <a class="logo" href="/"><h3>Line, Pls</h3></a>
-      </div>
-      <div class="col-md-4 col-xs-4 right">
-        {% if 'username' in session %}
-        <div class="dropdown pull-right">
-        <a href='/profile' class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> {{session['username']}}<span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-          <li><a href="/profile">Profile</a></li>
-          <li><a href="/account">My Account</a></li>
-        </ul>
-       </div>
-        <a href="/signout">Sign Out</a>
-        {% else %}
-          <a href="/signup">Sign Up</a>
-          <a href="/signin">Sign In</a>
-        {% endif %}
-    </div>
-  </div>
-</div>
-</nav>
-<header>
+            <div class="col-md-4 col-xs-4 right">
 
- </div>
-</nav>
+             {% if 'username' in session %}
+               <div class="dropdown pull-right">
+                  <a href='/profile' class="dropdown-toggle" type="button"
+                    id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="true"> {{session['username']}}<span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/account">My Account</a></li>
+                  </ul>
+               </div><!--closes dropdown pull-right-->
+                <a href="/signout">Sign Out</a>
+              {% else %}
+                  <a href="/signup">Sign Up</a>
+                  <a href="/signin">Sign In</a>
+              {% endif %}
+            </div><!--close col-md-4 col-xs-4 right-->
 
+          </div><!--closes row-->
+        </div><!--closes container-->
+      </nav><!--closes navbar-->
+    </header><!--closes header-->
 
- {% block jumbotron %} {% endblock %}
+    {% block jumbotron %} {% endblock %}
 
-<!--Customized content by page-->
-{% block content %} put your content here {% endblock %}
+  <!--Customized content by page-->
+    {% block content %} put your content here {% endblock %}
 
-<!--Footer for every page-->
-<footer>Copyright 2015 Line,Pls!</footer>
-</body>
+      <!--Footer for every page-->
+      <footer>Copyright 2015 Line,Pls!</footer>
+
+ </body>
 </html>

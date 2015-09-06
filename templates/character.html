@@ -5,25 +5,26 @@
 <div class="container">
   <div class="row">
     <div class="col-md-5 col-md-offset-5">
+
         <h1><b>{{ name }}</b></h1>
-        <!--  Fix me -->
+        <!--  FIX ME 9/6/15-->
         <!--  Needs to be actual play title not just play ID-->
             <div> {{ play }} |  {{ c_description }}</div>
 
         <h3>Monologues</h3>
 
-        <!--Fix Me-->
+        <!--FIX ME 9/6/15-->
         <!--Need to only show characters with monologue word counts greater > 100-->
         {% for monologue in monologues %}
-        <ul>
-             <li> Act: {{ monologue.act_id }} , Scene:  {{ monologue.scene_id }} </li>
-        		<ul>
-               <li><a href="/monologue/{{ monologue.mono_id }}">a monologue</a></li>
-           </ul>
-        </ul>
-
+          <ul>
+               <li> Act: {{ monologue.act_id }} , Scene:  {{ monologue.scene_id }} </li>
+          		<ul>
+                 <li><a href="/monologue/{{ monologue.mono_id }}">a monologue</a></li>
+             </ul>
+          </ul>
         {% endfor %}
-      </div><!--closes col-md-4-->
+
+      </div><!--closes col-md-5 col-md-offset-5-->
     </div><!--closes row-->
   </div><!--closes container-->
 

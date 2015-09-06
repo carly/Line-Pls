@@ -2,18 +2,23 @@
 
 {% block css %}<link rel="stylesheet" href="/static/css/actorlist.css">{% endblock %}
 
+<!--Renders template to view List of all Actor Profiles-->
+
 {% block content %}
 <div class="actor_list">
   <div class="container">
-      {% for actor in actors_db %}
+    {% for actor in actors_db %}
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
+
           <div class="actor">
             <div class="actorinfo">
+
               <h3>{{actor.name}}</h3>
               <div class="pic">
-              <img class="pull-left" src="{{actor.picture}}" alt="profpic" width="250px">
-              </div>
+                <img class="pull-left" src="{{actor.picture}}"
+                      alt="profpic" width="250px">
+              </div><!--closes pic-->
 
               <p class"p"><span>username:</span><br> {{actor.username}}<br>
                 <span>twitter:</span><br> @{{actor.twitter}}<br>
@@ -22,22 +27,27 @@
               </p>
 
               <a class="prof" href="/profile/{{actor.username}}"> View Profile </a>
+
                 <form action="/follow" method="post">
                   <div class="form-group">
-                    <input type="hidden" name="follow" class="form-control" value="{{actor.user_id}}">
-                    <input type="hidden" name="follower" class="form-control" value="{{session['id']}}">
-                    <input type="hidden" name="followed-user" class="form-control" value="{{actor.username}}">
-                  </div>
-                <input class="submit" type="submit" value="FOLLOW">
-              </form>
+                    <input type="hidden" name="follow"
+                      class="form-control" value="{{actor.user_id}}">
+                    <input type="hidden" name="follower"
+                      class="form-control" value="{{session['id']}}">
+                    <input type="hidden" name="followed-user"
+                      class="form-control" value="{{actor.username}}">
+                  </div><!--closes form-group-->
+                  <input class="submit" type="submit" value="FOLLOW">
+                </form>
+
             </div><!--closes actorinfo-->
           </div><!--closes actor-->
-    </div><!-- closes col-md-8 offset2-->
-  </div><!--closes row-->
-  <hr>
-  {% endfor %}
 
-
+        </div><!-- closes col-md-8 offset2-->
+      </div><!--closes row-->
+      <hr>
+    {% endfor %}
   </div><!--closes container-->
 </div><!--closes actor list-->
+
 {% endblock %}
