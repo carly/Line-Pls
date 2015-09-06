@@ -123,7 +123,6 @@ def signout():
     return redirect(url_for('index'))
 
 
-
 # SIGNED IN USER => ACCOUNT RELATED
 @app.route('/profile')
 def profile():
@@ -161,7 +160,7 @@ def profile():
         for f in following:
             # Appends your followers user ids to list
             your_follower_ids.append(f.follower)
-        
+
         your_followers = {}
         for user_id in your_follower_ids:
             user = User.query.filter(User.user_id==user_id).first()
@@ -294,8 +293,6 @@ def add_reel():
 
 
 # SOCIAL NETWORKING RELATED
-
-
 @app.route('/actors')
 def display_actors():
     """Display a list of all actors on the site with links to their profile pages."""
@@ -303,6 +300,7 @@ def display_actors():
     actors_db = User.query.all()
 
     return render_template("actors.html", actors_db=actors_db)
+
 
 @app.route('/profile/<string:username>')
 def view_profile(username):
@@ -340,6 +338,7 @@ def view_profile(username):
 
     return render_template("profile.html", user_id=user_id, username=username, name=name, website=website, bio=bio, twitter=twitter, snapchat=snapchat, instagram=instagram, picture=picture, get_reel=get_reel, your_followers=your_followers)
 
+
 @app.route('/follow', methods=['GET', 'POST'])
 def follower():
     """Add followers to a user, display user followers."""
@@ -359,8 +358,8 @@ def follower():
 
         return redirect('/profile/' + str(followed_user))
 
-# MONOLOGUE SEARCH RELATED
 
+# MONOLOGUE SEARCH RELATED
 @app.route('/search', methods=["POST"])
 def search():
     """Renders search page."""
@@ -391,6 +390,7 @@ def play_list():
     plays = Play.query.order_by(Play.title).all()
 
     return render_template("play_list.html", plays=plays)
+
 
 @app.route('/plays/<string:play_id>')
 def play_details(play_id):
@@ -423,6 +423,7 @@ def play_details(play_id):
 
 	return render_template("play_details.html", title=title, long_title=long_title, date=date, genre=genre, chars=chars)
 
+
 @app.route('/characters/<string:char_id>')
 def show_character(char_id):
 	"""Lists the Character description and links to Monologues"""
@@ -442,6 +443,7 @@ def show_character(char_id):
 	monologues = Monologue.query.filter(Monologue.char_id==char_id).all()
 
 	return render_template("character.html", name=name, play=play, c_description=c_description, monologues=monologues)
+
 
 @app.route('/monologue/<int:mono_id>')
 def show_monologue(mono_id):
@@ -492,7 +494,6 @@ def show_monologue(mono_id):
 
 
 # RELATED TO MONOLOGUE ANNOTATIONS AND YOUTUBE VIDS
-
 @app.route('/show_reels')
 def reel_list():
     """Show list of all the user Reels in the database."""
@@ -506,6 +507,7 @@ def reel_list():
 
     return render_template("reels.html", reel_dict=reel_dict)
 
+
 @app.route('/mono_vids')
 def mono_vids():
     """Show list of all the user posted monologues in the database."""
@@ -518,6 +520,7 @@ def mono_vids():
         yt_dict[user.username]= y.youtube_key
 
     return render_template("monologue_vids.html", yt_dict=yt_dict)
+
 
 @app.route('/comments', methods=["POST"])
 def store_comments():
@@ -539,6 +542,7 @@ def store_comments():
 
     return redirect('/monologue/' + str(mono_id))
 
+
 @app.route('/add_youtube', methods=["POST"])
 def add_new_youtube():
     """Stores a new youtube video into the db associated with a particular Monologue and user."""
@@ -555,13 +559,12 @@ def add_new_youtube():
 
     return redirect('/monologue/' + str(mono_id))
 
+
 @app.route('/shakespeare.json')
 def shakespeare_json():
     """Return Shakespeare Force Graph Nodes as JSON."""
 
     return jsonify(shakespeare_data())
-
-
 
 
 ##########  Connecting server to db    ############

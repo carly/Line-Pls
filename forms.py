@@ -1,22 +1,17 @@
 
-###############################################################
-##########          Imports for Python Forms         ##########
-###############################################################
-
+## Imports for Python Forms
 
 from model import db, User
 from wtforms import Form, BooleanField, SubmitField, TextField, PasswordField, HiddenField, validators, FileField
 from wtforms.validators import DataRequired
 
 
-################################################################
-###########         Form Classes Defined         ###############
-################################################################
 
-
+## Form Classes Defined
 
 class SignupForm(Form):
     """Defines the signup form for new users in python with wtforms."""
+
     username = TextField("Pick a username:",[validators.Length(min=4, max=25)])
     email = TextField("Email",  [validators.Required("Please enter your email address."), validators.Length(min=6, max=35)])
     password = PasswordField('New Password', [

@@ -1,4 +1,6 @@
 
+// SCRIPT FOR D3 FORCE GRAPH - AS OF 9/6/15 NOT IMPLEMENTED IN FRONT END
+
 var width = 960,
     height = 500,
     root;

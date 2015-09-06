@@ -1,4 +1,5 @@
-// Define the form
+// DEFINES JAVASCRIPT FOR NATURAL LANGUAGE FORM - WORK IN PROGRESS AS OF 9/6/15
+// NOT CURRENTLY DISPLAYED IN FRONT-END
 
 function NLForm( el ) {
 	// the form element

@@ -1,27 +1,19 @@
 """Models and database functions for Line Pls """
 
-############################################################
-##########               IMPORTS                 ###########
-############################################################
+## IMPORTS
 
 from flask import jsonify
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug import generate_password_hash, check_password_hash
 
-#############################################################
-############        DB to SQLAlchemy             ############
-#############################################################
+## DB to SQLAlchemy
 
 db = SQLAlchemy()
 
-##############################################################
-##########       DEFINE MODEL CLASSES FOR DB   ###############
-##############################################################
 
-##############################################################
-#####   MODELS RELATED TO STORAGE OF PLAYS/MONOLOUGES  #######
-##############################################################
+## DEFINE MODEL CLASSES FOR DB
 
+## MODELS RELATED TO STORAGE OF PLAYS/MONOLOUGES
 class Genre(db.Model):
 	"""Genres of Shakespeare plays"""
 
@@ -66,6 +58,7 @@ class Play(db.Model):
 			play["genre_id"] = self.genre_id
 		return play
 
+
 class Scene(db.Model):
 	"""Shakespeare plays divided into Scenes"""
 
@@ -90,6 +83,7 @@ class Scene(db.Model):
 		scene["scene"] = self.scene
 		scene["description"] = self.s_description
 		return scene
+
 
 class Character(db.Model):
 	"""Shakespeare characters"""
@@ -118,6 +112,7 @@ class Character(db.Model):
 		# I don't know why this isn't working...
 		character["monologues"] = [monologue.json() for monologue in self.monologues]
 		return character
+
 
 class Monologue(db.Model):
 	"""Shakespeare monologues"""
@@ -154,10 +149,8 @@ class Monologue(db.Model):
 		return monologue
 
 
-#######################################################################
-########## DEFINE MODELS RELATED TO STORING USER INFO   ###############
-#######################################################################
 
+## DEFINE MODELS RELATED TO STORING USER INFO
 class User(db.Model):
 	"""Stores users in the database"""
 	__tablename__="users"
@@ -197,6 +190,7 @@ class User(db.Model):
 		user["count"] = len(self.comments)
 		return user
 
+
 class Comment(db.Model):
 	"""Stores lines with user commentary/annotations in database."""
 
@@ -223,6 +217,7 @@ class Comment(db.Model):
 		comment["comment_text"] = self.comment_text
 		comment["user_id"] = self.user_id
 		return comment
+
 
 class Youtube(db.Model):
 	"""Youtube videos connected to Monologues"""
@@ -285,10 +280,8 @@ class Reel(db.Model):
 
 
 
-#####################################################################
-##########         MODEL Helper functions    ########################
-#####################################################################
 
+## MODEL Helper functions
 def connect_to_db(app):
     """Connect the database to our Flask app."""
 

@@ -1,18 +1,12 @@
 """Utility file to seed monologues database from Open Source Shakespeare data text files."""
 
-####################################################################
-##########             SEED IMPORTS         ########################
-####################################################################
+## SEED IMPORTS
 
 import csv
 from model import Scene, Character, Monologue, Play, Genre, connect_to_db, db
 from server import app
 
-#####################################################################
-########     Defines functions that parse data from       ###########
-########     Open Source Shakespeare db text files        ###########
-#####################################################################
-
+##  Defines functions that parse data from Open Source Shakespeare db text files
 def load_genres(file_name):
 	"""Loads genres into db."""
 
@@ -122,9 +116,8 @@ def load_monologues(file_name):
 			db.session.commit()
 
 
-################################################################
-######         Time to cook a database...        ###############
-################################################################
+
+##############     Time to cook a database...        ###############
 
 if __name__=="__main__":
 	connect_to_db(app)

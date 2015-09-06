@@ -1,7 +1,5 @@
 
-##################################################################
-##########        Imports for Helper Functions          ##########
-##################################################################
+## Imports for Helper Functions
 
 import json
 import os
@@ -10,16 +8,10 @@ import requests
 
 from model import Play, Scene, Genre, Character, Monologue, User, Comment, connect_to_db, db
 
-
-##################################################################
-##########        Defines D3 Json Helper Functions      ##########
-##################################################################
-
-
-############# GENERATES JSON FROM COMMAND LINE ###################
+## Defines D3 Json Helper Functions
 
 def to_json(QUERY, (columns)):
-    """Queries Monologues, Characters, and Plays tables in database to create JSON for d3"""
+    """Queries Monologues, Characters, and Plays tables in database to create JSON for d3. Generates JSON to pass to Command Line"""
 
     db_connection = psycopg2.connect('dbname=monologues')
     db_cursor = db_connection.cursor()
@@ -35,10 +27,14 @@ def to_json(QUERY, (columns)):
     print json.dumps(d3_json, indent=2)
 
 
-############### USES DATABSE JSON CLASSES #######################
+## USES DATABSE JSON CLASSES
 
 def shakespeare_data():
-    """Creates node structure for json for future D3 integration."""
+    """Creates node structure for json for future D3 integration.
+
+    Uses database json functions and then creates node/list arrays to pass into
+    D3 force graph. Not currently implemented on front-end.
+    """
 
     nodes = []
     links = []

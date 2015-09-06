@@ -1,3 +1,6 @@
+-- SQL statements for creating JSON to put into query
+-- Designed to pass SQL QUERIES to_json() function in helper_functions.py
+
 -- Select statement for dict that lists all the categories together
 SELECT
       p.title, c.char_name, m.act_id, m.scene_id, m.mono_id, m.word_count, p.date, p.genre_id
@@ -76,4 +79,4 @@ SELECT p.title, c.char_name, m.mono_id
       ORDER BY c.char_name
 
 
-SELECT 
+SELECT

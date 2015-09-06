@@ -1,3 +1,5 @@
+/* DISPLAYS A MODEL/MAP FOR GRAPH RELATIONSHIPS FOR FORCE GRAPH */
+
 {
  "name": "Shakespeare",
  "children": [

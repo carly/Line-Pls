@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# YOUTUBE API - CODE FOR USERS TO UPLOAD VIDEO
+
 from apiclient.discovery import build
 from apiclient.errors import HttpError
 from oauth2client.tools import argparser
