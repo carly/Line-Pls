@@ -35,7 +35,8 @@ UPLOAD_FOLDER = 'http://s3.amazonaws.com/linepls'
 ALLOWED_EXTENSIONS = set(['txt', 'jpg', 'png', 'pdf'])
 
 PORT = int(os.environ.get("PORT", 5000))
-
+DATABASE_URL = os.environ.get("DATABASE_URL",
+                              "postgresql:///carlyarobinson/monologues")
 
 #  App Config
 
