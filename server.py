@@ -27,12 +27,14 @@ from model import Play, Scene, Genre, Character, Monologue, User, Comment, Youtu
 
 #s3 connection and bucket creation
 # this was not implemented yet on demo day. Continuing to add features - learning about s3 buckets.
-c = boto.connect_s3()
-b = c.get_bucket('linepls')
+#c = boto.connect_s3()
+#b = c.get_bucket('linepls')
 
 # This connects to an s3 bucket I made so users can store large pdf files (like their resume)
 UPLOAD_FOLDER = 'http://s3.amazonaws.com/linepls'
 ALLOWED_EXTENSIONS = set(['txt', 'jpg', 'png', 'pdf'])
+
+PORT = int(os.environ.get("PORT", 5000))
 
 
 #  App Config
@@ -572,10 +574,9 @@ def shakespeare_json():
 
 if __name__ == "__main__":
 	#debug=True for DebugToolbarExtension to work
-	app.debug = False
 	connect_to_db(app)
 
 	#Use the DebugToolbar
 	DebugToolbarExtension(app)
 	print "\n\n\n\nYO\n\n\n"
-	app.run()
+	app.run(debug=True, host="0.0.0.0", port=PORT)

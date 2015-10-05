@@ -1,5 +1,6 @@
 beautifulsoup4==4.4.0
 blinker==1.4
+boto==2.38.0
 cffi==0.8.6
 characteristic==14.3.0
 compass==0.1.4
@@ -9,13 +10,18 @@ dominate==2.1.12
 dryscrape==1.0
 enum34==1.0.4
 Flask==0.10.1
+Flask-Assets==0.11
 Flask-Bootstrap==3.3.5.6
 Flask-DebugToolbar==0.10.0
 Flask-GoogleLogin==0.3.1
 Flask-Login==0.2.11
+Flask-Mail==0.9.1
 Flask-OAuth2-Login==0.0.9
+Flask-Principal==0.4.0
 Flask-Scss==0.5
+Flask-Security==1.7.4
 Flask-SQLAlchemy==2.0
+Flask-WTF==0.12
 google-api-python-client==1.4.1
 httplib2==0.9
 identity-toolkit-python-client==0.1.6
@@ -27,6 +33,7 @@ lxml==3.4.4
 MarkupSafe==0.23
 oauth2client==1.4.5
 oauthlib==1.0.1
+passlib==1.6.5
 pathlib==1.0.1
 psycopg2==2.6.1
 pyasn1==0.1.7
@@ -43,10 +50,13 @@ service-identity==14.0.0
 simplejson==3.6.5
 six==1.9.0
 SQLAlchemy==1.0.8
+SQLAlchemy-Utils==0.30.17
 Twisted==15.2.1
 uritemplate==0.6
 w3lib==1.12.0
+webassets==0.11
 Werkzeug==0.9.6
 wheel==0.24.0
+WTForms==2.0.2
 xvfbwrapper==0.2.4
 zope.interface==4.1.2
